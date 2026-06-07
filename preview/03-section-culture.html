@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1280">
+<title>Masthead — Culture Section</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Lora:ital,wght@0,400..700;1,400..700&family=Inter:wght@100..900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="masthead-preview.css">
+<style>
+  :root { --np-section-color: var(--np-col-culture); }
+</style>
+</head>
+<body>
+
+<div class="np-utility-bar">
+  <div class="np-utility-bar__inner">
+    <span class="np-utility-bar__date">Wednesday, May 28, 2025</span>
+    <div class="np-utility-bar__actions">
+      <a href="#">Sign In</a>
+      <a class="np-subscribe-btn" href="#">Subscribe</a>
+    </div>
+  </div>
+</div>
+
+<header class="np-masthead">
+  <div class="np-masthead__inner">
+    <nav class="np-nav np-nav--row np-masthead__nav-start">
+      <a href="#">Politics</a>
+      <a href="#">Business</a>
+      <a href="#">World</a>
+    </nav>
+    <div class="np-masthead__branding">
+      <a class="np-nameplate" href="#">The Northern Standard</a>
+    </div>
+    <div class="np-masthead__nav-end">
+      <nav class="np-nav np-nav--row">
+        <a href="#" style="color: var(--np-col-culture);">Culture</a>
+        <a href="#">Sports</a>
+        <a href="#">Tech</a>
+      </nav>
+    </div>
+  </div>
+</header>
+
+<nav class="np-section-nav">
+  <div class="np-section-nav__inner" style="border-block-end-color: var(--np-col-culture);">
+    <a href="#">News</a>
+    <a href="#">Politics</a>
+    <a href="#">Business</a>
+    <a href="#">World</a>
+    <a href="#" class="current" style="color: var(--np-col-culture); border-block-end-color: var(--np-col-culture);">Culture</a>
+    <a href="#">Sports</a>
+    <a href="#">Tech</a>
+    <a href="#">Opinion</a>
+  </div>
+</nav>
+
+<main>
+  <div class="np-page-section">
+    <div class="np-container">
+
+      <!-- Section banner -->
+      <div style="padding-block: 1.5rem 2rem; border-block-end: 2px solid var(--np-col-culture); margin-block-end: 2rem; display: flex; align-items: baseline; gap: 1.5rem;">
+        <h1 style="font-family: var(--wp--preset--font-family--playfair-display); font-size: clamp(2rem, 3vw, 3.5rem); font-weight: 900; color: var(--np-col-culture); letter-spacing: -0.03em;">Culture</h1>
+        <nav style="display: flex; gap: 1rem; font-size: 0.8125rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase;">
+          <a href="#" style="color: var(--np-col-culture); text-decoration: none;">Arts</a>
+          <a href="#" style="color: var(--wp--preset--color--ink-muted); text-decoration: none;">Books</a>
+          <a href="#" style="color: var(--wp--preset--color--ink-muted); text-decoration: none;">Film</a>
+          <a href="#" style="color: var(--wp--preset--color--ink-muted); text-decoration: none;">Music</a>
+          <a href="#" style="color: var(--wp--preset--color--ink-muted); text-decoration: none;">Theatre</a>
+        </nav>
+      </div>
+
+      <!-- Hero grid -->
+      <div class="np-hero-grid" style="margin-bottom: 2.5rem;">
+        <div>
+          <div class="np-story-card">
+            <div class="np-story-card__img-placeholder np-story-card__img-placeholder--hero">Feature Image — National Gallery Acquisition</div>
+            <div class="np-story-card__body">
+              <span class="np-category-label np-category-label--culture">Arts</span>
+              <a class="np-headline np-headline--hero" href="#">National Gallery Acquisition Sparks Debate Over Indigenous Repatriation</a>
+              <p class="np-deck">The purchase of three Haida bentwood boxes from a European collector has opened a wider conversation about who holds the authority to define cultural heritage in the age of institutional reckoning.</p>
+              <div class="np-byline">
+                <a class="np-byline__author" href="#">Thomas Beaumont</a>
+                <span class="np-byline__sep">·</span>
+                <span class="np-byline__date">Culture Editor</span>
+                <span class="np-byline__sep">·</span>
+                <span class="np-byline__date">May 28, 2025</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div class="np-section-header np-section--culture">
+            <span class="np-section-header__title">Also in Culture</span>
+            <span class="np-section-header__rule"></span>
+          </div>
+          <div style="display: flex; flex-direction: column; gap: 1.25rem;">
+            <div class="np-story-card">
+              <span class="np-category-label np-category-label--culture">Film</span>
+              <a class="np-headline np-headline--compact" href="#">TIFF Announces Slate of Canadian Premieres; Industry Divided on Selections</a>
+              <div class="np-byline"><a class="np-byline__author" href="#">S. Okafor</a><span class="np-byline__sep">·</span><span class="np-byline__date">1h ago</span></div>
+            </div>
+            <hr class="np-divider">
+            <div class="np-story-card">
+              <span class="np-category-label np-category-label--culture">Books</span>
+              <a class="np-headline np-headline--compact" href="#">Giller Prize Longlist Favours Debut Novels; Three First-Time Authors Named</a>
+              <div class="np-byline"><a class="np-byline__author" href="#">A. Martínez</a><span class="np-byline__sep">·</span><span class="np-byline__date">3h ago</span></div>
+            </div>
+            <hr class="np-divider">
+            <div class="np-story-card">
+              <span class="np-category-label np-category-label--culture">Music</span>
+              <a class="np-headline np-headline--compact" href="#">The Massey Hall Renovation Produced a Better Room — and a Worse Acoustic</a>
+              <div class="np-byline"><a class="np-byline__author" href="#">C. Beaumont</a><span class="np-byline__sep">·</span><span class="np-byline__date">Review</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Grid of 3 culture stories -->
+      <div class="np-section-header np-section--culture" style="margin-block-end: 1.5rem;">
+        <span class="np-section-header__title">Film &amp; Theatre</span>
+        <span class="np-section-header__rule"></span>
+        <a class="np-section-header__more" href="#">All Reviews &rarr;</a>
+      </div>
+      <div class="np-grid-3" style="margin-block-end: 3rem;">
+        <div class="np-story-card">
+          <div class="np-story-card__img-placeholder np-story-card__img-placeholder--3-2">Film Still</div>
+          <div class="np-story-card__body">
+            <span class="np-category-label np-category-label--culture">★★★★</span>
+            <a class="np-headline np-headline--section" href="#"><em>The Weight of Water</em> Marks a Director's Formal Coming-of-Age</a>
+            <div class="np-byline"><a class="np-byline__author" href="#">S. Okafor</a><span class="np-byline__sep">·</span><span class="np-byline__date">Review</span></div>
+          </div>
+        </div>
+        <div class="np-story-card">
+          <div class="np-story-card__img-placeholder np-story-card__img-placeholder--3-2">Stage Production</div>
+          <div class="np-story-card__body">
+            <span class="np-category-label np-category-label--culture">★★★½</span>
+            <a class="np-headline np-headline--section" href="#">Stratford's <em>Lear</em> Finds Fresh Urgency in a Stripped-Down Production</a>
+            <div class="np-byline"><a class="np-byline__author" href="#">F. Kowalski</a><span class="np-byline__sep">·</span><span class="np-byline__date">Review</span></div>
+          </div>
+        </div>
+        <div class="np-story-card">
+          <div class="np-story-card__img-placeholder np-story-card__img-placeholder--3-2">Concert Photo</div>
+          <div class="np-story-card__body">
+            <span class="np-category-label np-category-label--culture">★★★★★</span>
+            <a class="np-headline np-headline--section" href="#">Montreal Symphony's Season-Opener Was the Best Live Music of the Year</a>
+            <div class="np-byline"><a class="np-byline__author" href="#">C. Beaumont</a><span class="np-byline__sep">·</span><span class="np-byline__date">Review</span></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</main>
+
+<footer class="np-footer">
+  <div class="np-footer__inner">
+    <div>
+      <div class="np-footer__nameplate">The Northern Standard</div>
+      <p class="np-footer__desc">Independent journalism serving Canada since 1962.</p>
+    </div>
+    <div>
+      <div class="np-footer__section-title">Culture</div>
+      <nav class="np-footer__links">
+        <a href="#">Arts</a>
+        <a href="#">Books</a>
+        <a href="#">Film</a>
+        <a href="#">Music</a>
+        <a href="#">Theatre</a>
+      </nav>
+    </div>
+    <div>
+      <div class="np-footer__section-title">The Paper</div>
+      <nav class="np-footer__links">
+        <a href="#">About Us</a>
+        <a href="https://thisismyurl.com/masthead/">Masthead</a>
+        <a href="#">Letters</a>
+        <a href="#">Corrections</a>
+      </nav>
+    </div>
+    <div>
+      <div class="np-footer__section-title">Subscribe</div>
+      <nav class="np-footer__links">
+        <a href="#">Digital Access</a>
+        <a href="#">Print + Digital</a>
+        <a href="#">Gift</a>
+      </nav>
+    </div>
+  </div>
+  <div class="np-footer__bottom">
+    <span>&copy; 2025 The Northern Standard</span>
+    <span>Built with WordPress &amp; <a href="https://thisismyurl.com/masthead/">Masthead</a></span>
+  </div>
+</footer>
+
+</body>
+</html>

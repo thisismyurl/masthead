@@ -1,0 +1,255 @@
+# Copyright (C) 2026 Christopher Ross
+# This file is distributed under the same license as the Masthead package.
+msgid ""
+msgstr ""
+"Project-Id-Version: Masthead 1.6148\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/theme/masthead\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2026-06-04T00:00:00+00:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.x\n"
+"X-Domain: masthead\n"
+
+#. Theme Name of the theme
+msgid "Masthead"
+msgstr ""
+
+#. Theme URI of the theme
+msgid "https://thisismyurl.com/masthead/"
+msgstr ""
+
+#. Description of the theme
+msgid "A modern, accessible, full-site editing newspaper theme for WordPress."
+msgstr ""
+
+#. Author of the theme
+msgid "Christopher Ross"
+msgstr ""
+
+#. Author URI of the theme
+msgid "https://thisismyurl.com/"
+msgstr ""
+
+#: inc/setup.php
+msgid "Primary Navigation"
+msgstr ""
+
+#: inc/setup.php
+msgid "Secondary Navigation"
+msgstr ""
+
+#: inc/setup.php
+msgid "Section Navigation"
+msgstr ""
+
+#: inc/setup.php
+msgid "Footer Column 1"
+msgstr ""
+
+#: inc/setup.php
+msgid "Footer Column 2"
+msgstr ""
+
+#: inc/setup.php
+msgid "Footer Column 3"
+msgstr ""
+
+#: inc/setup.php
+msgid "Footer Legal"
+msgstr ""
+
+#: inc/bindings.php
+msgid "Copyright line"
+msgstr ""
+
+#: inc/bindings.php
+msgid "Footer credit line"
+msgstr ""
+
+#: inc/bindings.php
+#. translators: 1: four-digit year, 2: site title.
+msgid "© %1$s %2$s. All rights reserved."
+msgstr ""
+
+#: inc/bindings.php
+#. translators: %s: linked theme name.
+msgid "Built with the %s theme."
+msgstr ""
+
+#: inc/skin.php
+msgid "Reading Time"
+msgstr ""
+
+#: inc/skin.php
+#. translators: %d: number of minutes
+msgid "%d min read"
+msgid_plural "%d min read"
+msgstr[0] ""
+msgstr[1] ""
+
+#: inc/skin.php
+msgid "Newspaper Section"
+msgstr ""
+
+#: inc/skin.php
+msgid "Section: News"
+msgstr ""
+
+#: inc/skin.php
+msgid "Section: Politics"
+msgstr ""
+
+#: inc/skin.php
+msgid "Section: Business"
+msgstr ""
+
+#: inc/skin.php
+msgid "Section: Culture"
+msgstr ""
+
+#: inc/skin.php
+msgid "Section: Sports"
+msgstr ""
+
+#: inc/skin.php
+msgid "Section: Technology"
+msgstr ""
+
+#: inc/skin.php
+msgid "Section: Opinion"
+msgstr ""
+
+#: inc/skin.php
+msgid "Section: World"
+msgstr ""
+
+#: inc/skin.php
+msgid "Hero Headline"
+msgstr ""
+
+#: inc/skin.php
+msgid "Secondary Headline"
+msgstr ""
+
+#: inc/skin.php
+msgid "Section Headline"
+msgstr ""
+
+#: inc/skin.php
+msgid "Compact Headline"
+msgstr ""
+
+#: inc/skin.php
+msgid "Wide Centred"
+msgstr ""
+
+#: inc/skin.php
+msgid "Heavy Rule"
+msgstr ""
+
+#: inc/skin.php
+msgid "With Photo Credit"
+msgstr ""
+
+#: inc/skin.php
+msgid "Drop Cap"
+msgstr ""
+
+#: inc/skin.php
+msgid "Subscribe CTA"
+msgstr ""
+
+#: inc/skin.php
+msgid "Horizontal Cards"
+msgstr ""
+
+#: inc/skin.php
+msgid "Numbered List"
+msgstr ""
+
+#: inc/skin.php
+msgid "Masthead: Layouts"
+msgstr ""
+
+#: inc/skin.php
+msgid "Full page and section layout patterns."
+msgstr ""
+
+#: inc/skin.php
+msgid "Masthead: Article Cards"
+msgstr ""
+
+#: inc/skin.php
+msgid "Story card and article list patterns."
+msgstr ""
+
+#: inc/skin.php
+msgid "Masthead: Sections"
+msgstr ""
+
+#: inc/skin.php
+msgid "Editorial section header and divider patterns."
+msgstr ""
+
+#: inc/skin.php
+msgid "Masthead: Sidebar"
+msgstr ""
+
+#: inc/skin.php
+msgid "Sidebar widget and promotional patterns."
+msgstr ""
+
+#: inc/skin.php
+msgid "Masthead: Calls to Action"
+msgstr ""
+
+#: inc/skin.php
+msgid "Newsletter, subscribe, and promotional CTAs."
+msgstr ""
+
+#: inc/admin.php
+#. translators: %s: theme name.
+msgid "Welcome to %s."
+msgstr ""
+
+#: inc/admin.php
+msgid "Thanks for giving it a home. A few small steps will have your site reading the way it should."
+msgstr ""
+
+#: inc/admin.php
+#. translators: %s: theme name.
+msgid "Set up %s →"
+msgstr ""
+
+#: inc/admin.php
+msgid "Dismiss"
+msgstr ""
+
+#: inc/admin.php
+msgid "You do not have permission to do that."
+msgstr ""
+
+#: inc/admin.php
+#. translators: %s: theme name.
+msgid "%s: Get started"
+msgstr ""
+
+#: inc/admin.php
+msgid "Set up"
+msgstr ""
+
+#: inc/admin.php
+msgid "Optimize"
+msgstr ""
+
+#: inc/admin.php
+msgid "The footer credit"
+msgstr ""
+
+#: inc/admin.php
+msgid "For developers"
+msgstr ""

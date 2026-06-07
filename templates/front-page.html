@@ -1,0 +1,340 @@
+<!-- wp:template-part {"slug":"header"} /-->
+
+<!-- wp:template-part {"slug":"header-breaking-news","tagName":"div"} /-->
+
+<!-- wp:group {"tagName":"main","className":"np-main","id":"main-content","layout":{"type":"constrained","contentSize":"1440px"},"style":{"spacing":{"padding":{"top":"var:preset|spacing|8","bottom":"var:preset|spacing|20"}}}} -->
+<main class="wp-block-group np-main" id="main-content">
+
+	<!-- ================================================================
+	     HERO SECTION — sticky post (featured story) + 2 secondary
+	     ================================================================ -->
+	<!-- wp:group {"className":"np-section np-section--hero","style":{"spacing":{"padding":{"bottom":"var:preset|spacing|10"}}},"layout":{"type":"constrained","contentSize":"1280px"}} -->
+	<div class="wp-block-group np-section np-section--hero">
+
+		<!-- wp:group {"className":"np-hero-grid","layout":{"type":"default"}} -->
+		<div class="wp-block-group np-hero-grid">
+
+			<!-- PRIMARY HERO — sticky post -->
+			<!-- wp:query {"queryId":1,"query":{"perPage":1,"postType":"post","order":"desc","orderBy":"date","sticky":"only","inherit":false},"className":"np-hero-primary","layout":{"type":"default"}} -->
+			<div class="wp-block-query np-hero-primary">
+
+				<!-- wp:post-template {"layout":{"type":"grid","columnCount":1}} -->
+					<!-- wp:group {"className":"np-story-card np-story-card--hero np-headline--hero","layout":{"type":"default"}} -->
+					<div class="wp-block-group np-story-card np-story-card--hero np-headline--hero">
+
+						<!-- wp:post-featured-image {"isLink":true,"aspectRatio":"16/9","className":"np-story-card__image","style":{"border":{"radius":"0"}}} /-->
+
+						<!-- wp:group {"className":"np-story-card__body","style":{"spacing":{"padding":{"top":"var:preset|spacing|5"},"blockGap":"var:preset|spacing|3"}},"layout":{"type":"default"}} -->
+						<div class="wp-block-group np-story-card__body">
+							<!-- wp:post-terms {"term":"category","className":"np-category-label"} /-->
+							<!-- wp:post-title {"level":1,"isLink":true} /-->
+							<!-- wp:post-excerpt {"moreText":"","className":"np-article-deck"} /-->
+							<!-- wp:group {"className":"np-byline","layout":{"type":"flex","flexWrap":"wrap","verticalAlignment":"center"}} -->
+							<div class="wp-block-group np-byline">
+								<!-- wp:post-author {"showAvatar":true,"avatarSize":24,"showBio":false,"isLink":true} /-->
+								<!-- wp:post-date /-->
+							</div>
+							<!-- /wp:group -->
+						</div>
+						<!-- /wp:group -->
+
+					</div>
+					<!-- /wp:group -->
+				<!-- /wp:post-template -->
+
+				<!-- Fallback: show latest post if no sticky -->
+				<!-- wp:query-no-results -->
+					<!-- wp:query {"queryId":100,"query":{"perPage":1,"postType":"post","order":"desc","orderBy":"date","inherit":false},"layout":{"type":"default"}} -->
+					<div class="wp-block-query">
+						<!-- wp:post-template {"layout":{"type":"grid","columnCount":1}} -->
+							<!-- wp:group {"className":"np-story-card np-story-card--hero np-headline--hero","layout":{"type":"default"}} -->
+							<div class="wp-block-group np-story-card np-story-card--hero np-headline--hero">
+								<!-- wp:post-featured-image {"isLink":true,"aspectRatio":"16/9","className":"np-story-card__image"} /-->
+								<!-- wp:group {"className":"np-story-card__body","style":{"spacing":{"blockGap":"var:preset|spacing|3"}},"layout":{"type":"default"}} -->
+								<div class="wp-block-group np-story-card__body">
+									<!-- wp:post-terms {"term":"category","className":"np-category-label"} /-->
+									<!-- wp:post-title {"level":1,"isLink":true} /-->
+									<!-- wp:post-excerpt {"moreText":""} /-->
+									<!-- wp:group {"className":"np-byline","layout":{"type":"flex","flexWrap":"wrap"}} -->
+									<div class="wp-block-group np-byline">
+										<!-- wp:post-author {"showAvatar":true,"avatarSize":24,"showBio":false,"isLink":true} /-->
+										<!-- wp:post-date /-->
+									</div>
+									<!-- /wp:group -->
+								</div>
+								<!-- /wp:group -->
+							</div>
+							<!-- /wp:group -->
+						<!-- /wp:post-template -->
+					</div>
+					<!-- /wp:query -->
+				<!-- /wp:query-no-results -->
+
+			</div>
+			<!-- /wp:query -->
+
+			<!-- SECONDARY STORIES column — 2 most recent non-sticky -->
+			<!-- wp:query {"queryId":2,"query":{"perPage":2,"postType":"post","order":"desc","orderBy":"date","sticky":"exclude","inherit":false},"className":"np-hero-secondary","layout":{"type":"default"}} -->
+			<div class="wp-block-query np-hero-secondary">
+
+				<!-- wp:post-template {"layout":{"type":"grid","columnCount":1},"style":{"spacing":{"blockGap":"var:preset|spacing|8"}}} -->
+
+					<!-- wp:group {"className":"np-story-card np-headline--secondary","style":{"spacing":{"padding":{"bottom":"var:preset|spacing|8"}},"border":{"bottom":{"color":"var:preset|color|rule-light","style":"solid","width":"1px"}}},"layout":{"type":"default"}} -->
+					<div class="wp-block-group np-story-card np-headline--secondary">
+						<!-- wp:post-featured-image {"isLink":true,"aspectRatio":"3/2","className":"np-story-card__image"} /-->
+						<!-- wp:group {"className":"np-story-card__body","style":{"spacing":{"blockGap":"var:preset|spacing|2"}},"layout":{"type":"default"}} -->
+						<div class="wp-block-group np-story-card__body">
+							<!-- wp:post-terms {"term":"category","className":"np-category-label"} /-->
+							<!-- wp:post-title {"level":2,"isLink":true} /-->
+							<!-- wp:group {"className":"np-byline","layout":{"type":"flex","flexWrap":"wrap","verticalAlignment":"center"}} -->
+							<div class="wp-block-group np-byline">
+								<!-- wp:post-author {"showAvatar":false,"showBio":false,"isLink":true} /-->
+								<!-- wp:post-date /-->
+							</div>
+							<!-- /wp:group -->
+						</div>
+						<!-- /wp:group -->
+					</div>
+					<!-- /wp:group -->
+
+				<!-- /wp:post-template -->
+
+			</div>
+			<!-- /wp:query -->
+
+		</div>
+		<!-- /wp:group -->
+
+	</div>
+	<!-- /wp:group -->
+
+	<!-- ================================================================
+	     TOP STORIES — 4-column grid
+	     ================================================================ -->
+	<!-- wp:group {"className":"np-section np-section--top-stories np-section--news","style":{"spacing":{"padding":{"top":"var:preset|spacing|8","bottom":"var:preset|spacing|10"}}},"layout":{"type":"constrained","contentSize":"1280px"}} -->
+	<div class="wp-block-group np-section np-section--top-stories np-section--news">
+
+		<!-- Section header -->
+		<!-- wp:group {"className":"np-section-header","layout":{"type":"flex","flexWrap":"nowrap","verticalAlignment":"center"}} -->
+		<div class="wp-block-group np-section-header">
+			<!-- wp:paragraph {"className":"np-section-header__title"} -->
+			<p class="np-section-header__title">Top Stories</p>
+			<!-- /wp:paragraph -->
+			<!-- wp:group {"className":"np-section-header__rule"} /-->
+			<!-- wp:paragraph {"className":"np-section-header__more"} -->
+			<p class="np-section-header__more"><a href="#">All news &rarr;</a></p>
+			<!-- /wp:paragraph -->
+		</div>
+		<!-- /wp:group -->
+
+		<!-- 4-column query -->
+		<!-- wp:query {"queryId":3,"query":{"perPage":4,"postType":"post","order":"desc","orderBy":"date","sticky":"exclude","offset":2,"inherit":false},"layout":{"type":"default"}} -->
+		<div class="wp-block-query">
+			<!-- wp:post-template {"layout":{"type":"grid","columnCount":4},"className":"np-grid-4"} -->
+
+				<!-- wp:group {"className":"np-story-card np-headline--section","style":{"spacing":{"blockGap":"var:preset|spacing|3"}},"layout":{"type":"default"}} -->
+				<div class="wp-block-group np-story-card np-headline--section">
+					<!-- wp:post-featured-image {"isLink":true,"aspectRatio":"3/2","className":"np-story-card__image"} /-->
+					<!-- wp:group {"className":"np-story-card__body","style":{"spacing":{"blockGap":"var:preset|spacing|2"}},"layout":{"type":"default"}} -->
+					<div class="wp-block-group np-story-card__body">
+						<!-- wp:post-terms {"term":"category","className":"np-category-label"} /-->
+						<!-- wp:post-title {"level":3,"isLink":true} /-->
+						<!-- wp:group {"className":"np-byline","layout":{"type":"flex","flexWrap":"wrap","verticalAlignment":"center"}} -->
+						<div class="wp-block-group np-byline">
+							<!-- wp:post-author {"showAvatar":false,"showBio":false,"isLink":true} /-->
+							<!-- wp:post-date /-->
+						</div>
+						<!-- /wp:group -->
+					</div>
+					<!-- /wp:group -->
+				</div>
+				<!-- /wp:group -->
+
+			<!-- /wp:post-template -->
+		</div>
+		<!-- /wp:query -->
+
+	</div>
+	<!-- /wp:group -->
+
+	<!-- ================================================================
+	     MAIN CONTENT + SIDEBAR
+	     ================================================================ -->
+	<!-- wp:group {"className":"np-content-sidebar","style":{"spacing":{"padding":{"top":"var:preset|spacing|10"}}},"layout":{"type":"constrained","contentSize":"1280px"}} -->
+	<div class="wp-block-group np-content-sidebar">
+
+		<!-- MAIN COLUMN -->
+		<!-- wp:group {"className":"np-main-column","layout":{"type":"default"}} -->
+		<div class="wp-block-group np-main-column">
+
+			<!-- SECTION: POLITICS -->
+			<!-- wp:group {"className":"np-section np-section--politics","style":{"spacing":{"margin":{"bottom":"var:preset|spacing|12"}}},"layout":{"type":"default"}} -->
+			<div class="wp-block-group np-section np-section--politics">
+				<!-- wp:group {"className":"np-section-header","layout":{"type":"flex","flexWrap":"nowrap","verticalAlignment":"center"}} -->
+				<div class="wp-block-group np-section-header">
+					<!-- wp:paragraph {"className":"np-section-header__title"} --><p class="np-section-header__title">Politics</p><!-- /wp:paragraph -->
+					<!-- wp:group {"className":"np-section-header__rule"} /-->
+					<!-- wp:paragraph {"className":"np-section-header__more"} --><p class="np-section-header__more"><a href="#">More Politics &rarr;</a></p><!-- /wp:paragraph -->
+				</div>
+				<!-- /wp:group -->
+				<!-- wp:query {"queryId":4,"query":{"perPage":3,"postType":"post","order":"desc","orderBy":"date","inherit":false,"taxQuery":{"category_name":["politics"]}},"layout":{"type":"default"}} -->
+				<div class="wp-block-query">
+					<!-- wp:post-template {"layout":{"type":"grid","columnCount":3},"className":"np-grid-3"} -->
+						<!-- wp:group {"className":"np-story-card np-headline--section","style":{"spacing":{"blockGap":"var:preset|spacing|3"}},"layout":{"type":"default"}} -->
+						<div class="wp-block-group np-story-card np-headline--section">
+							<!-- wp:post-featured-image {"isLink":true,"aspectRatio":"3/2","className":"np-story-card__image"} /-->
+							<div class="np-story-card__body">
+								<!-- wp:post-terms {"term":"category","className":"np-category-label"} /-->
+								<!-- wp:post-title {"level":3,"isLink":true} /-->
+								<!-- wp:post-date /-->
+							</div>
+						</div>
+						<!-- /wp:group -->
+					<!-- /wp:post-template -->
+				</div>
+				<!-- /wp:query -->
+			</div>
+			<!-- /wp:group -->
+
+			<!-- SECTION: BUSINESS -->
+			<!-- wp:group {"className":"np-section np-section--business","style":{"spacing":{"margin":{"bottom":"var:preset|spacing|12"}}},"layout":{"type":"default"}} -->
+			<div class="wp-block-group np-section np-section--business">
+				<!-- wp:group {"className":"np-section-header","layout":{"type":"flex","flexWrap":"nowrap","verticalAlignment":"center"}} -->
+				<div class="wp-block-group np-section-header">
+					<!-- wp:paragraph {"className":"np-section-header__title"} --><p class="np-section-header__title">Business</p><!-- /wp:paragraph -->
+					<!-- wp:group {"className":"np-section-header__rule"} /-->
+					<!-- wp:paragraph {"className":"np-section-header__more"} --><p class="np-section-header__more"><a href="#">More Business &rarr;</a></p><!-- /wp:paragraph -->
+				</div>
+				<!-- /wp:group -->
+				<!-- wp:query {"queryId":5,"query":{"perPage":3,"postType":"post","order":"desc","orderBy":"date","inherit":false,"taxQuery":{"category_name":["business"]}},"layout":{"type":"default"}} -->
+				<div class="wp-block-query">
+					<!-- wp:post-template {"layout":{"type":"grid","columnCount":3},"className":"np-grid-3"} -->
+						<!-- wp:group {"className":"np-story-card np-headline--section","style":{"spacing":{"blockGap":"var:preset|spacing|3"}},"layout":{"type":"default"}} -->
+						<div class="wp-block-group np-story-card np-headline--section">
+							<!-- wp:post-featured-image {"isLink":true,"aspectRatio":"3/2","className":"np-story-card__image"} /-->
+							<div class="np-story-card__body">
+								<!-- wp:post-terms {"term":"category","className":"np-category-label"} /-->
+								<!-- wp:post-title {"level":3,"isLink":true} /-->
+								<!-- wp:post-date /-->
+							</div>
+						</div>
+						<!-- /wp:group -->
+					<!-- /wp:post-template -->
+				</div>
+				<!-- /wp:query -->
+			</div>
+			<!-- /wp:group -->
+
+			<!-- SECTION: TECHNOLOGY -->
+			<!-- wp:group {"className":"np-section np-section--tech","style":{"spacing":{"margin":{"bottom":"var:preset|spacing|12"}}},"layout":{"type":"default"}} -->
+			<div class="wp-block-group np-section np-section--tech">
+				<!-- wp:group {"className":"np-section-header","layout":{"type":"flex","flexWrap":"nowrap","verticalAlignment":"center"}} -->
+				<div class="wp-block-group np-section-header">
+					<!-- wp:paragraph {"className":"np-section-header__title"} --><p class="np-section-header__title">Technology</p><!-- /wp:paragraph -->
+					<!-- wp:group {"className":"np-section-header__rule"} /-->
+					<!-- wp:paragraph {"className":"np-section-header__more"} --><p class="np-section-header__more"><a href="#">More Tech &rarr;</a></p><!-- /wp:paragraph -->
+				</div>
+				<!-- /wp:group -->
+				<!-- wp:query {"queryId":6,"query":{"perPage":4,"postType":"post","order":"desc","orderBy":"date","inherit":false,"taxQuery":{"category_name":["technology"]}},"layout":{"type":"default"}} -->
+				<div class="wp-block-query">
+					<!-- wp:post-template {"layout":{"type":"grid","columnCount":2},"className":"np-grid-2"} -->
+						<!-- wp:group {"className":"np-story-card np-story-card--horizontal np-headline--compact","style":{"spacing":{"blockGap":"var:preset|spacing|4"}},"layout":{"type":"default"}} -->
+						<div class="wp-block-group np-story-card np-story-card--horizontal np-headline--compact">
+							<!-- wp:post-featured-image {"isLink":true,"aspectRatio":"1","className":"np-story-card__image"} /-->
+							<div class="np-story-card__body">
+								<!-- wp:post-terms {"term":"category","className":"np-category-label"} /-->
+								<!-- wp:post-title {"level":3,"isLink":true} /-->
+								<!-- wp:post-date /-->
+							</div>
+						</div>
+						<!-- /wp:group -->
+					<!-- /wp:post-template -->
+				</div>
+				<!-- /wp:query -->
+			</div>
+			<!-- /wp:group -->
+
+		</div>
+		<!-- /wp:group -->
+
+		<!-- SIDEBAR -->
+		<!-- wp:template-part {"slug":"sidebar","tagName":"div"} /-->
+
+	</div>
+	<!-- /wp:group -->
+
+	<!-- ================================================================
+	     OPINION SECTION — full width
+	     ================================================================ -->
+	<!-- wp:group {"className":"np-section np-section--opinion","style":{"spacing":{"padding":{"top":"var:preset|spacing|10","bottom":"var:preset|spacing|10"},"margin":{"top":"var:preset|spacing|10"}},"border":{"top":{"color":"var:preset|color|rule-light","style":"solid","width":"1px"}}},"layout":{"type":"constrained","contentSize":"1280px"}} -->
+	<div class="wp-block-group np-section np-section--opinion">
+
+		<!-- wp:group {"className":"np-section-header","layout":{"type":"flex","flexWrap":"nowrap","verticalAlignment":"center"}} -->
+		<div class="wp-block-group np-section-header">
+			<!-- wp:paragraph {"className":"np-section-header__title"} --><p class="np-section-header__title">Opinion</p><!-- /wp:paragraph -->
+			<!-- wp:group {"className":"np-section-header__rule"} /-->
+			<!-- wp:paragraph {"className":"np-section-header__more"} --><p class="np-section-header__more"><a href="#">All Opinion &rarr;</a></p><!-- /wp:paragraph -->
+		</div>
+		<!-- /wp:group -->
+
+		<!-- wp:query {"queryId":7,"query":{"perPage":4,"postType":"post","order":"desc","orderBy":"date","inherit":false,"taxQuery":{"category_name":["opinion"]}},"layout":{"type":"default"}} -->
+		<div class="wp-block-query">
+			<!-- wp:post-template {"layout":{"type":"grid","columnCount":4},"className":"np-grid-4"} -->
+				<!-- wp:group {"className":"np-story-card np-headline--section","style":{"spacing":{"blockGap":"var:preset|spacing|3"}},"layout":{"type":"default"}} -->
+				<div class="wp-block-group np-story-card np-headline--section">
+					<!-- wp:post-featured-image {"isLink":true,"aspectRatio":"1","className":"np-story-card__image"} /-->
+					<div class="np-story-card__body">
+						<!-- wp:post-author {"showAvatar":true,"avatarSize":28,"showBio":false,"isLink":true,"byline":"Opinion by"} /-->
+						<!-- wp:post-title {"level":3,"isLink":true} /-->
+						<!-- wp:post-excerpt {"moreText":"","numberOfWords":15} /-->
+					</div>
+				</div>
+				<!-- /wp:group -->
+			<!-- /wp:post-template -->
+		</div>
+		<!-- /wp:query -->
+
+	</div>
+	<!-- /wp:group -->
+
+	<!-- ================================================================
+	     NEWSLETTER CTA — full width
+	     ================================================================ -->
+	<!-- wp:group {"className":"np-section","style":{"spacing":{"padding":{"top":"var:preset|spacing|10","bottom":"var:preset|spacing|10"}},"color":{"background":"var:preset|color|paper-light"}},"layout":{"type":"constrained","contentSize":"780px"}} -->
+	<div class="wp-block-group np-section" style="background-color:var(--wp--preset--color--paper-light)">
+
+		<!-- wp:group {"className":"np-newsletter","layout":{"type":"default"}} -->
+		<div class="wp-block-group np-newsletter" style="padding:2.5rem;border-left:4px solid var(--wp--preset--color--accent-red)">
+
+			<!-- wp:paragraph {"className":"np-newsletter__eyebrow"} -->
+			<p class="np-newsletter__eyebrow">Daily Newsletter</p>
+			<!-- /wp:paragraph -->
+
+			<!-- wp:heading {"level":2,"className":"np-newsletter__heading","textAlign":"center","style":{"typography":{"fontFamily":"var:preset|font-family|playfair-display","fontWeight":"700","lineHeight":"1.2"},"spacing":{"margin":{"bottom":"0.5rem"}}}} -->
+			<h2 class="np-newsletter__heading has-text-align-center">Never miss the story that matters.</h2>
+			<!-- /wp:heading -->
+
+			<!-- wp:paragraph {"textAlign":"center","className":"np-newsletter__desc"} -->
+			<p class="has-text-align-center np-newsletter__desc">Join thousands of readers who get the daily briefing free.</p>
+			<!-- /wp:paragraph -->
+
+			<!-- wp:buttons {"layout":{"type":"flex","justifyContent":"center"}} -->
+			<div class="wp-block-buttons">
+				<!-- wp:button {"style":{"color":{"background":"var:preset|color|accent-red","text":"#ffffff"}}} -->
+				<div class="wp-block-button">
+					<a class="wp-block-button__link wp-element-button" href="#">Subscribe — It's Free</a>
+				</div>
+				<!-- /wp:button -->
+			</div>
+			<!-- /wp:buttons -->
+
+		</div>
+		<!-- /wp:group -->
+
+	</div>
+	<!-- /wp:group -->
+
+</main>
+<!-- /wp:group -->
+
+<!-- wp:template-part {"slug":"footer"} /-->

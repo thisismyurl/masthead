@@ -1,0 +1,47 @@
+<!-- wp:template-part {"slug":"header"} /-->
+
+<!-- wp:template-part {"slug":"header-breaking-news","tagName":"div"} /-->
+
+<!-- wp:group {"tagName":"main","className":"np-main np-article-page np-article-page--wide","id":"main-content","layout":{"type":"constrained","contentSize":"900px"},"style":{"spacing":{"padding":{"top":"var:preset|spacing|10","bottom":"var:preset|spacing|20"}}}} -->
+<main class="wp-block-group np-main np-article-page np-article-page--wide" id="main-content">
+
+	<!-- wp:group {"tagName":"article","className":"np-main-column","layout":{"type":"default"}} -->
+	<article class="wp-block-group np-main-column">
+
+		<!-- CATEGORY LABEL -->
+		<!-- wp:post-terms {"term":"category","className":"np-category-label"} /-->
+
+		<!-- HEADLINE -->
+		<!-- wp:post-title {"level":1,"className":"np-headline--hero","style":{"typography":{"fontFamily":"var:preset|font-family|playfair-display"}}} /-->
+
+		<!-- DECK / EXCERPT -->
+		<!-- wp:post-excerpt {"moreText":"","className":"np-article-deck","style":{"typography":{"fontFamily":"var:preset|font-family|lora","fontStyle":"italic"}}} /-->
+
+		<!-- BYLINE BAR -->
+		<!-- wp:template-part {"slug":"post-meta","tagName":"div"} /-->
+
+		<!-- READING PROGRESS BAR — CSS-only scroll-linked animation -->
+		<!-- wp:html -->
+		<div class="np-reading-progress" aria-hidden="true"></div>
+		<!-- /wp:html -->
+
+		<!-- HERO IMAGE — wide crop for immersive reading -->
+		<!-- wp:post-featured-image {"aspectRatio":"21/9","className":"np-article-hero-image np-article-hero-image--cinematic","style":{"spacing":{"margin":{"top":"var:preset|spacing|8","bottom":"var:preset|spacing|8"}}}} /-->
+
+		<!-- ARTICLE BODY — wider reading column for long-form -->
+		<!-- wp:post-content {"layout":{"type":"constrained","contentSize":"720px"},"className":"np-article-body"} /-->
+
+		<!-- TAGS -->
+		<!-- wp:group {"className":"np-article-tags","style":{"spacing":{"padding":{"top":"var:preset|spacing|8","bottom":"var:preset|spacing|8"},"margin":{"top":"var:preset|spacing|8"}},"border":{"top":{"color":"var:preset|color|rule-light","style":"solid","width":"1px"}}},"layout":{"type":"flex","flexWrap":"wrap","verticalAlignment":"center"}} -->
+		<div class="wp-block-group np-article-tags">
+			<!-- wp:post-terms {"term":"post_tag","className":"np-tags-list"} /-->
+		</div>
+		<!-- /wp:group -->
+
+	</article>
+	<!-- /wp:group -->
+
+</main>
+<!-- /wp:group -->
+
+<!-- wp:template-part {"slug":"footer"} /-->

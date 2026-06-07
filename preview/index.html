@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Masthead — Theme Previews</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #f8f8f8;
+      color: #1a1a1a;
+      padding: 2.5rem 1.5rem;
+    }
+    .wrap { max-width: 1200px; margin: 0 auto; }
+    header { margin-bottom: 2.5rem; padding-bottom: 1.5rem; border-bottom: 2px solid #1a1a1a; }
+    h1 { font-size: 2rem; font-weight: 700; letter-spacing: -0.03em; }
+    .tagline { margin-top: 0.4rem; color: #555; font-size: 0.95rem; }
+    .meta { margin-top: 0.75rem; font-size: 0.8rem; color: #888; }
+    .meta a { color: inherit; }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 1.25rem;
+    }
+    .card {
+      background: #fff;
+      border: 1px solid #e0e0e0;
+      border-radius: 6px;
+      overflow: hidden;
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      transition: border-color 0.15s, box-shadow 0.15s;
+    }
+    .card:hover { border-color: #1a1a1a; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+    .card img {
+      width: 100%;
+      height: 175px;
+      object-fit: cover;
+      object-position: top center;
+      display: block;
+      background: #eee;
+    }
+    .card-body { padding: 0.75rem 1rem 0.9rem; }
+    .card-title { font-weight: 600; font-size: 0.9rem; display: flex; align-items: center; gap: 0.4rem; flex-wrap: wrap; }
+    .card-note { margin-top: 0.25rem; font-size: 0.75rem; color: #777; }
+    .badge {
+      font-size: 0.65rem;
+      padding: 0.1rem 0.45rem;
+      border-radius: 20px;
+      font-weight: 500;
+      white-space: nowrap;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <h1>Masthead</h1>
+      <p class="tagline">A broadsheet newspaper theme. Playfair Display + Lora + Inter.</p>
+      <p class="meta">
+        <a href="https://github.com/thisismyurl/colophon-masthead">github.com/thisismyurl/colophon-masthead</a>
+        &nbsp;·&nbsp;
+        <a href="https://thisismyurl.com/masthead/">thisismyurl.com/masthead/</a>
+      </p>
+    </header>
+    <div class="grid">
+    <a class="card" href="01-front-page.html">
+      <img src="screenshots/01-front-page-wporg.png" alt="Front Page preview">
+      <div class="card-body">
+        <div class="card-title">Front Page <span class="badge" style="background:#0073aa;color:#fff">WP.org</span></div>
+        <div class="card-note">WP.org submission — 1200×900</div>
+      </div>
+    </a>
+    <a class="card" href="02-article.html">
+      <img src="screenshots/02-article.png" alt="Article preview">
+      <div class="card-body">
+        <div class="card-title">Article </div>
+        <div class="card-note">Long-form article with byline</div>
+      </div>
+    </a>
+    <a class="card" href="03-section-culture.html">
+      <img src="screenshots/03-section-culture.png" alt="Section: Culture preview">
+      <div class="card-body">
+        <div class="card-title">Section: Culture </div>
+        <div class="card-note">Editorial section front</div>
+      </div>
+    </a>
+    <a class="card" href="04-opinion.html">
+      <img src="screenshots/04-opinion.png" alt="Opinion preview" loading="lazy">
+      <div class="card-body">
+        <div class="card-title">Opinion </div>
+        <div class="card-note">Op-ed layout</div>
+      </div>
+    </a>
+    <a class="card" href="05-business.html">
+      <img src="screenshots/05-business.png" alt="Business preview" loading="lazy">
+      <div class="card-body">
+        <div class="card-title">Business </div>
+        <div class="card-note">Business section</div>
+      </div>
+    </a>
+    <a class="card" href="06-sports.html">
+      <img src="screenshots/06-sports.png" alt="Sports preview" loading="lazy">
+      <div class="card-body">
+        <div class="card-title">Sports </div>
+        <div class="card-note">Sports section</div>
+      </div>
+    </a>
+    <a class="card" href="07-front-mobile.html">
+      <img src="screenshots/07-front-mobile-375.png" alt="Front — 375px preview" loading="lazy">
+      <div class="card-body">
+        <div class="card-title">Front — 375px <span class="badge" style="background:#2e7d32;color:#fff">mobile</span></div>
+        <div class="card-note">Mobile front page</div>
+      </div>
+    </a>
+    <a class="card" href="08-article-mobile.html">
+      <img src="screenshots/08-article-mobile-390.png" alt="Article — 390px preview" loading="lazy">
+      <div class="card-body">
+        <div class="card-title">Article — 390px <span class="badge" style="background:#2e7d32;color:#fff">mobile</span></div>
+        <div class="card-note">Mobile article</div>
+      </div>
+    </a>
+    <a class="card" href="09-dark-edition.html">
+      <img src="screenshots/09-dark-edition.png" alt="Dark Edition preview" loading="lazy">
+      <div class="card-body">
+        <div class="card-title">Dark Edition <span class="badge" style="background:#6a1b9a;color:#fff">variant</span></div>
+        <div class="card-note">Colour variant — dark background</div>
+      </div>
+    </a>
+    <a class="card" href="10-regional-paper.html">
+      <img src="screenshots/10-regional-paper.png" alt="Regional Paper preview" loading="lazy">
+      <div class="card-body">
+        <div class="card-title">Regional Paper <span class="badge" style="background:#6a1b9a;color:#fff">variant</span></div>
+        <div class="card-note">Colour variant — warm newsprint</div>
+      </div>
+    </a>
+    </div>
+  </div>
+</body>
+</html>

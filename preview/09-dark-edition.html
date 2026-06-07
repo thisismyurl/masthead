@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1200">
+<title>Masthead — Dark Edition Variant</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Lora:ital,wght@0,400..700;1,400..700&family=Inter:wght@100..900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="masthead-preview.css">
+<style>
+  /*
+   * DARK EDITION PALETTE — near-black ground, white text, red accent holds.
+   * Eight CSS custom property overrides in theme.json; same masthead chrome.
+   * Suited to evening / late-night mode, premium digital subscriptions,
+   * dedicated dark-mode theme variant.
+   *
+   * Red (#c62828) on dark ground (#111820): meets 4.5:1 against #f0f0ee.
+   */
+  :root {
+    --wp--preset--color--ink-primary:     #f0f0ee;
+    --wp--preset--color--ink-secondary:   #d0cfc8;
+    --wp--preset--color--ink-muted:       #8a8882;
+    --wp--preset--color--ink-faint:       #555350;
+    --wp--preset--color--paper-white:     #111820;
+    --wp--preset--color--paper-off-white: #181f28;
+    --wp--preset--color--paper-light:     #1f2733;
+    --wp--preset--color--rule-light:      #2a3140;
+    --wp--preset--color--rule-medium:     #384050;
+    --wp--preset--color--accent-red:      #e53935;
+    --wp--preset--color--base-black:      #0a0d12;
+    --wp--preset--color--breaking-red:    #c62828;
+  }
+
+  body { background: #111820; }
+
+  .np-masthead {
+    background: #111820;
+    border-block-end-color: #2a3140;
+    box-shadow: none;
+  }
+
+  .np-section-nav {
+    background: #181f28;
+    border-block-end-color: #f0f0ee;
+  }
+
+  .np-date-banner {
+    background: #111820;
+    border-block-color: #2a3140;
+  }
+
+  .np-footer {
+    background: #0a0d12;
+  }
+</style>
+</head>
+<body>
+
+<div class="np-utility-bar" style="background: #0a0d12;">
+  <div class="np-utility-bar__inner">
+    <span class="np-utility-bar__date">Wednesday, May 28, 2025</span>
+    <div class="np-utility-bar__actions">
+      <a href="#">Sign In</a>
+      <a class="np-subscribe-btn" href="#">Subscribe</a>
+    </div>
+  </div>
+</div>
+
+<header class="np-masthead">
+  <div class="np-masthead__inner">
+    <nav class="np-nav np-nav--row np-masthead__nav-start">
+      <a href="#">Politics</a>
+      <a href="#">Business</a>
+      <a href="#">World</a>
+    </nav>
+    <div class="np-masthead__branding">
+      <a class="np-nameplate" href="#" style="color: #f0f0ee;">The Northern Standard</a>
+      <div class="np-tagline">Independent Journalism Since 1962</div>
+    </div>
+    <div class="np-masthead__nav-end">
+      <nav class="np-nav np-nav--row">
+        <a href="#">Culture</a>
+        <a href="#">Sports</a>
+        <a href="#">Tech</a>
+      </nav>
+    </div>
+  </div>
+</header>
+
+<div class="np-breaking-bar" style="background: #181f28; border-block-end-color: #2a3140;">
+  <div class="np-breaking-label">Breaking</div>
+  <div class="np-breaking-text">
+    <a href="#">Parliament votes on national infrastructure package · Budget shortfall exceeds projections · Governor General to address the nation</a>
+  </div>
+</div>
+
+<nav class="np-section-nav">
+  <div class="np-section-nav__inner">
+    <a href="#" class="current">News</a>
+    <a href="#">Politics</a>
+    <a href="#">Business</a>
+    <a href="#">World</a>
+    <a href="#">Culture</a>
+    <a href="#">Sports</a>
+    <a href="#">Tech</a>
+    <a href="#">Opinion</a>
+  </div>
+</nav>
+
+<div class="np-date-banner">Wednesday, May 28, 2025 &bull; Volume LXIII No. 142</div>
+
+<main>
+  <div class="np-page-section">
+    <div class="np-container">
+
+      <div class="np-hero-grid" style="margin-bottom: var(--np-card-gap);">
+        <div class="np-section--news">
+          <div class="np-section-header">
+            <span class="np-section-header__title">Top Story</span>
+            <span class="np-section-header__rule" style="background: #2a3140;"></span>
+          </div>
+          <div class="np-story-card">
+            <div class="np-story-card__img-placeholder np-story-card__img-placeholder--hero" style="background: #1f2733; color: #555350;">Lead Story Image</div>
+            <div class="np-story-card__body">
+              <span class="np-category-label">National</span>
+              <a class="np-headline np-headline--hero" href="#">Federal Cabinet Announces Largest Infrastructure Package in a Generation</a>
+              <p class="np-deck">The $48 billion commitment targets housing, transit, and broadband access across all provinces.</p>
+              <div class="np-byline"><a class="np-byline__author" href="#">Margaret Holloway</a><span class="np-byline__sep">·</span><span class="np-byline__date">8h ago</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <div class="np-section-header np-section--politics">
+            <span class="np-section-header__title">Politics</span>
+            <span class="np-section-header__rule" style="background: #2a3140;"></span>
+            <a class="np-section-header__more" href="#">More &rarr;</a>
+          </div>
+          <div style="display: flex; flex-direction: column; gap: 1.25rem;">
+            <div class="np-story-card">
+              <span class="np-category-label np-category-label--politics">Parliament</span>
+              <a class="np-headline np-headline--compact" href="#">Opposition Caucus Splits Over Infrastructure Vote</a>
+              <div class="np-byline"><span class="np-byline__date">4h ago</span></div>
+            </div>
+            <hr class="np-divider" style="border-color: #2a3140;">
+            <div class="np-story-card">
+              <span class="np-category-label np-category-label--politics">Foreign Policy</span>
+              <a class="np-headline np-headline--compact" href="#">PM Arrives in Brussels for G7 Consultations</a>
+              <div class="np-byline"><span class="np-byline__date">6h ago</span></div>
+            </div>
+            <hr class="np-divider" style="border-color: #2a3140;">
+            <div class="np-story-card">
+              <span class="np-category-label np-category-label--sports">Hockey</span>
+              <a class="np-headline np-headline--compact" href="#">Leafs Win Game 6; Advance to Second Round</a>
+              <div class="np-byline"><span class="np-byline__date">1h ago</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <hr class="np-divider" style="border-color: #2a3140; margin-block: 1.5rem;">
+
+      <div class="np-grid-4">
+        <div class="np-story-card">
+          <div class="np-story-card__img-placeholder np-story-card__img-placeholder--3-2" style="background: #1f2733; color: #555350;">Business</div>
+          <div class="np-story-card__body">
+            <span class="np-category-label np-category-label--business">Markets</span>
+            <a class="np-headline np-headline--section" href="#">TSX Closes at Record High on Infrastructure Optimism</a>
+          </div>
+        </div>
+        <div class="np-story-card">
+          <div class="np-story-card__img-placeholder np-story-card__img-placeholder--3-2" style="background: #1f2733; color: #555350;">Culture</div>
+          <div class="np-story-card__body">
+            <span class="np-category-label np-category-label--culture">Arts</span>
+            <a class="np-headline np-headline--section" href="#">National Gallery Acquisition Sparks Repatriation Debate</a>
+          </div>
+        </div>
+        <div class="np-story-card">
+          <div class="np-story-card__img-placeholder np-story-card__img-placeholder--3-2" style="background: #1f2733; color: #555350;">Sports</div>
+          <div class="np-story-card__body">
+            <span class="np-category-label np-category-label--sports">NHL</span>
+            <a class="np-headline np-headline--section" href="#">Leafs Trade Deadline Moves Signal Playoff Push</a>
+          </div>
+        </div>
+        <div class="np-story-card">
+          <div class="np-story-card__img-placeholder np-story-card__img-placeholder--3-2" style="background: #1f2733; color: #555350;">Tech</div>
+          <div class="np-story-card__body">
+            <span class="np-category-label np-category-label--tech">AI &amp; Policy</span>
+            <a class="np-headline np-headline--section" href="#">CRTC Opens Consultation on AI Content Labelling</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Palette note -->
+      <div style="margin-top: 3rem; padding: 1.5rem; background: #181f28; border-inline-start: 4px solid var(--wp--preset--color--accent-red);">
+        <div style="font-size: 0.6875rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--wp--preset--color--accent-red); margin-bottom: 0.5rem;">About this palette</div>
+        <p style="font-size: 0.875rem; line-height: 1.65; color: #8a8882; max-width: 65ch;">
+          <strong style="color: #d0cfc8;">Dark Edition</strong> — paper-white: #111820 · ink-primary: #f0f0ee · rule-light: #2a3140. Eight CSS custom property overrides in theme.json. The red accent holds; everything else inverts. Same Masthead structure, same block patterns, no CSS changes outside the token layer.
+        </p>
+      </div>
+
+    </div>
+  </div>
+</main>
+
+<footer class="np-footer">
+  <div class="np-footer__inner">
+    <div>
+      <div class="np-footer__nameplate">The Northern Standard</div>
+      <p class="np-footer__desc">Independent journalism serving Canada since 1962.</p>
+    </div>
+    <div>
+      <div class="np-footer__section-title">News</div>
+      <nav class="np-footer__links">
+        <a href="#">National</a>
+        <a href="#">Politics</a>
+        <a href="#">Business</a>
+        <a href="#">World</a>
+      </nav>
+    </div>
+    <div>
+      <div class="np-footer__section-title">Features</div>
+      <nav class="np-footer__links">
+        <a href="#">Culture</a>
+        <a href="#">Sports</a>
+        <a href="#">Opinion</a>
+      </nav>
+    </div>
+    <div>
+      <div class="np-footer__section-title">Subscribe</div>
+      <nav class="np-footer__links">
+        <a href="#">Digital Access</a>
+        <a href="#">Print + Digital</a>
+      </nav>
+    </div>
+  </div>
+  <div class="np-footer__bottom">
+    <span>&copy; 2025 The Northern Standard</span>
+    <span>Built with WordPress &amp; <a href="https://thisismyurl.com/masthead/">Masthead</a></span>
+  </div>
+</footer>
+
+</body>
+</html>

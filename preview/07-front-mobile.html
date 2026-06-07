@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=375">
+<title>Masthead — Front Page Mobile (375px)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Lora:ital,wght@0,400..700;1,400..700&family=Inter:wght@100..900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="masthead-preview.css">
+<style>
+  .np-utility-bar { display: none; }
+  .np-masthead__nav-start, .np-masthead__nav-end { display: none; }
+  .np-masthead__inner { grid-template-columns: auto 1fr; grid-template-rows: auto; }
+  .np-masthead__branding { grid-column: 1 / -1; }
+  .np-hamburger { display: flex; grid-column: 2; justify-self: end; }
+  .np-section-nav__inner { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  .np-container, .np-page-section { padding-inline: 1rem; }
+  .np-hero-grid { grid-template-columns: 1fr; }
+  .np-grid-2, .np-grid-3, .np-grid-4 { grid-template-columns: 1fr; }
+  .np-breaking-bar { min-height: 36px; }
+  .np-breaking-text { font-size: 0.8125rem; padding-inline: 0.875rem; white-space: normal; }
+  .np-footer__inner { grid-template-columns: 1fr; gap: 2rem; }
+  .np-footer__bottom { flex-direction: column; gap: 0.5rem; }
+  .np-content-sidebar { grid-template-columns: 1fr; }
+</style>
+</head>
+<body>
+
+<header class="np-masthead" style="padding-block: 1rem;">
+  <div class="np-masthead__inner" style="grid-template-columns: auto 1fr; padding-inline: 1rem;">
+    <div class="np-masthead__branding" style="text-align: left;">
+      <a class="np-nameplate" href="#" style="font-size: 1.75rem;">The Northern Standard</a>
+    </div>
+    <div class="np-hamburger" style="display: flex;">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+</header>
+
+<div class="np-breaking-bar">
+  <div class="np-breaking-label">Breaking</div>
+  <div class="np-breaking-text">
+    <a href="#">Federal cabinet announces $48B infrastructure package</a>
+  </div>
+</div>
+
+<nav class="np-section-nav">
+  <div class="np-section-nav__inner">
+    <a href="#" class="current">News</a>
+    <a href="#">Politics</a>
+    <a href="#">Business</a>
+    <a href="#">World</a>
+    <a href="#">Culture</a>
+    <a href="#">Sports</a>
+    <a href="#">Tech</a>
+    <a href="#">Opinion</a>
+  </div>
+</nav>
+
+<main>
+  <div style="padding: 1.5rem 1rem;">
+
+    <!-- Lead story -->
+    <div class="np-section--news" style="margin-bottom: 2rem;">
+      <div class="np-section-header" style="margin-bottom: 1rem;">
+        <span class="np-section-header__title">Top Story</span>
+        <span class="np-section-header__rule"></span>
+      </div>
+      <div class="np-story-card">
+        <div class="np-story-card__img-placeholder np-story-card__img-placeholder--hero">Lead Story</div>
+        <div class="np-story-card__body">
+          <span class="np-category-label">National</span>
+          <a class="np-headline np-headline--hero" href="#" style="font-size: 1.75rem; line-height: 1.1;">Federal Cabinet Announces Largest Infrastructure Package in a Generation</a>
+          <p style="font-family: var(--wp--preset--font-family--lora); font-size: 0.9375rem; line-height: 1.55; font-style: italic; color: var(--wp--preset--color--ink-secondary); margin-top: 0.5rem;">The $48 billion commitment targets housing, transit, and broadband access across all provinces.</p>
+          <div class="np-byline" style="margin-top: 0.5rem;"><a class="np-byline__author" href="#">M. Holloway</a><span class="np-byline__sep">·</span><span class="np-byline__date">8h ago</span></div>
+        </div>
+      </div>
+    </div>
+
+    <hr class="np-divider" style="margin-bottom: 1.5rem;">
+
+    <!-- 3 secondary stories stacked -->
+    <div class="np-section--politics" style="margin-bottom: 2rem;">
+      <div class="np-section-header" style="margin-bottom: 1rem;">
+        <span class="np-section-header__title">Politics</span>
+        <span class="np-section-header__rule"></span>
+        <a class="np-section-header__more" href="#">More &rarr;</a>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 1.25rem;">
+        <div class="np-story-card--horizontal">
+          <div class="np-story-card__img-placeholder np-story-card__img-placeholder--sq" style="width: 90px; flex-shrink: 0;">Parliament</div>
+          <div class="np-story-card__body">
+            <span class="np-category-label np-category-label--politics">Parliament</span>
+            <a class="np-headline np-headline--compact" href="#">Opposition Caucus Splits Over Infrastructure Vote</a>
+            <div class="np-byline"><span class="np-byline__date">4h ago</span></div>
+          </div>
+        </div>
+        <div class="np-story-card--horizontal">
+          <div class="np-story-card__img-placeholder np-story-card__img-placeholder--sq" style="width: 90px; flex-shrink: 0;">G7</div>
+          <div class="np-story-card__body">
+            <span class="np-category-label np-category-label--politics">World</span>
+            <a class="np-headline np-headline--compact" href="#">PM Arrives in Brussels for G7 Consultations</a>
+            <div class="np-byline"><span class="np-byline__date">6h ago</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <hr class="np-divider" style="margin-bottom: 1.5rem;">
+
+    <!-- Sports section -->
+    <div class="np-section--sports" style="margin-bottom: 2rem;">
+      <div class="np-section-header" style="margin-bottom: 1rem;">
+        <span class="np-section-header__title">Sports</span>
+        <span class="np-section-header__rule"></span>
+        <a class="np-section-header__more" href="#">More &rarr;</a>
+      </div>
+      <div class="np-story-card">
+        <div class="np-story-card__img-placeholder np-story-card__img-placeholder--3-2">Leafs Game 6</div>
+        <div class="np-story-card__body">
+          <span class="np-category-label np-category-label--sports">Hockey</span>
+          <a class="np-headline np-headline--secondary" href="#">Leafs Win Game 6 in Boston; Advance to Second Round for First Time Since 2004</a>
+          <div class="np-byline"><a class="np-byline__author" href="#">K. Morrison</a><span class="np-byline__sep">·</span><span class="np-byline__date">1h ago</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Newsletter -->
+    <div class="np-newsletter" style="margin-bottom: 2rem;">
+      <div class="np-newsletter__eyebrow">Daily Briefing</div>
+      <div class="np-newsletter__heading">The Standard Morning Report</div>
+      <p class="np-newsletter__desc">Six stories, every morning before 7 am.</p>
+      <form>
+        <input type="email" placeholder="your@email.com" style="font-size: 1rem;">
+        <button type="submit" class="np-newsletter__btn" style="font-size: 0.875rem; padding: 0.75rem 1rem;">Subscribe Free</button>
+      </form>
+    </div>
+
+  </div>
+</main>
+
+<footer class="np-footer">
+  <div class="np-footer__inner" style="padding-inline: 1rem; grid-template-columns: 1fr; gap: 2rem;">
+    <div>
+      <div class="np-footer__nameplate" style="font-size: 1.5rem;">The Northern Standard</div>
+      <p class="np-footer__desc">Independent journalism serving Canada since 1962.</p>
+    </div>
+    <div>
+      <div class="np-footer__section-title">Sections</div>
+      <nav class="np-footer__links" style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem 1rem;">
+        <a href="#">News</a>
+        <a href="#">Politics</a>
+        <a href="#">Business</a>
+        <a href="#">Culture</a>
+        <a href="#">Sports</a>
+        <a href="#">Opinion</a>
+      </nav>
+    </div>
+  </div>
+  <div class="np-footer__bottom" style="padding-inline: 1rem; flex-direction: column; gap: 0.375rem;">
+    <span>&copy; 2025 The Northern Standard</span>
+    <span>Built with WordPress &amp; <a href="https://thisismyurl.com/masthead/">Masthead</a></span>
+  </div>
+</footer>
+
+</body>
+</html>

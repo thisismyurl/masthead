@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1200">
+<title>Masthead — Regional Broadsheet Variant (Navy Accent)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Lora:ital,wght@0,400..700;1,400..700&family=Inter:wght@100..900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="masthead-preview.css">
+<style>
+  /*
+   * REGIONAL BROADSHEET PALETTE — navy accent instead of red.
+   * Eight CSS custom property overrides in theme.json.
+   * Suited to university papers, community broadsheets, regional newspapers
+   * that want editorial authority without the red-tab tabloid association.
+   *
+   * Navy (#1a3762) on white: 10.5:1 — well above WCAG AAA.
+   */
+  :root {
+    --wp--preset--color--accent-red:       #1a3762;     /* Navy replaces red */
+    --wp--preset--color--accent-red-light: #bbdefb;
+    --wp--preset--color--breaking-red:     #1a3762;
+    --wp--preset--color--base-black:       #0d1929;
+    --np-section-color: #1a3762;
+  }
+
+  ::selection { background: #1a3762; }
+</style>
+</head>
+<body>
+
+<div class="np-utility-bar" style="border-block-end-color: #1a3762;">
+  <div class="np-utility-bar__inner">
+    <span class="np-utility-bar__date">Wednesday, May 28, 2025 &bull; Niagara Region Edition</span>
+    <div class="np-utility-bar__actions">
+      <a href="#">e-Edition</a>
+      <a href="#">Sign In</a>
+      <a class="np-subscribe-btn" href="#" style="background: #1a3762;">Subscribe</a>
+    </div>
+  </div>
+</div>
+
+<header class="np-masthead">
+  <div class="np-masthead__inner">
+    <nav class="np-nav np-nav--row np-masthead__nav-start">
+      <a href="#">Local News</a>
+      <a href="#">Regional</a>
+      <a href="#">Province</a>
+    </nav>
+    <div class="np-masthead__branding">
+      <a class="np-nameplate" href="#">The Peninsula Review</a>
+      <div class="np-tagline">Serving the Niagara Peninsula Since 1887</div>
+    </div>
+    <div class="np-masthead__nav-end">
+      <nav class="np-nav np-nav--row">
+        <a href="#">Community</a>
+        <a href="#">Business</a>
+        <a href="#">Sports</a>
+      </nav>
+    </div>
+  </div>
+</header>
+
+<div class="np-breaking-bar" style="border-block-end: none;">
+  <div class="np-breaking-label" style="background: #1a3762;">Local</div>
+  <div class="np-breaking-text">
+    <a href="#">Niagara region to receive $340M under federal infrastructure package · Council approves new transit corridor study · Hospital expansion groundbreaking set for September</a>
+  </div>
+</div>
+
+<nav class="np-section-nav" style="border-block-end-color: #1a3762;">
+  <div class="np-section-nav__inner">
+    <a href="#" class="current" style="color: #1a3762; border-block-end-color: #1a3762;">Local News</a>
+    <a href="#">Regional</a>
+    <a href="#">Province</a>
+    <a href="#">Community</a>
+    <a href="#">Business</a>
+    <a href="#">Sports</a>
+    <a href="#">Obituaries</a>
+    <a href="#">Opinion</a>
+    <a href="#">Classifieds</a>
+  </div>
+</nav>
+
+<div class="np-date-banner">Wednesday, May 28, 2025 &bull; Niagara Region Edition &bull; Vol. CXXXVIII No. 58</div>
+
+<main>
+  <div class="np-page-section">
+    <div class="np-container">
+
+      <div class="np-hero-grid" style="margin-bottom: var(--np-card-gap);">
+        <div style="--np-section-color: #1a3762;">
+          <div class="np-section-header" style="border-block-end-color: #1a3762;">
+            <span class="np-section-header__title" style="color: #1a3762;">Top Local Story</span>
+            <span class="np-section-header__rule"></span>
+          </div>
+          <div class="np-story-card">
+            <div class="np-story-card__img-placeholder np-story-card__img-placeholder--hero">City Hall — St. Catharines</div>
+            <div class="np-story-card__body">
+              <span class="np-category-label" style="color: #1a3762;">Local News</span>
+              <a class="np-headline np-headline--hero" href="#" style="font-size: clamp(1.5rem, 2vw + 0.75rem, 2.75rem);">Niagara Region to Receive $340 Million Under Federal Infrastructure Package; Transit and Broadband Prioritised</a>
+              <p class="np-deck">Regional Chair confirmed Tuesday the allocation will go first toward the long-delayed Niagara GO rail extension and rural internet access.</p>
+              <div class="np-byline"><a class="np-byline__author" href="#">Sandra MacGregor</a><span class="np-byline__sep">·</span><span class="np-byline__date">Local Correspondent</span><span class="np-byline__sep">·</span><span class="np-byline__date">2h ago</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <div class="np-section-header" style="--np-section-color: #1a3762; border-block-end-color: #1a3762;">
+            <span class="np-section-header__title" style="color: #1a3762;">Community</span>
+            <span class="np-section-header__rule"></span>
+            <a class="np-section-header__more" href="#">More &rarr;</a>
+          </div>
+          <div style="display: flex; flex-direction: column; gap: 1.25rem;">
+            <div class="np-story-card">
+              <span class="np-category-label" style="color: #1a3762;">Hospital</span>
+              <a class="np-headline np-headline--section" href="#">NHS Expansion Groundbreaking Set for September; $180M Phase One Confirmed</a>
+              <div class="np-byline"><a class="np-byline__author" href="#">C. Torres</a><span class="np-byline__sep">·</span><span class="np-byline__date">4h ago</span></div>
+            </div>
+            <hr class="np-divider">
+            <div class="np-story-card">
+              <span class="np-category-label" style="color: #1a3762;">Planning</span>
+              <a class="np-headline np-headline--section" href="#">Council Approves Mixed-Use Corridor Study for Ontario Street; Residents Divided</a>
+              <div class="np-byline"><a class="np-byline__author" href="#">M. Okonkwo</a><span class="np-byline__sep">·</span><span class="np-byline__date">5h ago</span></div>
+            </div>
+            <hr class="np-divider">
+            <div class="np-story-card">
+              <span class="np-category-label" style="color: var(--np-col-sports);">Local Sports</span>
+              <a class="np-headline np-headline--section" href="#">IceDogs Advance to OHL Semis; First Time in Twelve Years</a>
+              <div class="np-byline"><a class="np-byline__author" href="#">D. Patterson</a><span class="np-byline__sep">·</span><span class="np-byline__date">7h ago</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Palette note -->
+      <div style="margin-top: 2.5rem; padding: 1.25rem; background: var(--wp--preset--color--paper-light); border-inline-start: 4px solid #1a3762;">
+        <div style="font-size: 0.6875rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #1a3762; margin-bottom: 0.375rem;">About this palette</div>
+        <p style="font-size: 0.875rem; line-height: 1.65; color: var(--wp--preset--color--ink-muted); max-width: 65ch;">
+          <strong style="color: var(--wp--preset--color--ink-primary);">Regional Broadsheet</strong> — accent-red: #1a3762 (navy) · breaking-red: #1a3762 · base-black: #0d1929. The red semantic token is renamed to the primary accent; everything else (typography, layout, grid) is unchanged. Demonstrates how Masthead serves community papers without the red-tab tabloid association.
+        </p>
+      </div>
+
+    </div>
+  </div>
+</main>
+
+<footer class="np-footer" style="background: #0d1929;">
+  <div class="np-footer__inner">
+    <div>
+      <div class="np-footer__nameplate">The Peninsula Review</div>
+      <p class="np-footer__desc">Serving the Niagara Peninsula since 1887. Locally owned and operated.</p>
+    </div>
+    <div>
+      <div class="np-footer__section-title">Local News</div>
+      <nav class="np-footer__links">
+        <a href="#">St. Catharines</a>
+        <a href="#">Niagara Falls</a>
+        <a href="#">Welland</a>
+        <a href="#">Grimsby</a>
+      </nav>
+    </div>
+    <div>
+      <div class="np-footer__section-title">Sections</div>
+      <nav class="np-footer__links">
+        <a href="#">Community</a>
+        <a href="#">Business</a>
+        <a href="#">Sports</a>
+        <a href="#">Obituaries</a>
+        <a href="#">Classifieds</a>
+      </nav>
+    </div>
+    <div>
+      <div class="np-footer__section-title">Subscribe</div>
+      <nav class="np-footer__links">
+        <a href="#">Digital Access</a>
+        <a href="#">Home Delivery</a>
+        <a href="#">e-Edition</a>
+      </nav>
+    </div>
+  </div>
+  <div class="np-footer__bottom">
+    <span>&copy; 2025 The Peninsula Review</span>
+    <span>Built with WordPress &amp; <a href="https://thisismyurl.com/masthead/">Masthead</a></span>
+  </div>
+</footer>
+
+</body>
+</html>

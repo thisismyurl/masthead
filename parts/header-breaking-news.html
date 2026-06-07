@@ -1,0 +1,50 @@
+<!-- wp:group {"className":"np-breaking-bar","tagName":"div","metadata":{"name":"Breaking News Bar"},"layout":{"type":"default"},"data-wp-interactive":"masthead","data-wp-context":"{\"dismissed\":false}"} -->
+<div class="wp-block-group np-breaking-bar"
+     data-wp-interactive="masthead"
+     data-wp-init="callbacks.initDismissState"
+     data-wp-context='{"dismissed":false}'
+     data-wp-class--hidden="context.dismissed">
+
+	<!-- Breaking label -->
+	<!-- wp:group {"className":"np-breaking-label","layout":{"type":"default"}} -->
+	<div class="wp-block-group np-breaking-label" aria-hidden="true">
+		Breaking
+	</div>
+	<!-- /wp:group -->
+
+	<!-- Ticker content — editors replace this with latest breaking story links -->
+	<!-- wp:group {"className":"np-breaking-ticker-wrap","layout":{"type":"default"}} -->
+	<div class="wp-block-group np-breaking-ticker-wrap" aria-live="polite" aria-label="Breaking news">
+
+		<!-- wp:group {"className":"np-breaking-ticker","layout":{"type":"default"}} -->
+		<div class="wp-block-group np-breaking-ticker">
+
+			<!-- wp:query {"queryId":10,"query":{"perPage":5,"postType":"post","order":"desc","orderBy":"date","taxQuery":{"category_name":["breaking-news"]},"inherit":false},"layout":{"type":"default"}} -->
+			<div class="wp-block-query">
+				<!-- wp:post-template {"layout":{"type":"default"}} -->
+					<!-- wp:post-title {"isLink":true,"style":{"typography":{"fontFamily":"var:preset|font-family|inter","fontWeight":"700","fontSize":"var:preset|font-size|xs"}}} /-->
+				<!-- /wp:post-template -->
+			</div>
+			<!-- /wp:query -->
+
+		</div>
+		<!-- /wp:group -->
+
+	</div>
+	<!-- /wp:group -->
+
+	<!-- Dismiss button -->
+	<!-- wp:group {"className":"np-breaking-dismiss","layout":{"type":"default"}} -->
+	<div class="wp-block-group np-breaking-dismiss">
+		<button
+			aria-label="Dismiss breaking news bar"
+			data-wp-on--click="actions.dismiss"
+			data-wp-bind--aria-pressed="context.dismissed"
+			type="button">
+			&#215;
+		</button>
+	</div>
+	<!-- /wp:group -->
+
+</div>
+<!-- /wp:group -->

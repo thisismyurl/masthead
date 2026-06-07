@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1440">
+<title>Masthead — Single Article</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Lora:ital,wght@0,400..700;1,400..700&family=Inter:wght@100..900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="masthead-preview.css">
+</head>
+<body>
+
+<!-- Compact utility bar -->
+<div class="np-utility-bar">
+  <div class="np-utility-bar__inner">
+    <span class="np-utility-bar__date">Wednesday, May 28, 2025</span>
+    <div class="np-utility-bar__actions">
+      <a href="#">Sign In</a>
+      <a class="np-subscribe-btn" href="#">Subscribe</a>
+    </div>
+  </div>
+</div>
+
+<header class="np-masthead">
+  <div class="np-masthead__inner">
+    <nav class="np-nav np-nav--row np-masthead__nav-start">
+      <a href="#">Politics</a>
+      <a href="#">Business</a>
+      <a href="#">World</a>
+    </nav>
+    <div class="np-masthead__branding">
+      <a class="np-nameplate" href="#">The Northern Standard</a>
+    </div>
+    <div class="np-masthead__nav-end">
+      <nav class="np-nav np-nav--row">
+        <a href="#">Culture</a>
+        <a href="#">Sports</a>
+        <a href="#">Tech</a>
+      </nav>
+      <button class="np-search-btn">&#9906;</button>
+    </div>
+  </div>
+</header>
+
+<nav class="np-section-nav">
+  <div class="np-section-nav__inner">
+    <a href="#">News</a>
+    <a href="#" class="current" style="color: var(--np-col-politics); border-block-end-color: var(--np-col-politics);">Politics</a>
+    <a href="#">Business</a>
+    <a href="#">World</a>
+    <a href="#">Culture</a>
+    <a href="#">Sports</a>
+    <a href="#">Technology</a>
+    <a href="#">Opinion</a>
+  </div>
+</nav>
+
+<main>
+  <div class="np-page-section">
+    <div class="np-container">
+      <div class="np-content-sidebar">
+
+        <!-- Article -->
+        <article class="np-article">
+          <header class="np-article-header">
+            <div class="np-article-kicker" style="color: var(--np-col-politics);">Federal Politics</div>
+            <h1 class="np-article-title">Federal Cabinet Announces Largest Infrastructure Package in a Generation</h1>
+            <p class="np-deck">The $48 billion commitment targets housing, transit, and broadband access across all provinces — with the first projects expected to break ground before the end of the year.</p>
+            <div class="np-byline" style="margin-top: 1rem; padding-block: 0.75rem; border-block: 1px solid var(--wp--preset--color--rule-light);">
+              <a class="np-byline__author" href="#">Margaret Holloway</a>
+              <span class="np-byline__sep">·</span>
+              <span class="np-byline__date">Ottawa Bureau</span>
+              <span class="np-byline__sep">·</span>
+              <span class="np-byline__date">May 28, 2025 · 8 min read</span>
+            </div>
+          </header>
+
+          <!-- Hero image -->
+          <div class="np-story-card__img-placeholder np-story-card__img-placeholder--hero" style="margin-block-end: 0.5rem; font-size: 0.875rem;">
+            Parliament Hill — Ottawa
+          </div>
+          <p style="font-size: 0.75rem; color: var(--wp--preset--color--ink-muted); margin-block-end: 2.5rem; font-style: italic;">The House of Commons chamber during Tuesday's vote on the infrastructure package. (The Northern Standard / Alex Bélanger)</p>
+
+          <div class="np-article-body">
+            <p class="np-dateline">OTTAWA — <span style="font-weight: 400;">The federal cabinet unveiled a sweeping infrastructure investment package Tuesday that the government is calling the most substantial public-works commitment since the postwar reconstruction era.</span></p>
+
+            <p>The announcement, which Prime Minister Renée Chartrand made in a nationally televised address from the Centre Block, puts $48.2 billion toward affordable housing construction, intercity rail upgrades, and rural broadband expansion over seven years.</p>
+
+            <blockquote>"This is not a plan for the government," Chartrand said. "This is a plan for the Canadians who cannot afford to rent in the city where they work, and the farmers who cannot sell what they grow because there is no broadband to run the equipment their neighbours have been using for a decade."</blockquote>
+
+            <p>The package passed the House with a margin of 189 to 143, with seventeen opposition members crossing the floor — a development that prompted immediate recriminations within the Official Opposition caucus.</p>
+
+            <h2>Housing allocation draws scrutiny</h2>
+
+            <p>The largest single envelope — $22.4 billion over five years — targets new housing supply, with the federal government offering forgivable loans to municipalities that fast-track zoning approvals for higher-density construction near transit corridors.</p>
+
+            <p>Critics argued the housing component relied too heavily on municipal cooperation and failed to address land speculation directly. "The problem is not that we cannot build," said Dr. Amara Singh, an economist at the University of Toronto. "The problem is that we build profitably where it is profitable to build, not where people need to live."</p>
+
+            <p>The government disputes that framing, pointing to a companion measure that would extend the existing vacant-homes tax to properties held by numbered companies and trusts.</p>
+          </div>
+        </article>
+
+        <!-- Sidebar -->
+        <aside class="np-sidebar">
+          <div class="np-newsletter">
+            <div class="np-newsletter__eyebrow">Daily Briefing</div>
+            <div class="np-newsletter__heading">The Standard Morning Report</div>
+            <p class="np-newsletter__desc">Six stories, curated by our editors, delivered before 7 am.</p>
+            <form>
+              <input type="email" placeholder="your@email.com">
+              <button type="submit" class="np-newsletter__btn">Subscribe Free</button>
+            </form>
+          </div>
+
+          <div class="np-sidebar-widget np-section--politics">
+            <div class="np-sidebar-widget__title">More from Politics</div>
+            <div style="display: flex; flex-direction: column; gap: 1.25rem;">
+              <div class="np-story-card">
+                <a class="np-headline np-headline--compact" href="#">Opposition Leader Calls Emergency Caucus Meeting Over Floor-Crossers</a>
+                <div class="np-byline"><span class="np-byline__date">3h ago</span></div>
+              </div>
+              <hr class="np-divider">
+              <div class="np-story-card">
+                <a class="np-headline np-headline--compact" href="#">Senate Expected to Fast-Track Infrastructure Bill</a>
+                <div class="np-byline"><span class="np-byline__date">5h ago</span></div>
+              </div>
+              <hr class="np-divider">
+              <div class="np-story-card">
+                <a class="np-headline np-headline--compact" href="#">Premiers React to Federal Housing Conditions</a>
+                <div class="np-byline"><span class="np-byline__date">7h ago</span></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="np-ad-placeholder np-ad-placeholder--rectangle">Advertisement<br>300 × 250</div>
+        </aside>
+
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer class="np-footer">
+  <div class="np-footer__inner">
+    <div>
+      <div class="np-footer__nameplate">The Northern Standard</div>
+      <p class="np-footer__desc">Independent journalism serving Canada since 1962.</p>
+    </div>
+    <div>
+      <div class="np-footer__section-title">News</div>
+      <nav class="np-footer__links">
+        <a href="#">National</a>
+        <a href="#">Politics</a>
+        <a href="#">Business</a>
+        <a href="#">World</a>
+      </nav>
+    </div>
+    <div>
+      <div class="np-footer__section-title">Features</div>
+      <nav class="np-footer__links">
+        <a href="#">Culture</a>
+        <a href="#">Sports</a>
+        <a href="#">Opinion</a>
+      </nav>
+    </div>
+    <div>
+      <div class="np-footer__section-title">Subscribe</div>
+      <nav class="np-footer__links">
+        <a href="#">Digital Access</a>
+        <a href="#">Print + Digital</a>
+        <a href="#">Gift</a>
+      </nav>
+    </div>
+  </div>
+  <div class="np-footer__bottom">
+    <span>&copy; 2025 The Northern Standard</span>
+    <span>Built with WordPress &amp; <a href="https://thisismyurl.com/masthead/">Masthead</a></span>
+  </div>
+</footer>
+
+</body>
+</html>

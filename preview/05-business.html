@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1200">
+<title>Masthead — Business Section</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Lora:ital,wght@0,400..700;1,400..700&family=Inter:wght@100..900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="masthead-preview.css">
+<style>
+  :root { --np-section-color: var(--np-col-business); }
+</style>
+</head>
+<body>
+
+<div class="np-utility-bar">
+  <div class="np-utility-bar__inner">
+    <span class="np-utility-bar__date">Wednesday, May 28, 2025</span>
+    <div class="np-utility-bar__actions">
+      <a href="#">Markets</a>
+      <a href="#">Sign In</a>
+      <a class="np-subscribe-btn" href="#">Subscribe</a>
+    </div>
+  </div>
+</div>
+
+<header class="np-masthead">
+  <div class="np-masthead__inner">
+    <nav class="np-nav np-nav--row np-masthead__nav-start">
+      <a href="#">Politics</a>
+      <a href="#" style="color: var(--np-col-business);">Business</a>
+      <a href="#">World</a>
+    </nav>
+    <div class="np-masthead__branding">
+      <a class="np-nameplate" href="#">The Northern Standard</a>
+    </div>
+    <div class="np-masthead__nav-end">
+      <nav class="np-nav np-nav--row">
+        <a href="#">Culture</a>
+        <a href="#">Sports</a>
+        <a href="#">Tech</a>
+      </nav>
+    </div>
+  </div>
+</header>
+
+<nav class="np-section-nav" style="border-block-end-color: var(--np-col-business);">
+  <div class="np-section-nav__inner">
+    <a href="#">News</a>
+    <a href="#">Politics</a>
+    <a href="#" class="current" style="color: var(--np-col-business); border-block-end-color: var(--np-col-business);">Business</a>
+    <a href="#">Markets</a>
+    <a href="#">Personal Finance</a>
+    <a href="#">Real Estate</a>
+    <a href="#">Economy</a>
+  </div>
+</nav>
+
+<main>
+  <!-- Markets ticker -->
+  <div style="background: var(--wp--preset--color--paper-off-white); border-block-end: 1px solid var(--wp--preset--color--rule-light); padding: 0.5rem 0; overflow: hidden;">
+    <div style="display: flex; gap: 2.5rem; padding-inline: var(--np-gutter); font-size: 0.75rem; font-weight: 600; font-family: var(--wp--preset--font-family--inter); max-width: var(--np-full-max); margin-inline: auto;">
+      <span>TSX <span style="color: var(--np-col-business);">22,847.30 ▲ +1.2%</span></span>
+      <span>S&amp;P 500 <span style="color: var(--np-col-business);">5,421.89 ▲ +0.8%</span></span>
+      <span>DOW <span style="color: var(--np-col-business);">39,847.12 ▲ +0.6%</span></span>
+      <span>USD/CAD <span style="color: var(--wp--preset--color--accent-red);">1.3842 ▼ −0.1%</span></span>
+      <span>Gold <span style="color: var(--np-col-business);">2,341.20 ▲ +0.3%</span></span>
+      <span>WTI Oil <span style="color: var(--wp--preset--color--accent-red);">78.42 ▼ −0.4%</span></span>
+    </div>
+  </div>
+
+  <div class="np-page-section">
+    <div class="np-container">
+
+      <div class="np-hero-grid" style="margin-bottom: 2.5rem;">
+        <div class="np-section--business">
+          <div class="np-section-header">
+            <span class="np-section-header__title">Business</span>
+            <span class="np-section-header__rule"></span>
+          </div>
+          <div class="np-story-card">
+            <div class="np-story-card__img-placeholder np-story-card__img-placeholder--hero">TSX Trading Floor</div>
+            <div class="np-story-card__body">
+              <span class="np-category-label np-category-label--business">Markets</span>
+              <a class="np-headline np-headline--hero" href="#">TSX Closes at Record High as Infrastructure Spending Optimism Lifts Resource Sector</a>
+              <p class="np-deck">The benchmark index climbed 1.2 percent to a new all-time closing high of 22,847, led by construction materials, heavy equipment, and telecommunications stocks.</p>
+              <div class="np-byline">
+                <a class="np-byline__author" href="#">Jun-seo Park</a>
+                <span class="np-byline__sep">·</span>
+                <span class="np-byline__date">Markets Correspondent</span>
+                <span class="np-byline__sep">·</span>
+                <span class="np-byline__date">3h ago</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <div class="np-section-header np-section--business" style="margin-bottom: 1rem;">
+            <span class="np-section-header__title">Also in Business</span>
+            <span class="np-section-header__rule"></span>
+          </div>
+          <div style="display: flex; flex-direction: column; gap: 1.25rem;">
+            <div class="np-story-card">
+              <span class="np-category-label np-category-label--business">Real Estate</span>
+              <a class="np-headline np-headline--section" href="#">Toronto Condo Sales Rise for Third Consecutive Month as Rate Relief Continues</a>
+              <div class="np-byline"><a class="np-byline__author" href="#">N. Adeyemi</a><span class="np-byline__sep">·</span><span class="np-byline__date">5h ago</span></div>
+            </div>
+            <hr class="np-divider">
+            <div class="np-story-card">
+              <span class="np-category-label np-category-label--business">Economy</span>
+              <a class="np-headline np-headline--section" href="#">Bank of Canada Holds Rate; Governor Notes Risks to Export Outlook</a>
+              <div class="np-byline"><a class="np-byline__author" href="#">D. Leclair</a><span class="np-byline__sep">·</span><span class="np-byline__date">7h ago</span></div>
+            </div>
+            <hr class="np-divider">
+            <div class="np-story-card">
+              <span class="np-category-label np-category-label--business">Corporate</span>
+              <a class="np-headline np-headline--section" href="#">Shopify Reports Q1 Earnings Beat; Guidance Raised for Full Year</a>
+              <div class="np-byline"><a class="np-byline__author" href="#">Y. Chen</a><span class="np-byline__sep">·</span><span class="np-byline__date">9h ago</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Trending in business: numbered cards -->
+      <div class="np-section-header np-section--business">
+        <span class="np-section-header__title">Trending</span>
+        <span class="np-section-header__rule"></span>
+        <a class="np-section-header__more" href="#">All Business &rarr;</a>
+      </div>
+      <div class="np-grid-2" style="margin-bottom: 2rem;">
+        <div style="display: flex; flex-direction: column; gap: 0;">
+          <div class="np-story-card--numbered"><span class="np-story-card__rank">1</span><div><a class="np-headline np-headline--compact" href="#">Bombardier Wins $3.2B Rail Contract from European Consortium</a></div></div>
+          <div class="np-story-card--numbered"><span class="np-story-card__rank">2</span><div><a class="np-headline np-headline--compact" href="#">Maple Leaf Foods CEO Steps Down After Twenty-Two Years</a></div></div>
+          <div class="np-story-card--numbered"><span class="np-story-card__rank">3</span><div><a class="np-headline np-headline--compact" href="#">Rogers Reports Subscriber Growth Despite Cable Revenue Decline</a></div></div>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 0;">
+          <div class="np-story-card--numbered"><span class="np-story-card__rank">4</span><div><a class="np-headline np-headline--compact" href="#">Canada Pension Plan Posts 11.4 Percent Annual Return</a></div></div>
+          <div class="np-story-card--numbered"><span class="np-story-card__rank">5</span><div><a class="np-headline np-headline--compact" href="#">Personal Insolvency Filings Rise 8 Percent Versus Prior Year</a></div></div>
+          <div class="np-story-card--numbered"><span class="np-story-card__rank">6</span><div><a class="np-headline np-headline--compact" href="#">Canadian Banks Hold Capital Buffers Above Minimum Requirements</a></div></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</main>
+
+<footer class="np-footer">
+  <div class="np-footer__inner">
+    <div>
+      <div class="np-footer__nameplate">The Northern Standard</div>
+      <p class="np-footer__desc">Independent journalism serving Canada since 1962.</p>
+    </div>
+    <div>
+      <div class="np-footer__section-title">Business</div>
+      <nav class="np-footer__links">
+        <a href="#">Markets</a>
+        <a href="#">Real Estate</a>
+        <a href="#">Personal Finance</a>
+        <a href="#">Economy</a>
+      </nav>
+    </div>
+    <div>
+      <div class="np-footer__section-title">The Paper</div>
+      <nav class="np-footer__links">
+        <a href="#">About Us</a>
+        <a href="https://thisismyurl.com/masthead/">Masthead</a>
+        <a href="#">Corrections</a>
+      </nav>
+    </div>
+    <div>
+      <div class="np-footer__section-title">Subscribe</div>
+      <nav class="np-footer__links">
+        <a href="#">Digital Access</a>
+        <a href="#">Print + Digital</a>
+      </nav>
+    </div>
+  </div>
+  <div class="np-footer__bottom">
+    <span>&copy; 2025 The Northern Standard</span>
+    <span>Built with WordPress &amp; <a href="https://thisismyurl.com/masthead/">Masthead</a></span>
+  </div>
+</footer>
+
+</body>
+</html>
