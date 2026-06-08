@@ -4,6 +4,7 @@
  * Slug: masthead/newsletter-cta
  * Categories: masthead-cta
  * Viewport Width: 1280
+ * Inserter: true
  *
  * Pattern: Newsletter CTA
  *

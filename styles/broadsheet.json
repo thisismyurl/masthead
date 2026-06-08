@@ -1,0 +1,127 @@
+{
+  "$schema": "https://schemas.wp.org/wp/6.7/theme.json",
+  "version": 3,
+  "title": "Broadsheet",
+  "settings": {
+    "color": {
+      "palette": [
+        {
+          "slug": "ink-primary",
+          "color": "#F0EDE6",
+          "name": "Ink Primary"
+        },
+        {
+          "slug": "ink-secondary",
+          "color": "#D8D4CC",
+          "name": "Ink Secondary"
+        },
+        {
+          "slug": "ink-muted",
+          "color": "#8A8878",
+          "name": "Ink Muted"
+        },
+        {
+          "slug": "ink-faint",
+          "color": "#60605A",
+          "name": "Ink Faint"
+        },
+        {
+          "slug": "paper-white",
+          "color": "#0D0D0D",
+          "name": "Paper White"
+        },
+        {
+          "slug": "paper-off-white",
+          "color": "#1A1A18",
+          "name": "Paper Off White"
+        },
+        {
+          "slug": "paper-light",
+          "color": "#252520",
+          "name": "Paper Light"
+        },
+        {
+          "slug": "rule-light",
+          "color": "#2E2E28",
+          "name": "Rule Light"
+        },
+        {
+          "slug": "rule-medium",
+          "color": "#3A3A34",
+          "name": "Rule Medium"
+        },
+        {
+          "slug": "accent-red",
+          "color": "#D84040",
+          "name": "Accent Red"
+        },
+        {
+          "slug": "accent-red-light",
+          "color": "#2A1010",
+          "name": "Accent Red Light"
+        },
+        {
+          "slug": "accent-navy",
+          "color": "#4A80C4",
+          "name": "Accent Navy"
+        },
+        {
+          "slug": "accent-navy-light",
+          "color": "#0A1830",
+          "name": "Accent Navy Light"
+        },
+        {
+          "slug": "base-black",
+          "color": "#FFFFFF",
+          "name": "Base Black"
+        }
+      ]
+    },
+    "custom": {
+      "colophon-light": "#0D0D0D",
+      "colophon-dark": "#F0EDE6",
+      "colophon-accent": "#4A80C4"
+    }
+  },
+  "styles": {
+    "color": {
+      "background": "var(--wp--preset--color--paper-white)",
+      "text": "var(--wp--preset--color--ink-primary)"
+    },
+    "elements": {
+      "heading": {
+        "color": {
+          "text": "var(--wp--preset--color--base-black)"
+        }
+      },
+      "link": {
+        "color": {
+          "text": "var(--wp--preset--color--accent-navy)"
+        },
+        ":hover": {
+          "color": {
+            "text": "var(--wp--preset--color--base-black)"
+          }
+        }
+      },
+      "button": {
+        "color": {
+          "background": "var(--wp--preset--color--accent-navy)",
+          "text": "var(--wp--preset--color--paper-white)"
+        }
+      }
+    },
+    "blocks": {
+      "core/site-title": {
+        "color": {
+          "text": "var(--wp--preset--color--base-black)"
+        }
+      },
+      "core/navigation": {
+        "color": {
+          "text": "var(--wp--preset--color--ink-primary)"
+        }
+      }
+    }
+  }
+}

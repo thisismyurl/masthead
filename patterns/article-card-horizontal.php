@@ -4,6 +4,7 @@
  * Slug: masthead/article-card-horizontal
  * Categories: masthead-articles
  * Viewport Width: 1280
+ * Inserter: true
  *
  * Pattern: Article Card — Horizontal
  *

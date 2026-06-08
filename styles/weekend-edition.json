@@ -1,0 +1,112 @@
+{
+  "$schema": "https://schemas.wp.org/wp/6.7/theme.json",
+  "version": 3,
+  "title": "Weekend Edition",
+  "settings": {
+    "color": {
+      "palette": [
+        {
+          "slug": "ink-primary",
+          "color": "#1A1208",
+          "name": "Ink Primary"
+        },
+        {
+          "slug": "ink-secondary",
+          "color": "#38280C",
+          "name": "Ink Secondary"
+        },
+        {
+          "slug": "ink-muted",
+          "color": "#70604A",
+          "name": "Ink Muted"
+        },
+        {
+          "slug": "ink-faint",
+          "color": "#9A8870",
+          "name": "Ink Faint"
+        },
+        {
+          "slug": "paper-white",
+          "color": "#F8F4EC",
+          "name": "Paper White"
+        },
+        {
+          "slug": "paper-off-white",
+          "color": "#F4F0E4",
+          "name": "Paper Off White"
+        },
+        {
+          "slug": "paper-light",
+          "color": "#ECE7D8",
+          "name": "Paper Light"
+        },
+        {
+          "slug": "rule-light",
+          "color": "#DAD0BC",
+          "name": "Rule Light"
+        },
+        {
+          "slug": "rule-medium",
+          "color": "#C8B89A",
+          "name": "Rule Medium"
+        },
+        {
+          "slug": "accent-red",
+          "color": "#A01818",
+          "name": "Accent Red"
+        },
+        {
+          "slug": "base-black",
+          "color": "#0C0804",
+          "name": "Base Black"
+        }
+      ]
+    },
+    "custom": {
+      "colophon-light": "#F8F4EC",
+      "colophon-dark": "#0C0804",
+      "colophon-accent": "#1a3762"
+    }
+  },
+  "styles": {
+    "color": {
+      "background": "var(--wp--preset--color--paper-white)",
+      "text": "var(--wp--preset--color--ink-primary)"
+    },
+    "elements": {
+      "heading": {
+        "color": {
+          "text": "var(--wp--preset--color--base-black)"
+        }
+      },
+      "link": {
+        "color": {
+          "text": "var(--wp--preset--color--accent-navy)"
+        },
+        ":hover": {
+          "color": {
+            "text": "var(--wp--preset--color--base-black)"
+          }
+        }
+      },
+      "button": {
+        "color": {
+          "background": "var(--wp--preset--color--ink-primary)",
+          "text": "var(--wp--preset--color--paper-white)"
+        }
+      }
+    },
+    "blocks": {
+      "core/site-title": {
+        "color": {
+          "text": "var(--wp--preset--color--base-black)"
+        }
+      },
+      "core/navigation": {
+        "color": {
+          "text": "var(--wp--preset--color--ink-primary)"
+        }
+      }
+    }
+  }
+}

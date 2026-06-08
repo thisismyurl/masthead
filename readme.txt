@@ -3,10 +3,10 @@ Contributors: thisismyurl
 Requires at least: 6.7
 Tested up to: 7.0
 Requires PHP: 8.1
-Stable tag: 1.6148
+Stable tag: 1.6148.1706
 License: GPL-2.0-or-later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
-Tags: news, blog, two-columns, grid-layout, full-site-editing, block-patterns, accessibility-ready, rtl-language-support, threaded-comments, translation-ready, wide-blocks, custom-colors, custom-logo, custom-menu, editor-style, featured-images, sticky-post
+Tags: news, blog, two-columns, grid-layout, full-site-editing, block-patterns, accessibility-ready, translation-ready, wide-blocks, custom-colors, custom-logo, custom-menu, editor-style, featured-images, sticky-post
 
 A modern, accessible FSE newspaper theme for digital publishers. Bold editorial typography, flexible multi-column layouts, zero plugin dependencies.
 
@@ -113,6 +113,10 @@ No. Zero plugin dependencies. Works with popular plugins but requires none.
 Each section category gets its accent colour from a CSS custom property. Override in Appearance → Customize → Additional CSS (see Section Colours section above).
 
 == Changelog ==
+
+= 1.6148.1706 =
+* Version timestamp suffix added per project versioning scheme.
+* Added explicit Inserter: true header to all patterns.
 
 = 1.6148 =
 * CSS architecture migrated: all rules moved from style.css to assets/css/skin.css (Colophon CORE/SKIN pattern).

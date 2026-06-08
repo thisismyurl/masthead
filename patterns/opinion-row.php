@@ -4,6 +4,7 @@
  * Slug: masthead/opinion-row
  * Categories: masthead-articles
  * Viewport Width: 1280
+ * Inserter: true
  *
  * Pattern: Opinion Row
  *

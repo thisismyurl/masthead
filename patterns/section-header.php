@@ -4,6 +4,7 @@
  * Slug: masthead/section-header
  * Categories: masthead-sections
  * Viewport Width: 1280
+ * Inserter: true
  *
  * Pattern: Section Header
  *

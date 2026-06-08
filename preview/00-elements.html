@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1280">
+<title>Masthead — All Elements</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Lora:ital,wght@0,400..700;1,400..700&family=Inter:wght@100..900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="masthead-preview.css">
+<style>
+  .el-pagenav {
+    position: sticky;
+    inset-block-start: 0;
+    z-index: 200;
+    background: var(--wp--preset--color--accent-navy);
+    padding: 0.5rem 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    align-items: center;
+  }
+  .el-pagenav a {
+    font-family: var(--wp--preset--font-family--inter);
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: var(--wp--preset--color--paper-off-white);
+    opacity: 0.75;
+  }
+  .el-pagenav a:hover { opacity: 1; }
+  .el-pagenav .el-pagenav-label {
+    font-weight: 700;
+    color: var(--wp--preset--color--paper-white);
+    opacity: 1;
+    margin-inline-end: 0.5rem;
+  }
+  .el-section {
+    padding: 3rem 0;
+    border-bottom: 1px solid var(--wp--preset--color--rule-light);
+  }
+  .el-section-title {
+    font-family: var(--wp--preset--font-family--inter);
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--wp--preset--color--ink-muted);
+    margin-bottom: 2rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--wp--preset--color--accent-red);
+    display: inline-block;
+  }
+  .el-row { display: flex; gap: 1rem; flex-wrap: wrap; align-items: flex-start; margin-bottom: 1rem; }
+  .el-swatch {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.35rem;
+    min-width: 80px;
+  }
+  .el-swatch-block {
+    width: 64px;
+    height: 64px;
+    border-radius: 3px;
+    border: 1px solid rgba(0,0,0,0.12);
+  }
+  .el-swatch-name {
+    font-family: var(--wp--preset--font-family--inter);
+    font-size: 0.6rem;
+    color: var(--wp--preset--color--ink-muted);
+    text-align: center;
+    max-width: 80px;
+    word-break: break-all;
+  }
+  .el-type-row {
+    display: flex;
+    align-items: baseline;
+    gap: 1.5rem;
+    margin-bottom: 0.75rem;
+    flex-wrap: wrap;
+  }
+  .el-type-label {
+    font-family: var(--wp--preset--font-family--inter);
+    font-size: 0.65rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--wp--preset--color--ink-faint);
+    min-width: 80px;
+    flex-shrink: 0;
+  }
+</style>
+</head>
+<body>
+
+<!-- Page nav -->
+<nav class="el-pagenav" aria-label="Element reference navigation">
+  <span class="el-pagenav-label">Masthead</span>
+  <a href="#s-header">Header</a>
+  <a href="#s-typography">Typography</a>
+  <a href="#s-color">Color</a>
+  <a href="#s-buttons">Buttons</a>
+  <a href="#s-links">Lists</a>
+  <a href="#s-blockquote">Blockquote</a>
+  <a href="#s-code">Code</a>
+  <a href="#s-cards">Cards</a>
+  <a href="#s-footer">Footer</a>
+</nav>
+
+<!-- Header chrome -->
+<div id="s-header">
+  <div class="np-utility-bar">
+    <div class="np-container">
+      <div class="np-utility-bar__inner">
+        <span class="np-utility-bar__date">Sunday, June 8, 2026</span>
+        <div class="np-utility-bar__actions">
+          <a href="#" class="np-subscribe-btn">Subscribe</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <header class="np-masthead">
+    <div class="np-container">
+      <div class="np-nameplate">The Masthead</div>
+      <div class="np-tagline">Independent news for the thinking reader</div>
+    </div>
+  </header>
+
+  <nav class="np-nav" aria-label="Primary navigation">
+    <div class="np-container">
+      <div class="np-section-nav__inner">
+        <a href="#">Politics</a>
+        <a href="#">Business</a>
+        <a href="#">Culture</a>
+        <a href="#">Science</a>
+        <a href="#">Sports</a>
+        <a href="#">Opinion</a>
+      </div>
+    </div>
+  </nav>
+</div>
+
+<div class="np-constrained" style="padding: 0 1rem;">
+
+  <!-- Typography -->
+  <section class="el-section" id="s-typography">
+    <div class="el-section-title">Typography Scale</div>
+
+    <div class="el-type-row">
+      <span class="el-type-label">Display</span>
+      <span style="font-family:var(--wp--preset--font-family--playfair-display);font-size:var(--wp--preset--font-size--5xl);font-weight:700;line-height:1.05;letter-spacing:-0.02em;color:var(--wp--preset--color--ink-primary)">The Price of Silence</span>
+    </div>
+    <div class="el-type-row">
+      <span class="el-type-label">H1</span>
+      <h1 class="np-article-title" style="font-size:var(--wp--preset--font-size--4xl);margin:0">New Legislation Would Reshape Transit Funding</h1>
+    </div>
+    <div class="el-type-row">
+      <span class="el-type-label">H2</span>
+      <h2 style="font-family:var(--wp--preset--font-family--playfair-display);font-size:var(--wp--preset--font-size--3xl);font-weight:700;letter-spacing:-0.015em;margin:0;color:var(--wp--preset--color--ink-primary)">The Case for Urban Rail</h2>
+    </div>
+    <div class="el-type-row">
+      <span class="el-type-label">H3</span>
+      <h3 style="font-family:var(--wp--preset--font-family--playfair-display);font-size:var(--wp--preset--font-size--2xl);font-weight:700;margin:0;color:var(--wp--preset--color--ink-primary)">Federal Agencies Weigh In</h3>
+    </div>
+    <div class="el-type-row">
+      <span class="el-type-label">Deck</span>
+      <p class="np-deck" style="margin:0">A sweeping infrastructure bill moving through committee could redirect billions in federal dollars — and set off a reckoning for cities that have long relied on fare revenue.</p>
+    </div>
+    <div class="el-type-row">
+      <span class="el-type-label">Body</span>
+      <p class="np-article-body" style="max-width:640px;margin:0">The legislation, introduced Tuesday by a bipartisan group of senators, would establish a new formula for distributing transit grants — one that favors ridership growth over legacy infrastructure spending. Cities that have invested heavily in bus rapid transit could be the biggest winners.</p>
+    </div>
+    <div class="el-type-row">
+      <span class="el-type-label">Byline</span>
+      <div class="np-byline">
+        <span class="np-byline__author">Margaret L. Donovan</span>
+        <span class="np-byline__sep">&middot;</span>
+        <span class="np-byline__date">June 8, 2026 &nbsp;&middot;&nbsp; 8 min read</span>
+      </div>
+    </div>
+    <div class="el-type-row">
+      <span class="el-type-label">Kicker</span>
+      <span class="np-article-kicker np-category-label np-category-label--politics">Politics &amp; Policy</span>
+    </div>
+    <div class="el-type-row">
+      <span class="el-type-label">Dateline</span>
+      <span class="np-dateline">WASHINGTON &mdash;</span>
+    </div>
+  </section>
+
+  <!-- Color palette -->
+  <section class="el-section" id="s-color">
+    <div class="el-section-title">Color Palette</div>
+    <div class="el-row">
+      <div class="el-swatch"><div class="el-swatch-block" style="background:var(--wp--preset--color--ink-primary)"></div><span class="el-swatch-name">ink-primary</span></div>
+      <div class="el-swatch"><div class="el-swatch-block" style="background:var(--wp--preset--color--ink-secondary)"></div><span class="el-swatch-name">ink-secondary</span></div>
+      <div class="el-swatch"><div class="el-swatch-block" style="background:var(--wp--preset--color--ink-muted)"></div><span class="el-swatch-name">ink-muted</span></div>
+      <div class="el-swatch"><div class="el-swatch-block" style="background:var(--wp--preset--color--ink-faint)"></div><span class="el-swatch-name">ink-faint</span></div>
+      <div class="el-swatch"><div class="el-swatch-block" style="background:var(--wp--preset--color--paper-white)"></div><span class="el-swatch-name">paper-white</span></div>
+      <div class="el-swatch"><div class="el-swatch-block" style="background:var(--wp--preset--color--paper-off-white)"></div><span class="el-swatch-name">paper-off-white</span></div>
+      <div class="el-swatch"><div class="el-swatch-block" style="background:var(--wp--preset--color--paper-light)"></div><span class="el-swatch-name">paper-light</span></div>
+      <div class="el-swatch"><div class="el-swatch-block" style="background:var(--wp--preset--color--accent-red)"></div><span class="el-swatch-name">accent-red</span></div>
+      <div class="el-swatch"><div class="el-swatch-block" style="background:var(--wp--preset--color--accent-navy)"></div><span class="el-swatch-name">accent-navy</span></div>
+      <div class="el-swatch"><div class="el-swatch-block" style="background:var(--wp--preset--color--section-politics)"></div><span class="el-swatch-name">section-politics</span></div>
+      <div class="el-swatch"><div class="el-swatch-block" style="background:var(--wp--preset--color--section-business)"></div><span class="el-swatch-name">section-business</span></div>
+      <div class="el-swatch"><div class="el-swatch-block" style="background:var(--wp--preset--color--section-culture)"></div><span class="el-swatch-name">section-culture</span></div>
+      <div class="el-swatch"><div class="el-swatch-block" style="background:var(--wp--preset--color--section-sports)"></div><span class="el-swatch-name">section-sports</span></div>
+    </div>
+    <div style="margin-top:1.5rem">
+      <p style="font-family:var(--wp--preset--font-family--inter);font-size:0.75rem;color:var(--wp--preset--color--ink-muted);margin:0">Section color bands:</p>
+      <div class="el-row" style="margin-top:0.75rem;gap:0.5rem">
+        <span class="np-category-label np-category-label--politics">Politics</span>
+        <span class="np-category-label np-category-label--business">Business</span>
+        <span class="np-category-label np-category-label--culture">Culture</span>
+        <span class="np-category-label np-category-label--sports">Sports</span>
+        <span class="np-category-label np-category-label--tech">Tech</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Buttons -->
+  <section class="el-section" id="s-buttons">
+    <div class="el-section-title">Buttons &amp; CTAs</div>
+    <div class="el-row">
+      <a href="#" class="np-subscribe-btn">Subscribe Now</a>
+      <a href="#" class="np-subscribe-btn" style="background:transparent;color:var(--wp--preset--color--accent-navy);border:2px solid var(--wp--preset--color--accent-navy)">Sign In</a>
+      <a href="#" class="np-subscribe-btn" style="background:var(--wp--preset--color--ink-faint);cursor:not-allowed;opacity:0.5" aria-disabled="true">Disabled</a>
+    </div>
+  </section>
+
+  <!-- Links and lists -->
+  <section class="el-section" id="s-links">
+    <div class="el-section-title">Links &amp; Lists</div>
+    <p class="np-article-body" style="max-width:640px;margin-bottom:1.5rem">
+      The committee is expected to hear testimony from <a href="#">transit agency officials</a>, <a href="#">urban planners</a>, and representatives from <a href="#">advocacy groups</a> before the bill advances to a floor vote later this month.
+    </p>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:2rem;max-width:640px">
+      <div>
+        <p style="font-family:var(--wp--preset--font-family--inter);font-size:0.7rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--wp--preset--color--ink-faint);margin-bottom:0.75rem">Unordered List</p>
+        <ul style="font-family:var(--wp--preset--font-family--lora);font-size:var(--wp--preset--font-size--base);color:var(--wp--preset--color--ink-secondary);padding-left:1.25rem;line-height:1.7">
+          <li>Federal transit grant formula</li>
+          <li>Ridership-based allocation</li>
+          <li>Bus rapid transit corridors</li>
+          <li>Legacy infrastructure spending</li>
+          <li>Fare revenue projections</li>
+        </ul>
+      </div>
+      <div>
+        <p style="font-family:var(--wp--preset--font-family--inter);font-size:0.7rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--wp--preset--color--ink-faint);margin-bottom:0.75rem">Ordered List</p>
+        <ol style="font-family:var(--wp--preset--font-family--lora);font-size:var(--wp--preset--font-size--base);color:var(--wp--preset--color--ink-secondary);padding-left:1.25rem;line-height:1.7">
+          <li>Committee markup vote</li>
+          <li>Floor debate and amendments</li>
+          <li>Senate passage</li>
+          <li>Conference committee</li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <!-- Blockquote -->
+  <section class="el-section" id="s-blockquote">
+    <div class="el-section-title">Blockquote</div>
+    <div class="np-deck" style="border-left:4px solid var(--wp--preset--color--accent-red);padding-left:1.25rem;margin:0 0 0.75rem;max-width:640px">
+      "This bill doesn't just reshape how we fund transit — it reshapes what we think transit is for. We're finally treating movement as a public good, not a revenue source."
+    </div>
+    <p class="np-byline" style="padding-left:1.5rem"><span class="np-byline__author">Sen. Carla Whitmore</span><span class="np-byline__sep">&middot;</span><span class="np-byline__date">Senate Committee on Infrastructure</span></p>
+  </section>
+
+  <!-- Code -->
+  <section class="el-section" id="s-code">
+    <div class="el-section-title">Code</div>
+    <p class="np-article-body" style="max-width:640px;margin-bottom:1.5rem">
+      The allocation formula uses a weighted index: <code>ridership_growth * 0.6 + route_density * 0.4</code> — calculated annually using FTA data.
+    </p>
+    <pre style="background:var(--wp--preset--color--paper-light);border:1px solid var(--wp--preset--color--rule-light);padding:1.25rem;border-radius:3px;font-size:0.8rem;overflow-x:auto;max-width:640px;font-family:var(--wp--preset--font-family--mono, 'Courier New', monospace)">// Federal Transit Formula v2
+function calculateAllocation(city) {
+  const ridership = city.ridershipGrowth * 0.6;
+  const density = city.routeDensity * 0.4;
+  return (ridership + density) * BASE_GRANT;
+}</pre>
+  </section>
+
+  <!-- Divider -->
+  <section class="el-section">
+    <div class="el-section-title">Separator</div>
+    <div class="np-divider" style="margin:1.5rem 0"></div>
+    <div class="np-section-header">
+      <div class="np-section-header__rule"></div>
+      <span class="np-section-header__title">Section Header</span>
+      <a href="#" class="np-section-header__more">More</a>
+    </div>
+  </section>
+
+  <!-- Cards -->
+  <section class="el-section" id="s-cards">
+    <div class="el-section-title">Story Cards</div>
+    <div class="np-article-grid" style="gap:1.5rem">
+      <div class="np-story-card">
+        <div class="np-story-card__img-placeholder np-story-card__img-placeholder--hero" style="background:linear-gradient(135deg,#1a3762,#0a0a0a)"></div>
+        <div class="np-story-card__body">
+          <span class="np-category-label np-category-label--politics">Politics</span>
+          <h3 class="np-article-title" style="font-size:var(--wp--preset--font-size--xl)">Senate Bill Would Overhaul Federal Housing Policy</h3>
+          <p class="np-article-body" style="font-size:var(--wp--preset--font-size--sm)">A bipartisan coalition pushes for the most sweeping housing reforms in a generation.</p>
+          <div class="np-byline"><span class="np-byline__author">James T. Harmon</span><span class="np-byline__sep">&middot;</span><span class="np-byline__date">5 min read</span></div>
+        </div>
+      </div>
+      <div class="np-story-card">
+        <div class="np-story-card__img-placeholder np-story-card__img-placeholder--sq" style="background:linear-gradient(135deg,#1b5e20,#2e7d32)"></div>
+        <div class="np-story-card__body">
+          <span class="np-category-label np-category-label--business">Business</span>
+          <h3 class="np-article-title" style="font-size:var(--wp--preset--font-size--xl)">Tech Sector Layoffs Slow as AI Investment Surges</h3>
+          <div class="np-byline"><span class="np-byline__author">Diana Chen</span><span class="np-byline__sep">&middot;</span><span class="np-byline__date">3 min read</span></div>
+        </div>
+      </div>
+      <div class="np-story-card">
+        <div class="np-story-card__img-placeholder np-story-card__img-placeholder--sq" style="background:linear-gradient(135deg,#6a1b9a,#4a148c)"></div>
+        <div class="np-story-card__body">
+          <span class="np-category-label np-category-label--culture">Culture</span>
+          <h3 class="np-article-title" style="font-size:var(--wp--preset--font-size--xl)">The Return of the Long Essay</h3>
+          <div class="np-byline"><span class="np-byline__author">Miriam Osei</span><span class="np-byline__sep">&middot;</span><span class="np-byline__date">12 min read</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</div><!-- /.np-constrained -->
+
+<!-- Footer -->
+<div id="s-footer">
+  <footer class="np-footer">
+    <div class="np-footer__inner">
+      <div>
+        <div class="np-nameplate" style="font-size:1.5rem">The Masthead</div>
+        <p class="np-footer__desc">Independent journalism since 1987.</p>
+      </div>
+      <div class="np-footer__bottom">
+        <span>&copy; 2026 The Masthead</span>
+        <a href="#">Privacy</a>
+        <a href="#">Terms</a>
+        <a href="#">Contact</a>
+      </div>
+    </div>
+  </footer>
+</div>
+
+</body>
+</html>

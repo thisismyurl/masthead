@@ -366,6 +366,10 @@ function skin_register_pattern_categories(): void {
 			'label'       => __( 'Masthead: Calls to Action', 'masthead' ),
 			'description' => __( 'Newsletter, subscribe, and promotional CTAs.', 'masthead' ),
 		),
+		'masthead-site'     => array(
+			'label'       => __( 'Masthead: Site Chrome', 'masthead' ),
+			'description' => __( 'Site-level header, footer, and navigation patterns.', 'masthead' ),
+		),
 	);
 
 	foreach ( $categories as $slug => $args ) {
