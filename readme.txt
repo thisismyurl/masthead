@@ -3,7 +3,7 @@ Contributors: thisismyurl
 Requires at least: 6.7
 Tested up to: 7.0
 Requires PHP: 8.1
-Stable tag: 1.6148.1706
+Stable tag: 1.6163.2233
 License: GPL-2.0-or-later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 Tags: news, blog, two-columns, grid-layout, full-site-editing, block-patterns, accessibility-ready, translation-ready, wide-blocks, custom-colors, custom-logo, custom-menu, editor-style, featured-images, sticky-post
@@ -113,6 +113,15 @@ No. Zero plugin dependencies. Works with popular plugins but requires none.
 Each section category gets its accent colour from a CSS custom property. Override in Appearance → Customize → Additional CSS (see Section Colours section above).
 
 == Changelog ==
+
+= 1.6163.2233 =
+* Accessibility (WCAG 2.1 1.3.1): the archive and search titles are now explicit
+  h1 headings; the index template gains an h1 page heading; the blank-canvas page
+  template gains an empty, editor-fillable h1. (Front page and 404 already had one.)
+* Hardened comment-form attribute injection: a guarded preg_replace (single
+  replacement, null-check, no-match fallback) replaces a naive str_replace that
+  could double-inject or mangle markup.
+* The Get started developer-guide URL is filterable via masthead/developer_guide_url.
 
 = 1.6148.1706 =
 * Version timestamp suffix added per project versioning scheme.
