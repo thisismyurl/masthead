@@ -164,9 +164,29 @@ function comment_form_field_attributes( array $fields ): array {
 	);
 
 	foreach ( $attributes as $field => $attrs ) {
-		if ( isset( $fields[ $field ] ) ) {
-			$fields[ $field ] = str_replace( '<input', '<input ' . $attrs, $fields[ $field ] );
+		if ( ! isset( $fields[ $field ] ) ) {
+			continue;
 		}
+
+		$pattern     = '/<input\s+([^>]*)/';
+		$replacement = '<input ' . $attrs . ' $1';
+		$count       = 0;
+		$updated     = preg_replace( $pattern, $replacement, $fields[ $field ], 1, $count );
+
+		// Regex error: preg_replace returns null on failure (e.g., invalid regex).
+		// Skip this field to preserve the original HTML; no attributes added.
+		if ( null === $updated ) {
+			continue;
+		}
+
+		// Pattern matched: $count will be 1 (limit of 1 replacement).
+		// Update the field with the modified HTML.
+		if ( $count > 0 ) {
+			$fields[ $field ] = $updated;
+		}
+		// Non-match ($count === 0): the field HTML doesn't contain the expected <input tag.
+		// This is safe: field stays unchanged, no attributes added.
+		// Silent fallback preserves the field's original markup.
 	}
 
 	return $fields;
