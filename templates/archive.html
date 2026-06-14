@@ -45,10 +45,12 @@
 					<!-- /wp:group -->
 				<!-- /wp:post-template -->
 
+				<!-- No-results state: no hardcoded visitor prose (translation-ready).
+				     The archive query-title h1 above names the section; a search block
+				     offers a retry path. The search block's labels come from core block
+				     defaults, which WordPress localizes. -->
 				<!-- wp:query-no-results -->
-					<!-- wp:paragraph {"style":{"spacing":{"padding":{"top":"var:preset|spacing|12","bottom":"var:preset|spacing|12"}}}} -->
-					<p>Nothing in this section yet. Check back soon.</p>
-					<!-- /wp:paragraph -->
+					<!-- wp:search {"showLabel":false,"placeholder":"Search…","buttonText":"Search","buttonPosition":"button-only","buttonUseIcon":true,"className":"np-no-results-search","style":{"spacing":{"padding":{"top":"var:preset|spacing|12","bottom":"var:preset|spacing|12"}}}} /-->
 				<!-- /wp:query-no-results -->
 
 				<!-- wp:query-pagination {"layout":{"type":"flex","justifyContent":"flex-start","flexWrap":"wrap"},"className":"np-pagination"} -->

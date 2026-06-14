@@ -40,6 +40,13 @@
 			<p class="np-category-label" style="color:var(--wp--preset--color--accent-red)">Breaking News</p>
 			<!-- /wp:paragraph -->
 
+			<!-- This pattern supplies the page's single h1 (the lead headline
+			     below). Insert it on a template that does not already render an
+			     h1 — pairing it with another h1 block (or with a page using
+			     page.html, which carries its own title h1) produces two h1s and
+			     breaks the WCAG 2.1 1.3.1 single-h1 guarantee. On a layout that
+			     already has an h1, demote this heading to level:2 in the block
+			     toolbar. -->
 			<!-- wp:heading {"level":1,"className":"np-headline--hero","style":{"typography":{"fontFamily":"var:preset|font-family|playfair-display","fontSize":"clamp(1.75rem,4vw,2.75rem)","fontWeight":"700","lineHeight":"1.15"}}} -->
 			<h1 class="np-headline--hero">The headline that demands attention and makes readers click.</h1>
 			<!-- /wp:heading -->

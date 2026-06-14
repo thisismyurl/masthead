@@ -41,7 +41,7 @@
 	counter-increment: cl-step;
 	content: counter(cl-step);
 	position: absolute;
-	left: 0;
+	inset-inline-start: 0;
 	top: 0;
 	width: 1.75rem;
 	height: 1.75rem;

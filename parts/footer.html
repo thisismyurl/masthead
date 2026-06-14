@@ -9,13 +9,18 @@
 		<!-- wp:column {"width":"33.33%"} -->
 		<div class="wp-block-column" style="flex-basis:33.33%">
 
-			<!-- wp:site-title {"level":0,"isLink":true,"className":"np-footer__nameplate","textColor":"paper-white"} /-->
+			<!-- Nameplate inherits the footer's edition-stable light text
+			     (.np-footer color: --np-footer-fg); it must NOT bind the
+			     paper-white token, which inverts to a dark value in the
+			     Midnight and Broadsheet editions and would render the
+			     nameplate near-invisibly dark-on-dark. -->
+			<!-- wp:site-title {"level":0,"isLink":true,"className":"np-footer__nameplate"} /-->
 
 			<!-- wp:site-tagline {"className":"np-footer__tagline","style":{"color":{"text":"rgba(248,248,246,0.55)"}}} /-->
 
 			<!-- wp:paragraph {"className":"np-footer__about","style":{"color":{"text":"rgba(248,248,246,0.6)"},"typography":{"fontSize":"0.875rem","fontFamily":"var:preset|font-family|inter","lineHeight":"1.65"}}} -->
 			<p class="np-footer__about" style="color:rgba(248,248,246,0.6);font-family:var(--wp--preset--font-family--inter);font-size:0.875rem;line-height:1.65">
-				Independent, accurate, and free. Add your publication tagline or mission statement here.
+				Add your publication tagline or mission statement here.
 			</p>
 			<!-- /wp:paragraph -->
 
@@ -35,8 +40,8 @@
 		<!-- Column 2: Sections -->
 		<!-- wp:column {"width":"22.22%"} -->
 		<div class="wp-block-column" style="flex-basis:22.22%">
-			<!-- wp:heading {"level":3,"className":"np-footer__nav-heading","style":{"color":{"text":"rgba(248,248,246,0.4)"},"typography":{"fontSize":"0.6875rem","fontFamily":"var:preset|font-family|inter","fontWeight":"800","letterSpacing":"0.12em","textTransform":"uppercase"}}} -->
-			<h3 class="np-footer__nav-heading" style="color:rgba(248,248,246,0.4)">Sections</h3>
+			<!-- wp:heading {"level":3,"className":"np-footer__nav-heading","style":{"color":{"text":"rgba(248,248,246,0.6)"},"typography":{"fontSize":"0.6875rem","fontFamily":"var:preset|font-family|inter","fontWeight":"800","letterSpacing":"0.12em","textTransform":"uppercase"}}} -->
+			<h3 class="np-footer__nav-heading" style="color:rgba(248,248,246,0.6)">Sections</h3>
 			<!-- /wp:heading -->
 			<!-- wp:navigation {"menuSlug":"footer-column-1","overlayMenu":"never","layout":{"type":"flex","orientation":"vertical"},"className":"np-footer__nav"} /-->
 		</div>
@@ -45,8 +50,8 @@
 		<!-- Column 3: Company -->
 		<!-- wp:column {"width":"22.22%"} -->
 		<div class="wp-block-column" style="flex-basis:22.22%">
-			<!-- wp:heading {"level":3,"className":"np-footer__nav-heading","style":{"color":{"text":"rgba(248,248,246,0.4)"},"typography":{"fontSize":"0.6875rem","fontFamily":"var:preset|font-family|inter","fontWeight":"800","letterSpacing":"0.12em","textTransform":"uppercase"}}} -->
-			<h3 class="np-footer__nav-heading" style="color:rgba(248,248,246,0.4)">Company</h3>
+			<!-- wp:heading {"level":3,"className":"np-footer__nav-heading","style":{"color":{"text":"rgba(248,248,246,0.6)"},"typography":{"fontSize":"0.6875rem","fontFamily":"var:preset|font-family|inter","fontWeight":"800","letterSpacing":"0.12em","textTransform":"uppercase"}}} -->
+			<h3 class="np-footer__nav-heading" style="color:rgba(248,248,246,0.6)">Company</h3>
 			<!-- /wp:heading -->
 			<!-- wp:navigation {"menuSlug":"footer-column-2","overlayMenu":"never","layout":{"type":"flex","orientation":"vertical"},"className":"np-footer__nav"} /-->
 		</div>
@@ -55,13 +60,13 @@
 		<!-- Column 4: Subscribe -->
 		<!-- wp:column {"width":"22.22%"} -->
 		<div class="wp-block-column" style="flex-basis:22.22%">
-			<!-- wp:heading {"level":3,"className":"np-footer__nav-heading","style":{"color":{"text":"rgba(248,248,246,0.4)"},"typography":{"fontSize":"0.6875rem","fontFamily":"var:preset|font-family|inter","fontWeight":"800","letterSpacing":"0.12em","textTransform":"uppercase"}}} -->
-			<h3 class="np-footer__nav-heading" style="color:rgba(248,248,246,0.4)">Subscribe</h3>
+			<!-- wp:heading {"level":3,"className":"np-footer__nav-heading","style":{"color":{"text":"rgba(248,248,246,0.6)"},"typography":{"fontSize":"0.6875rem","fontFamily":"var:preset|font-family|inter","fontWeight":"800","letterSpacing":"0.12em","textTransform":"uppercase"}}} -->
+			<h3 class="np-footer__nav-heading" style="color:rgba(248,248,246,0.6)">Subscribe</h3>
 			<!-- /wp:heading -->
 
 			<!-- wp:paragraph {"style":{"color":{"text":"rgba(248,248,246,0.6)"},"typography":{"fontSize":"0.875rem","fontFamily":"var:preset|font-family|inter","lineHeight":"1.5"}}} -->
 			<p style="color:rgba(248,248,246,0.6);font-family:var(--wp--preset--font-family--inter);font-size:0.875rem;line-height:1.5">
-				Get the daily briefing delivered to your inbox.
+				Add your newsletter signup copy here.
 			</p>
 			<!-- /wp:paragraph -->
 
@@ -84,11 +89,11 @@
 	<!-- wp:group {"className":"np-footer__bottom","layout":{"type":"flex","flexWrap":"wrap","justifyContent":"space-between","verticalAlignment":"center"}} -->
 	<div class="wp-block-group np-footer__bottom">
 
-		<!-- wp:paragraph {"className":"np-footer__copyright","style":{"color":{"text":"rgba(248,248,246,0.45)"},"typography":{"fontSize":"0.8125rem","fontFamily":"var:preset|font-family|inter"}},"metadata":{"bindings":{"content":{"source":"masthead/copyright"}}}} -->
-		<p class="np-footer__copyright" style="color:rgba(248,248,246,0.45);font-family:var(--wp--preset--font-family--inter);font-size:0.8125rem"></p>
+		<!-- wp:paragraph {"className":"np-footer__copyright","style":{"color":{"text":"rgba(248,248,246,0.6)"},"typography":{"fontSize":"0.8125rem","fontFamily":"var:preset|font-family|inter"}},"metadata":{"bindings":{"content":{"source":"masthead/copyright"}}}} -->
+		<p class="np-footer__copyright" style="color:rgba(248,248,246,0.6);font-family:var(--wp--preset--font-family--inter);font-size:0.8125rem"></p>
 		<!-- /wp:paragraph -->
 
-		<!-- wp:navigation {"menuSlug":"footer-legal","overlayMenu":"never","layout":{"type":"flex","flexWrap":"nowrap","justifyContent":"right"},"style":{"typography":{"fontSize":"0.8125rem"},"color":{"text":"rgba(248,248,246,0.45)"}}} /-->
+		<!-- wp:navigation {"menuSlug":"footer-legal","overlayMenu":"never","layout":{"type":"flex","flexWrap":"nowrap","justifyContent":"right"},"style":{"typography":{"fontSize":"0.8125rem"},"color":{"text":"rgba(248,248,246,0.6)"}}} /-->
 
 	</div>
 	<!-- /wp:group -->

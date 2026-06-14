@@ -17,7 +17,7 @@
         },
         {
           "slug": "ink-muted",
-          "color": "#8A8878",
+          "color": "#9A9888",
           "name": "Ink Muted"
         },
         {
@@ -52,7 +52,7 @@
         },
         {
           "slug": "accent-red",
-          "color": "#D84040",
+          "color": "#E57373",
           "name": "Accent Red"
         },
         {
@@ -74,13 +74,44 @@
           "slug": "base-black",
           "color": "#FFFFFF",
           "name": "Base Black"
+        },
+        {
+          "slug": "section-sports",
+          "color": "#FF8A50",
+          "name": "Section Sports"
+        },
+        {
+          "slug": "section-politics",
+          "color": "#5B8DD6",
+          "name": "Section Politics"
+        },
+        {
+          "slug": "section-business",
+          "color": "#5CB85C",
+          "name": "Section Business"
+        },
+        {
+          "slug": "section-culture",
+          "color": "#B07CD6",
+          "name": "Section Culture"
+        },
+        {
+          "slug": "section-tech",
+          "color": "#4A9EFF",
+          "name": "Section Technology"
+        },
+        {
+          "slug": "section-world",
+          "color": "#7CC47C",
+          "name": "Section World"
         }
       ]
     },
     "custom": {
       "colophon-light": "#0D0D0D",
       "colophon-dark": "#F0EDE6",
-      "colophon-accent": "#4A80C4"
+      "colophon-accent": "#4A80C4",
+      "on-accent": "#0D0D0D"
     }
   },
   "styles": {

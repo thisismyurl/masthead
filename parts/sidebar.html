@@ -55,9 +55,9 @@
 
 		<!-- wp:buttons -->
 		<div class="wp-block-buttons">
-			<!-- wp:button {"style":{"color":{"background":"var:preset|color|accent-red","text":"#fff"}}} -->
+			<!-- wp:button {"style":{"color":{"background":"var:preset|color|accent-red","text":"var:preset|color|paper-white"}}} -->
 			<div class="wp-block-button">
-				<a class="wp-block-button__link wp-element-button" href="/newsletter">
+				<a class="wp-block-button__link has-text-color has-background wp-element-button" href="/newsletter" style="background-color:var(--wp--preset--color--accent-red);color:var(--wp--preset--color--paper-white)">
 					Subscribe Free
 				</a>
 			</div>
@@ -100,7 +100,10 @@
 	<div class="wp-block-group np-sidebar-widget">
 		<!-- wp:group {"className":"np-ad-placeholder np-ad-placeholder--rectangle","style":{"border":{"style":"dashed","color":"var:preset|color|rule-medium","width":"1px"}}} -->
 		<div class="wp-block-group np-ad-placeholder np-ad-placeholder--rectangle">
-			<!-- wp:paragraph {"style":{"typography":{"fontSize":"0.6875rem","textTransform":"uppercase","letterSpacing":"0.08em"},"color":{"text":"var:preset|color|ink-faint"}}} -->
+			<!-- Ink Muted, not Ink Faint: the ad label is readable UI text and must
+			     clear WCAG 3:1 on the paper-light ground. Ink Faint composites to
+			     1.6–2.8:1 across the editions; Ink Muted clears it everywhere. -->
+			<!-- wp:paragraph {"style":{"typography":{"fontSize":"0.6875rem","textTransform":"uppercase","letterSpacing":"0.08em"},"color":{"text":"var:preset|color|ink-muted"}}} -->
 			<p>Advertisement<br>300 × 250</p>
 			<!-- /wp:paragraph -->
 		</div>

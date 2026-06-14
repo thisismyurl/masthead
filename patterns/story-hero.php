@@ -19,6 +19,12 @@
 	<p class="wp-block-paragraph np-eyebrow has-accent-red-color has-text-color" style="font-family:var(--wp--preset--font-family--inter);font-size:var(--wp--preset--font-size--xs);font-weight:700;letter-spacing:0.1em;text-transform:uppercase">Politics &amp; Policy</p>
 	<!-- /wp:paragraph -->
 
+	<!-- This pattern supplies the page's single h1 (the story headline below).
+	     Insert it on a template that does not already render an h1 — pairing it
+	     with another h1 block (or with a page using page.html, which carries its
+	     own title h1) produces two h1s and breaks the WCAG 2.1 1.3.1 single-h1
+	     guarantee. On a layout that already has an h1, demote this heading to
+	     level:2 in the block toolbar. -->
 	<!-- wp:heading {"level":1,"className":"np-story-hero__headline","style":{"typography":{"fontSize":"var:preset|font-size|4xl","fontFamily":"var:preset|font-family|playfair-display","fontWeight":"700","lineHeight":"1.08","letterSpacing":"-0.02em"},"color":{"text":"var:preset|color|ink-primary"},"spacing":{"margin":{"top":"var:preset|spacing|4","bottom":"var:preset|spacing|5"}}}} -->
 	<h1 class="wp-block-heading np-story-hero__headline has-ink-primary-color has-text-color" style="font-family:var(--wp--preset--font-family--playfair-display);font-size:var(--wp--preset--font-size--4xl);font-weight:700;line-height:1.08;letter-spacing:-0.02em;margin-top:var(--wp--preset--spacing--4);margin-bottom:var(--wp--preset--spacing--5)">New Legislation Would Reshape How Cities Fund Public Transit</h1>
 	<!-- /wp:heading -->
@@ -38,8 +44,8 @@
 		</div>
 		<!-- /wp:group -->
 
-		<!-- wp:paragraph {"style":{"typography":{"fontSize":"var:preset|font-size|xs","fontFamily":"var:preset|font-family|inter"},"color":{"text":"var:preset|color|ink-faint"}}} -->
-		<p class="wp-block-paragraph has-ink-faint-color has-text-color" style="font-family:var(--wp--preset--font-family--inter);font-size:var(--wp--preset--font-size--xs)">June 8, 2026 &nbsp;&middot;&nbsp; 8 min read</p>
+		<!-- wp:paragraph {"style":{"typography":{"fontSize":"var:preset|font-size|xs","fontFamily":"var:preset|font-family|inter"},"color":{"text":"var:preset|color|ink-muted"}}} -->
+		<p class="wp-block-paragraph has-ink-muted-color has-text-color" style="font-family:var(--wp--preset--font-family--inter);font-size:var(--wp--preset--font-size--xs)">June 8, 2026 &nbsp;&middot;&nbsp; 8 min read</p>
 		<!-- /wp:paragraph -->
 
 	</div>
