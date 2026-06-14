@@ -35,15 +35,11 @@
 			<!-- /wp:post-template -->
 
 			<!-- wp:query-no-results -->
+				<!-- No-results prose removed so no untranslatable English ships in
+				     the template; the search form below is the retry path. -->
 				<!-- wp:group {"style":{"spacing":{"padding":{"top":"var:preset|spacing|12","bottom":"var:preset|spacing|12"}}},"layout":{"type":"default"}} -->
 				<div class="wp-block-group">
-					<!-- wp:heading {"level":2,"style":{"typography":{"fontFamily":"var:preset|font-family|playfair-display"}}} -->
-					<h2>Nothing matched your search.</h2>
-					<!-- /wp:heading -->
-					<!-- wp:paragraph -->
-					<p>Try different keywords, or browse the sections below.</p>
-					<!-- /wp:paragraph -->
-					<!-- wp:search {"label":"Search","buttonText":"Search","buttonPosition":"button-outside","showLabel":false} /-->
+					<!-- wp:search {"label":"Search","buttonText":"Search","buttonPosition":"button-outside","showLabel":false,"className":"np-search-form"} /-->
 				</div>
 				<!-- /wp:group -->
 			<!-- /wp:query-no-results -->

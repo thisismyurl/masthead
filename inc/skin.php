@@ -13,10 +13,19 @@
 namespace Masthead;
 
 defined( 'ABSPATH' ) || exit;
+
 // Opt this theme into GitHub-release self-updates (see inc/github-updater.php).
-add_filter( 'masthead/github_updater_repo', static function (): string {{
-	return 'thisismyurl/masthead';
-}} );
+// Gated on the updater file existing: the WordPress.org distribution strips
+// inc/github-updater.php via .distignore, so this opt-in is inert in the
+// shipped theme and only activates in the GitHub-hosted build.
+if ( file_exists( __DIR__ . '/github-updater.php' ) ) {
+	add_filter(
+		'masthead/github_updater_repo',
+		static function (): string {
+			return 'thisismyurl/masthead';
+		}
+	);
+}
 
 // =========================================================================
 // SETUP — menus, post formats, image sizes
@@ -129,12 +138,12 @@ function skin_enqueue_interactivity(): void {
 		return;
 	}
 	wp_register_script_module(
-		'thisismyurl-newspaper-view',
+		SLUG . '-breaking-news-view',
 		get_template_directory_uri() . '/assets/js/breaking-news.js',
 		array( array( 'id' => '@wordpress/interactivity' ) ),
 		(string) filemtime( $script )
 	);
-	wp_enqueue_script_module( 'thisismyurl-newspaper-view' );
+	wp_enqueue_script_module( SLUG . '-breaking-news-view' );
 }
 add_action( 'wp_enqueue_scripts', __NAMESPACE__ . '\\skin_enqueue_interactivity' );
 

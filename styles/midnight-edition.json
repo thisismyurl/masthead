@@ -6,7 +6,8 @@
 		"custom": {
 			"colophon-light": "#0d0d0d",
 			"colophon-dark": "#ece8e0",
-			"colophon-accent": "#cc2222"
+			"colophon-accent": "#cc2222",
+			"on-accent": "#0d0d0d"
 		},
 		"color": {
 			"palette": [
@@ -57,7 +58,7 @@
 				},
 				{
 					"slug": "accent-red",
-					"color": "#cc2222",
+					"color": "#ef5350",
 					"name": "Accent Red"
 				},
 				{
@@ -79,6 +80,36 @@
 					"slug": "base-black",
 					"color": "#ece8e0",
 					"name": "Base Black"
+				},
+				{
+					"slug": "section-sports",
+					"color": "#ff8a50",
+					"name": "Section Sports"
+				},
+				{
+					"slug": "section-politics",
+					"color": "#5b8dd6",
+					"name": "Section Politics"
+				},
+				{
+					"slug": "section-business",
+					"color": "#5cb85c",
+					"name": "Section Business"
+				},
+				{
+					"slug": "section-culture",
+					"color": "#b07cd6",
+					"name": "Section Culture"
+				},
+				{
+					"slug": "section-tech",
+					"color": "#4a9eff",
+					"name": "Section Technology"
+				},
+				{
+					"slug": "section-world",
+					"color": "#7cc47c",
+					"name": "Section World"
 				}
 			]
 		}
@@ -87,6 +118,14 @@
 		"color": {
 			"background": "var(--wp--preset--color--paper-white)",
 			"text": "var(--wp--preset--color--ink-primary)"
+		},
+		"elements": {
+			"button": {
+				"color": {
+					"background": "var(--wp--preset--color--accent-red)",
+					"text": "var(--wp--preset--color--paper-white)"
+				}
+			}
 		}
 	}
 }

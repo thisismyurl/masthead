@@ -35,8 +35,29 @@ body {
 :root {
 	--cl-focus-ring:         var(--wp--preset--color--accent-red, #c62828);
 	--cl-focus-ring-inverse: var(--wp--preset--color--paper-off-white, #f8f8f6);
-	--cl-skip-bg:            var(--wp--preset--color--base-black, #0a0a0a);
+	/* Skip link is fixed dark chrome with #fff text, edition-stable for the same
+	   reason as the footer: base-black inverts to a light value in Midnight and
+	   Broadsheet, which would render the white skip-link label at ~1:1 — an
+	   accessibility-critical failure on the first keyboard-focusable element. */
+	--cl-skip-bg:            var(--np-footer-bg, #0a0a0a);
 	--cl-skip-fg:            #fff;
+
+	/* Text colour that sits ON the accent-red button ground. White by default;
+	   the dark editions (Midnight, Broadsheet) lighten accent-red for label
+	   legibility on their dark ground, which drops white button text to ~3:1 —
+	   so they re-point this to their dark paper via settings.custom.on-accent.
+	   Read through the same --wp--custom-- bridge Colophon uses for its anchors. */
+	--np-on-accent:          var(--wp--custom--on-accent, #fff);
+
+	/* Footer chrome ground — intentionally edition-stable. The newspaper footer
+	   is a dark masthead band in every edition, so its ground must NOT follow
+	   the base-black palette token: base-black is "the darkest ink", which
+	   inverts to a light value in the dark editions (Midnight, Broadsheet),
+	   and binding the footer to it composited the near-white footer text down
+	   to ~1.04:1. This fixed dark value keeps the footer dark-ground/light-text
+	   everywhere and clears WCAG 4.5:1 against the rgba text in parts/footer.html. */
+	--np-footer-bg:          #0a0a0a;
+	--np-footer-fg:          #f8f8f6;
 
 	/* Runtime tokens */
 	--np-transition:       200ms cubic-bezier(0.4, 0, 0.2, 1);
@@ -57,10 +78,10 @@ body {
 	--np-col-politics: var(--wp--preset--color--section-politics, #1a3762);
 	--np-col-business: var(--wp--preset--color--section-business, #1b5e20);
 	--np-col-culture:  var(--wp--preset--color--section-culture, #6a1b9a);
-	--np-col-sports:   var(--wp--preset--color--section-sports, #e65100);
+	--np-col-sports:   var(--wp--preset--color--section-sports, #bf360c);
 	--np-col-tech:     var(--wp--preset--color--section-tech, #0d47a1);
 	--np-col-opinion:  var(--wp--preset--color--accent-red, #c62828);
-	--np-col-world:    #3d7a3d;
+	--np-col-world:    var(--wp--preset--color--section-world, #3d7a3d);
 
 	/* Active section colour (set per section block) */
 	--np-section-color: var(--np-col-news);
@@ -111,7 +132,7 @@ body {
 
 	::selection {
 		background-color: var(--wp--preset--color--accent-red, #c62828);
-		color: #fff;
+		color: var(--np-on-accent, #fff);
 	}
 
 	:focus-visible {
@@ -226,7 +247,7 @@ body {
 	.np-subscribe-btn {
 		padding: 0.25rem 0.875rem;
 		background: var(--wp--preset--color--accent-red, #c62828);
-		color: #fff !important;
+		color: var(--np-on-accent, #fff) !important;
 		font-weight: 700;
 		font-size: 0.6875rem;
 		letter-spacing: 0.1em;
@@ -234,7 +255,7 @@ body {
 		opacity: 1 !important;
 		transition: background var(--np-transition) !important;
 	}
-	.np-subscribe-btn:hover { background: #a32020 !important; }
+	.np-subscribe-btn:hover { background: #a32020 !important; color: #fff !important; }
 
 	@media (max-width: 767px) {
 		.np-utility-bar { display: none; }
@@ -710,7 +731,7 @@ body {
 		width: 100%;
 		padding: 0.625rem 0.875rem;
 		border: 1px solid var(--wp--preset--color--rule-medium, #c0c0b8);
-		background: #fff;
+		background: var(--wp--preset--color--paper-white);
 		font-size: 0.875rem;
 		color: var(--wp--preset--color--ink-primary, #1a1a1a);
 		transition: border-color var(--np-transition);
@@ -720,14 +741,14 @@ body {
 		border-color: var(--wp--preset--color--accent-red, #c62828);
 	}
 	.np-newsletter input[type="email"]::placeholder {
-		color: var(--wp--preset--color--ink-faint, #9b9b9b);
+		color: var(--wp--preset--color--ink-muted, #6b6b6b);
 	}
 
 	.np-newsletter button[type="submit"],
 	.np-newsletter .wp-block-button__link {
 		padding: 0.625rem 1.25rem !important;
 		background: var(--wp--preset--color--accent-red, #c62828) !important;
-		color: #fff !important;
+		color: var(--np-on-accent, #fff) !important;
 		border: none;
 		font-size: 0.8125rem;
 		font-weight: 700;
@@ -738,7 +759,7 @@ body {
 		border-radius: 0 !important;
 	}
 	.np-newsletter button[type="submit"]:hover,
-	.np-newsletter .wp-block-button__link:hover { background: #a32020 !important; }
+	.np-newsletter .wp-block-button__link:hover { background: #a32020 !important; color: #fff !important; }
 
 	/* Ad placeholders */
 	.np-ad-placeholder {
@@ -751,7 +772,7 @@ body {
 		font-size: 0.6875rem;
 		letter-spacing: 0.08em;
 		text-transform: uppercase;
-		color: var(--wp--preset--color--ink-faint, #9b9b9b);
+		color: var(--wp--preset--color--ink-muted, #6b6b6b);
 		text-align: center;
 		width: 100%;
 	}
@@ -943,7 +964,7 @@ body {
 	.wp-block-query-pagination-numbers a:hover { border-color: var(--wp--preset--color--rule-medium, #c0c0b8); }
 	.wp-block-query-pagination-numbers .current {
 		background: var(--wp--preset--color--accent-red, #c62828);
-		color: #fff;
+		color: var(--np-on-accent, #fff);
 		border-color: var(--wp--preset--color--accent-red, #c62828);
 	}
 
@@ -963,14 +984,19 @@ body {
 	.wp-block-query-pagination-previous-page:hover,
 	.wp-block-query-pagination-next-page:hover {
 		background: var(--wp--preset--color--ink-primary, #1a1a1a);
-		color: #fff;
+		color: var(--wp--preset--color--paper-white);
 		border-color: var(--wp--preset--color--ink-primary, #1a1a1a);
 	}
 
 	/* Footer */
 	.np-footer {
-		background: var(--wp--preset--color--base-black, #0a0a0a);
-		color: var(--wp--preset--color--paper-off-white, #f8f8f6);
+		/* Edition-stable dark chrome (see --np-footer-bg note above). Both the
+		   ground AND the base text are fixed: the footer is a self-contained
+		   dark band in every edition, so neither may follow palette tokens
+		   (base-black / paper-off-white) that invert to light values in the
+		   dark editions — that would composite footer text to ~1.1:1. */
+		background: var(--np-footer-bg, #0a0a0a);
+		color: var(--np-footer-fg, #f8f8f6);
 		padding-block: clamp(3rem, 6vw, 6rem);
 	}
 
@@ -993,7 +1019,8 @@ body {
 		font-family: var(--wp--preset--font-family--lora, Georgia, serif);
 		font-size: 0.9375rem;
 		font-style: italic;
-		opacity: 0.55;
+		/* Colour is set per-instance (footer.html rgba); no opacity dim —
+		   it would compound the alpha below WCAG 4.5:1. */
 		margin-block-end: 2rem;
 	}
 	.np-footer__nav-heading {
@@ -1002,7 +1029,8 @@ body {
 		font-weight: 800;
 		letter-spacing: 0.12em;
 		text-transform: uppercase;
-		opacity: 0.4;
+		/* Colour is set per-instance (footer.html rgba / section-footer ink-faint);
+		   no opacity dim here — it would compound the alpha below WCAG 4.5:1. */
 		margin-block-end: 1rem;
 	}
 	.np-footer__nav li + li { margin-block-start: 0.5rem; }
@@ -1024,7 +1052,7 @@ body {
 	.np-footer__copyright {
 		font-family: var(--wp--preset--font-family--inter, system-ui, sans-serif);
 		font-size: 0.8125rem;
-		opacity: 0.45;
+		/* Colour is set per-instance; no opacity dim — see nav-heading note. */
 	}
 }
 
@@ -1112,7 +1140,7 @@ body {
 	}
 	.wp-block-table th {
 		background: var(--wp--preset--color--ink-primary, #1a1a1a);
-		color: #fff;
+		color: var(--wp--preset--color--paper-white);
 		font-weight: 700;
 		text-align: start;
 		padding: 0.75rem 1rem;
@@ -1142,7 +1170,7 @@ body {
 	.wp-block-tag-cloud a:hover {
 		background: var(--wp--preset--color--accent-red, #c62828) !important;
 		border-color: var(--wp--preset--color--accent-red, #c62828) !important;
-		color: #fff !important;
+		color: var(--np-on-accent, #fff) !important;
 	}
 
 	.wp-block-button__link {
@@ -1155,6 +1183,7 @@ body {
 	}
 	.is-style-fill .wp-block-button__link {
 		background: var(--wp--preset--color--accent-red, #c62828) !important;
+		color: var(--np-on-accent, #fff) !important;
 	}
 	.is-style-outline .wp-block-button__link {
 		border-width: 2px !important;
@@ -1168,7 +1197,7 @@ body {
 		border-radius: 0 !important;
 		font-family: var(--wp--preset--font-family--inter, system-ui, sans-serif) !important;
 		background: var(--wp--preset--color--ink-primary, #1a1a1a) !important;
-		color: #fff !important;
+		color: var(--wp--preset--color--paper-white) !important;
 	}
 }
 
@@ -1285,7 +1314,7 @@ body {
 
 	.np-sidebar-widget { border-block-start-color: #e8e8e4; }
 
-	.np-ad-placeholder { background: #1a1a1e; border-color: #2a2a2e; }
+	.np-ad-placeholder { background: #1a1a1e; border-color: #2a2a2e; color: #9b9b9b; }
 
 	.wp-block-table th { background: #2a2a2e; }
 	.wp-block-table tr:nth-child(even) td { background: #1a1a1e; }

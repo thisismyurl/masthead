@@ -91,13 +91,18 @@
         },
         {
           "slug": "section-sports",
-          "color": "#e65100",
+          "color": "#bf360c",
           "name": "Section Sports"
         },
         {
           "slug": "section-tech",
           "color": "#0d47a1",
           "name": "Section Technology"
+        },
+        {
+          "slug": "section-world",
+          "color": "#3d7a3d",
+          "name": "Section World"
         },
         {
           "slug": "breaking-red",
@@ -450,7 +455,8 @@
     "custom": {
       "colophon-light": "#ffffff",
       "colophon-dark": "#0a0a0a",
-      "colophon-accent": "#1a3762"
+      "colophon-accent": "#1a3762",
+      "on-accent": "#ffffff"
     }
   },
   "styles": {

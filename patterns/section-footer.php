@@ -35,7 +35,7 @@
 			<h3 class="wp-block-heading np-footer__nav-heading has-ink-faint-color has-text-color has-inter-font-family has-xs-font-size" style="font-weight:800;letter-spacing:0.12em;text-transform:uppercase">About Us</h3>
 			<!-- /wp:heading -->
 			<!-- wp:paragraph {"className":"np-footer__about","fontSize":"sm","fontFamily":"inter","textColor":"ink-faint","style":{"typography":{"lineHeight":"1.7"}}} -->
-			<p class="np-footer__about has-ink-faint-color has-text-color has-inter-font-family has-sm-font-size" style="line-height:1.7">Independent reporting on the stories that shape the day. The Masthead has covered politics, business, and culture for readers who expect the full account, not the headline.</p>
+			<p class="np-footer__about has-ink-faint-color has-text-color has-inter-font-family has-sm-font-size" style="line-height:1.7">Add a short description of your publication here.</p>
 			<!-- /wp:paragraph -->
 		</div>
 		<!-- /wp:column -->
@@ -79,7 +79,7 @@
 			<h3 class="wp-block-heading np-footer__nav-heading has-ink-faint-color has-text-color has-inter-font-family has-xs-font-size" style="font-weight:800;letter-spacing:0.12em;text-transform:uppercase">Subscribe</h3>
 			<!-- /wp:heading -->
 			<!-- wp:paragraph {"className":"np-footer__about","fontSize":"sm","fontFamily":"inter","textColor":"ink-faint","style":{"typography":{"lineHeight":"1.7"},"spacing":{"margin":{"bottom":"var:preset|spacing|5"}}}} -->
-			<p class="np-footer__about has-ink-faint-color has-text-color has-inter-font-family has-sm-font-size" style="line-height:1.7">The free daily digest lands in your inbox each morning.</p>
+			<p class="np-footer__about has-ink-faint-color has-text-color has-inter-font-family has-sm-font-size" style="line-height:1.7">Add your newsletter signup copy here.</p>
 			<!-- /wp:paragraph -->
 			<!-- wp:buttons -->
 			<div class="wp-block-buttons">
@@ -96,8 +96,11 @@
 
 	<!-- wp:group {"className":"np-footer__bottom","style":{"spacing":{"padding":{"top":"var:preset|spacing|8"},"blockGap":"var:preset|spacing|5"},"border":{"top":{"color":"var:preset|color|ink-secondary","style":"solid","width":"1px"}}},"layout":{"type":"flex","flexWrap":"wrap","justifyContent":"space-between","verticalAlignment":"center"}} -->
 	<div class="wp-block-group np-footer__bottom" style="border-top:1px solid var(--wp--preset--color--ink-secondary);padding-top:var(--wp--preset--spacing--8)">
-		<!-- wp:paragraph {"className":"np-footer__copyright","fontSize":"xs","fontFamily":"inter","textColor":"ink-faint"} -->
-		<p class="np-footer__copyright has-ink-faint-color has-text-color has-inter-font-family has-xs-font-size">&copy; 2026 The Masthead. All rights reserved.</p>
+		<!-- Copyright is bound to the masthead/copyright source (inc/bindings.php),
+		     matching parts/footer.html: it renders "© {current year} {Site Title}.
+		     All rights reserved." with a live year and no static placeholder. -->
+		<!-- wp:paragraph {"className":"np-footer__copyright","fontSize":"xs","fontFamily":"inter","textColor":"ink-faint","metadata":{"bindings":{"content":{"source":"masthead/copyright"}}}} -->
+		<p class="np-footer__copyright has-ink-faint-color has-text-color has-inter-font-family has-xs-font-size"></p>
 		<!-- /wp:paragraph -->
 		<!-- wp:paragraph {"className":"np-footer__legal","fontSize":"xs","fontFamily":"inter","textColor":"ink-faint"} -->
 		<p class="np-footer__legal has-ink-faint-color has-text-color has-inter-font-family has-xs-font-size"><a href="/privacy">Privacy</a> &nbsp;&middot;&nbsp; <a href="/terms">Terms</a> &nbsp;&middot;&nbsp; <a href="/ethics">Ethics Policy</a> &nbsp;&middot;&nbsp; <a href="/contact">Contact</a></p>

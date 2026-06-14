@@ -27,6 +27,10 @@
 						<!-- wp:group {"className":"np-story-card__body","style":{"spacing":{"padding":{"top":"var:preset|spacing|5"},"blockGap":"var:preset|spacing|3"}},"layout":{"type":"default"}} -->
 						<div class="wp-block-group np-story-card__body">
 							<!-- wp:post-terms {"term":"category","className":"np-category-label"} /-->
+							<!-- The page's single h1: the lead-story headline. This query
+							     returns at most one (sticky) post, so exactly one h1 renders.
+							     The no-results fallback below carries the matching h1 for the
+							     no-sticky case; only one of the two ever renders. -->
 							<!-- wp:post-title {"level":1,"isLink":true} /-->
 							<!-- wp:post-excerpt {"moreText":"","className":"np-article-deck"} /-->
 							<!-- wp:group {"className":"np-byline","layout":{"type":"flex","flexWrap":"wrap","verticalAlignment":"center"}} -->
@@ -53,6 +57,9 @@
 								<!-- wp:group {"className":"np-story-card__body","style":{"spacing":{"blockGap":"var:preset|spacing|3"}},"layout":{"type":"default"}} -->
 								<div class="wp-block-group np-story-card__body">
 									<!-- wp:post-terms {"term":"category","className":"np-category-label"} /-->
+									<!-- The page's single h1 in the no-sticky case (latest post).
+									     Renders only inside query-no-results, so it never co-occurs
+									     with the sticky-hero h1 above. -->
 									<!-- wp:post-title {"level":1,"isLink":true} /-->
 									<!-- wp:post-excerpt {"moreText":""} /-->
 									<!-- wp:group {"className":"np-byline","layout":{"type":"flex","flexWrap":"wrap"}} -->
@@ -320,9 +327,9 @@
 
 			<!-- wp:buttons {"layout":{"type":"flex","justifyContent":"center"}} -->
 			<div class="wp-block-buttons">
-				<!-- wp:button {"style":{"color":{"background":"var:preset|color|accent-red","text":"#ffffff"}}} -->
+				<!-- wp:button {"style":{"color":{"background":"var:preset|color|accent-red","text":"var:preset|color|paper-white"}}} -->
 				<div class="wp-block-button">
-					<a class="wp-block-button__link wp-element-button" href="#">Subscribe — It's Free</a>
+					<a class="wp-block-button__link has-text-color has-background wp-element-button" href="#" style="background-color:var(--wp--preset--color--accent-red);color:var(--wp--preset--color--paper-white)">Subscribe — It's Free</a>
 				</div>
 				<!-- /wp:button -->
 			</div>
