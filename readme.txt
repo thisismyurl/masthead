@@ -1,12 +1,12 @@
 === Masthead ===
 Contributors: thisismyurl
 Requires at least: 6.7
-Tested up to: 6.8
+Tested up to: 7.0
 Requires PHP: 7.4
 Stable tag: 1.6165.0905
 License: GPL-2.0-or-later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
-Tags: news, blog, two-columns, grid-layout, full-site-editing, block-patterns, accessibility-ready, translation-ready, wide-blocks, custom-colors, custom-logo, custom-menu, editor-style, featured-images, sticky-post
+Tags: news, blog, two-columns, grid-layout, full-site-editing, block-patterns, translation-ready, wide-blocks, custom-colors, custom-logo, custom-menu, editor-style, featured-images, sticky-post
 
 For independent regional newsrooms: an accessible FSE newspaper theme with five named editions (Broadsheet, Tabloid, Midnight, Weekend, Digital First) as one-click style variations, bold editorial typography, and zero plugin dependencies.
 
