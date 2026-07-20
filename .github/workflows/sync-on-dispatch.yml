@@ -9,6 +9,10 @@ on:
         description: 'Colophon core branch or SHA to sync from'
         required: false
         default: 'main'
+      reason:
+        description: 'Why this sync is being run (shown in the sync PR body)'
+        required: false
+        default: 'Manual trigger'
 
 jobs:
   sync:
