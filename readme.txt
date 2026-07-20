@@ -3,7 +3,7 @@ Contributors: thisismyurl
 Requires at least: 6.7
 Tested up to: 7.0
 Requires PHP: 7.4
-Stable tag: 1.6165.0905
+Stable tag: 1.6201.0911
 License: GPL-2.0-or-later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 Tags: news, blog, two-columns, grid-layout, full-site-editing, block-patterns, translation-ready, wide-blocks, custom-colors, custom-logo, custom-menu, editor-style, featured-images, sticky-post
@@ -24,11 +24,11 @@ Key features:
 * Bold editorial typography — Playfair Display headlines, Lora body text, Inter UI (fonts are optional; beautiful system-font fallbacks included)
 * Editorial block patterns — story hero, breaking story, section header, section navigation, article and opinion rows, newsletter CTA, and a full section footer (eight patterns; see Block Patterns below)
 * Section colour coding — eight section accent colours (News, Politics, Business, Culture, Sports, Tech, Opinion, World) controlled by CSS custom properties
-* Reading progress indicator — pure CSS, no JavaScript (the only front-end feature with zero JS; see Accessibility & JavaScript below)
-* Drop cap support — apply via the np-dropcap block class
+* Reading progress indicator on the wide article template. Pure CSS, no JavaScript (see Accessibility & JavaScript below)
+* Drop cap support. Select a paragraph, then choose the "Drop Cap" style in the block Styles panel
 * Breaking news ticker — animated with CSS, with a small Interactivity-API dismiss button
 * Newsletter signup pattern — integrates with any form plugin
-* Advertisement placeholder blocks — IAB-standard sizes
+* Advertisement placeholder blocks in three IAB-standard sizes (see Advertisement Placeholders below)
 * Accessibility built to WCAG 2.2 AA guidance — skip link, visible focus outlines, ARIA landmarks, logical heading order, reduced-motion support (see Accessibility & JavaScript below)
 * RTL-ready — layout written with CSS logical properties (see Accessibility & JavaScript below for the documented caveat)
 * Dark mode — respects prefers-color-scheme automatically
@@ -36,7 +36,7 @@ Key features:
 * Print-optimised — navigation, ads, and sidebars hidden automatically
 * Core Web Vitals optimised — no render-blocking JavaScript, minimal CSS, lazy-loaded images
 * Sticky-post hero — pin your top story to the homepage hero position
-* Compatible with Yoast SEO, Rank Math, WPForms, Gravity Forms, WooCommerce, Newspack, and The Events Calendar
+* No plugin lock-in. Standard block markup and template parts, so SEO, forms, commerce and events plugins work alongside it without theme-side glue
 
 == Installation ==
 
@@ -57,10 +57,10 @@ Homepage:
 3. Pin your featured story using the Sticky checkbox in the post publish panel.
 
 Section navigation:
-Create a navigation menu called "Section Navigation" and assign it to the Section Navigation menu location.
+The section rail lists your site's categories automatically. Create the categories you publish under and they appear. To place the rail elsewhere, or to use hand-picked links instead, insert the "Section Navigation" pattern from the Patterns inserter.
 
 Breaking news:
-Add a "Breaking News" category or tag. Recent posts from that taxonomy populate the breaking news ticker (customisable in the Site Editor → Template Parts → Breaking News Bar).
+Add a "Breaking News" category. Recent posts in that category populate the breaking news ticker (customisable in the Site Editor → Template Parts → Breaking News Bar).
 
 == Block Patterns ==
 
@@ -75,6 +75,19 @@ Section Footer             — Full dark-ground footer with nameplate and links
 Section Header             — Coloured section title with horizontal rule
 Section Navigation         — Inline row of section links
 Story Hero                 — Full-width story headline, deck, and byline row
+
+== Advertisement Placeholders ==
+
+The sidebar ships a medium-rectangle placeholder. Two further IAB sizes are
+styled and available. Add the size class to any Group block via the block's
+Advanced → Additional CSS class(es) field:
+
+  np-ad-placeholder np-ad-placeholder--rectangle     (300×250)
+  np-ad-placeholder np-ad-placeholder--leaderboard   (728×90)
+  np-ad-placeholder np-ad-placeholder--billboard     (970×250)
+
+These are visual placeholders with a dashed outline, not an ad server. Replace
+the block's contents with your network's embed code when you have one.
 
 == Editions ==
 
@@ -124,11 +137,13 @@ while holding the same metrics. Switching editions never touches layout or CSS.
 Override section accent colours in Appearance → Customize → Additional CSS:
 
   :root {
+    --np-col-news:     #c62828;
     --np-col-politics: #1a3762;
     --np-col-business: #1b5e20;
     --np-col-culture:  #6a1b9a;
     --np-col-sports:   #bf360c;
     --np-col-tech:     #0d47a1;
+    --np-col-opinion:  #c62828;
     --np-col-world:    #3d7a3d;
   }
 
@@ -136,13 +151,23 @@ Apply a section colour to any Group block by adding its CSS class (e.g., np-sect
 
 == Plugin Compatibility ==
 
-Works with (no configuration required):
-* Yoast SEO / Rank Math — meta tags injected before </head>
-* WPForms / Gravity Forms — form styles inherit theme Inter font
-* WooCommerce — shop pages use page.html template
-* Newspack — story card patterns are Newspack-compatible
-* The Events Calendar — archive.html template applies to event archives
-* MailPoet / Mailchimp for WordPress — newsletter patterns are form-plugin-ready
+Masthead adds no theme-side integration code for any plugin, and needs none. It
+uses standard block markup, standard template hierarchy, and standard core hooks,
+so plugins behave the way they do on any well-built block theme. What the theme
+does do:
+
+* Declares WooCommerce support when WooCommerce is active, which clears the setup
+  notice and enables the product-gallery features. WooCommerce resolves its own
+  block templates from there.
+* Styles form fields from theme.json, so forms from any plugin inherit the
+  theme's typography and colours rather than fighting them.
+* Ships newsletter and CTA patterns built from core blocks, so a form block from
+  any plugin can be dropped into them.
+
+Earlier versions of this readme claimed specific integrations with named SEO,
+events and publishing plugins, including that the theme caused SEO meta tags to
+be output. It does not; those plugins do that themselves, on any theme. The
+claims are removed rather than restated.
 
 == Accessibility & JavaScript ==
 
@@ -208,6 +233,83 @@ Each section category gets its accent colour from a CSS custom property. Overrid
 
 == Changelog ==
 
+= 1.6201.0911 =
+Addresses every item raised on WordPress.org theme review ticket #280625.
+
+* Prefixing: removed the `namespace Masthead;` declaration from all eight inc/ files and
+  gave every global-scope symbol the theme's own prefix: 36 functions to `masthead_*`,
+  8 constants to `MASTHEAD_*` (file-scope `const` converted to `define()` so none remain
+  bare global consts), and the WP-CLI class to `Masthead_CLI_Command`. All 25 callback
+  registrations were rewritten to match. Hook names are unchanged, so filters and actions
+  registered against this theme continue to work.
+* Escaping: converted 45 translated strings from `__()` to `esc_html__()`, and wrapped the
+  reading-time `_n()` in `esc_html()`. Seven strings deliberately keep bare `__()`, because each is
+  escaped with `esc_html()` at the point of echo, so converting them would escape twice and
+  render an apostrophe as a literal `&#039;`. Each carries an inline comment saying so.
+* Header: the header rendered three navigation blocks (primary, secondary, and a section
+  rail). `menuSlug` is not a `core/navigation` attribute, so all three fell back to the same
+  auto-generated page list and displayed identical menus stacked together. The header now
+  carries one navigation with an explicit page list, and one search control instead of two, because
+  the utility bar already provided one.
+* Footer: the same defect, three more times. The Sections column now lists the site's real
+  categories, the Company column lists its pages, and the bottom bar carries the copyright
+  line alone.
+* Utility bar: the publication date rendered as an empty paragraph on every page. It relied
+  on an Interactivity directive reading `context.siteDate`, but that value is registered as
+  interactivity state, and the bar was never an interactivity island, so the directive could
+  not resolve. It is now server-rendered through a `masthead/publication-date` block binding
+  and needs no JavaScript.
+* Breaking-news bar: on a fresh install the breaking-news category does not exist, so the bar
+  rendered a red band with a "Breaking" label, a blinking dot, an empty ticker and a dismiss
+  button. The whole template part is now suppressed when there is nothing to announce.
+* Breaking-news ticker: the query claimed a category filter it did not have. It used
+  `taxQuery` keyed by `category_name`, which core ignores, because taxQuery takes a taxonomy
+  name and term IDs, so the ticker carried the five most recent posts of any category
+  under a "Breaking" label. The same inert construct restricted the Politics, Business,
+  Technology and Opinion rails, so each showed posts from other sections under a heading
+  naming its own. All five are now scoped in PHP, where a per-install term ID can be
+  resolved.
+* Breaking-news ticker: the animation ran `translateX(0)` to `translateX(-50%)`, the seamless
+  loop technique, which needs the content duplicated in the DOM; the ticker renders its query
+  once, so it jump-cut on every loop even when populated. It now scrolls fully across.
+* Dead links in shipped chrome: the four front-page section headers linked "More
+  Politics →" and the like to `href="#"`, and the header Subscribe button and sidebar
+  newsletter CTA pointed at `/subscribe` and `/newsletter`, paths that exist on no
+  install and 404 on activation. The section links now resolve to the real category
+  archive in PHP (a template cannot hold a per-install term permalink); the CTAs are
+  inert placeholders for the owner to point at their own signup page; and a shipped
+  pattern's social links no longer point at example.com.
+* Drop cap: WordPress enables its own drop-cap control by default, so the theme's
+  style sat beside core's, two controls rendering differently. Core's is switched off
+  in theme.json and the theme's own is kept, because core's rule ships unlayered and this
+  theme's CSS is layered, so a theme rule could not have overridden it.
+* Documentation accuracy: the reading-progress indicator is on the wide article
+  template, not site-wide; the section-colour override snippet omitted two of the
+  eight accents it says exist; and two of three advertisement placeholder sizes had
+  styling but no documented way to apply them. All three corrected.
+* Block styles: all twenty of the theme's registered block styles were dead.
+  register_block_style() emits an `is-style-` prefixed class, and `is-style-np-`
+  appeared nowhere in the stylesheet. The CSS is written against the `np-*` classes
+  the templates apply directly. The nine section styles were worse than inert: the
+  class they produced could not be matched by the new empty-section gate, so applying
+  one silently disabled both that gate and the category scoping for the section. All
+  twenty are removed. The drop cap is kept and now works: its rule targets
+  `.is-style-np-dropcap::first-letter`, the class the block style actually emits,
+  instead of an ancestor class that appeared in no template.
+* Documentation accuracy: the readme advertised a drop cap applied "via the np-dropcap
+  block class" (no such class shipped), told users to assign a menu to a Section
+  Navigation menu location (removed in this release), and listed integrations with
+  named SEO, forms, commerce, events and publishing plugins, including a claim that
+  the theme injected SEO meta tags, which plugins do themselves on any theme. Each
+  claim is now either accurate or gone.
+* Menu locations: six of seven registered locations pointed at navigation blocks that
+  no longer exist and surfaced as orphaned slots in Appearance → Menus. Only Primary
+  Navigation remains.
+* Front page: the Politics, Business, Technology and Opinion sections rendered their headings
+  and rules above empty grids whenever those categories had no posts, leaving four headed but empty
+  zones down the page on any fresh install. Each section is now hidden until it has something
+  in it, and reappears on its own once it does.
+
 = 1.6165.0905 =
 * Accessibility: two subscribe buttons (sidebar, front-page) hardcoded white label text
   inline, bypassing the accent-red inversion seam, so they fell to ~3:1 in the Midnight and
@@ -266,7 +368,7 @@ Each section category gets its accent colour from a CSS custom property. Overrid
   2.5–4.3:1). Variation-specific fixes: Broadsheet and Midnight gained a lighter
   Sports accent and a brighter Accent Red that read on their dark grounds;
   Tabloid's Ink Muted and Accent Red darkened to clear the warm paper panels.
-  (Superseded by 1.6165.0837 below, which audited the inverted editions surface
+  (Superseded by 1.6165.0905 above, which audited the inverted editions surface
   by surface and fixed the dark-on-dark pairs this entry had missed.)
 * Documentation accuracy: the Block Patterns section listed ten patterns under
   invented names (Hero Featured, 3-Column Grid, Magazine Layout, Trending Sidebar,
@@ -323,9 +425,10 @@ Each section category gets its accent colour from a CSS custom property. Overrid
 * Version: synced style.css, inc/bootstrap.php VERSION, and the readme stable tag.
 
 = 1.6163.2233 =
-* Requirements honesty: corrected "Tested up to" from a non-existent 7.0 to 6.8
-  (current stable) and "Requires PHP" from 8.1 to 7.4 in both style.css and
-  readme.txt. The distributed code uses only typed signatures (PHP 7.4+); the
+* Requirements honesty: corrected "Tested up to" from a then-unreleased 7.0 to 6.8
+  (the stable release at the time) and "Requires PHP" from 8.1 to 7.4 in both
+  style.css and readme.txt. (Superseded: WordPress 7.0 has since been released, and
+  the header now reads "Tested up to: 7.0" again, correctly this time.) The distributed code uses only typed signatures (PHP 7.4+); the
   one 8.0+ call (str_starts_with/str_ends_with) lives in inc/github-updater.php,
   which the WordPress.org build strips via .distignore.
 * Template structure: the blank-canvas page template now includes the footer

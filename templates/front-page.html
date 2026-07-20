@@ -129,7 +129,9 @@
 			<!-- /wp:paragraph -->
 			<!-- wp:group {"className":"np-section-header__rule"} /-->
 			<!-- wp:paragraph {"className":"np-section-header__more"} -->
-			<p class="np-section-header__more"><a href="#">All news &rarr;</a></p>
+			<!-- No "All news" link: Top Stories is not scoped to a category, so there is
+			     no archive URL to point at. The four category rails below get a real
+			     link resolved in PHP — see masthead_skin_resolve_section_more_link(). -->
 			<!-- /wp:paragraph -->
 		</div>
 		<!-- /wp:group -->
@@ -159,7 +161,7 @@
 
 			<!-- /wp:post-template -->
 		</div>
-		<!-- /wp:query -->
+<!-- /wp:query -->
 
 	</div>
 	<!-- /wp:group -->
@@ -184,7 +186,13 @@
 					<!-- wp:paragraph {"className":"np-section-header__more"} --><p class="np-section-header__more"><a href="#">More Politics &rarr;</a></p><!-- /wp:paragraph -->
 				</div>
 				<!-- /wp:group -->
-				<!-- wp:query {"queryId":4,"query":{"perPage":3,"postType":"post","order":"desc","orderBy":"date","inherit":false,"taxQuery":{"category_name":["politics"]}},"layout":{"type":"default"}} -->
+				<!-- Restricted to this section's category in PHP — see
+				     masthead_skin_scope_section_query() in inc/skin.php. This carried
+				     "taxQuery":{"category_name":["politics"]}, which core ignores: taxQuery is
+				     keyed by taxonomy and takes term IDs, so the rail showed posts from
+				     any category under a heading naming one. A term ID cannot live in a
+				     template because it differs per install. -->
+				<!-- wp:query {"queryId":4,"query":{"perPage":3,"postType":"post","order":"desc","orderBy":"date","inherit":false},"layout":{"type":"default"}} -->
 				<div class="wp-block-query">
 					<!-- wp:post-template {"layout":{"type":"grid","columnCount":3},"className":"np-grid-3"} -->
 						<!-- wp:group {"className":"np-story-card np-headline--section","style":{"spacing":{"blockGap":"var:preset|spacing|3"}},"layout":{"type":"default"}} -->
@@ -199,7 +207,7 @@
 						<!-- /wp:group -->
 					<!-- /wp:post-template -->
 				</div>
-				<!-- /wp:query -->
+<!-- /wp:query -->
 			</div>
 			<!-- /wp:group -->
 
@@ -213,7 +221,13 @@
 					<!-- wp:paragraph {"className":"np-section-header__more"} --><p class="np-section-header__more"><a href="#">More Business &rarr;</a></p><!-- /wp:paragraph -->
 				</div>
 				<!-- /wp:group -->
-				<!-- wp:query {"queryId":5,"query":{"perPage":3,"postType":"post","order":"desc","orderBy":"date","inherit":false,"taxQuery":{"category_name":["business"]}},"layout":{"type":"default"}} -->
+				<!-- Restricted to this section's category in PHP — see
+				     masthead_skin_scope_section_query() in inc/skin.php. This carried
+				     "taxQuery":{"category_name":["business"]}, which core ignores: taxQuery is
+				     keyed by taxonomy and takes term IDs, so the rail showed posts from
+				     any category under a heading naming one. A term ID cannot live in a
+				     template because it differs per install. -->
+				<!-- wp:query {"queryId":5,"query":{"perPage":3,"postType":"post","order":"desc","orderBy":"date","inherit":false},"layout":{"type":"default"}} -->
 				<div class="wp-block-query">
 					<!-- wp:post-template {"layout":{"type":"grid","columnCount":3},"className":"np-grid-3"} -->
 						<!-- wp:group {"className":"np-story-card np-headline--section","style":{"spacing":{"blockGap":"var:preset|spacing|3"}},"layout":{"type":"default"}} -->
@@ -228,7 +242,7 @@
 						<!-- /wp:group -->
 					<!-- /wp:post-template -->
 				</div>
-				<!-- /wp:query -->
+<!-- /wp:query -->
 			</div>
 			<!-- /wp:group -->
 
@@ -242,7 +256,13 @@
 					<!-- wp:paragraph {"className":"np-section-header__more"} --><p class="np-section-header__more"><a href="#">More Tech &rarr;</a></p><!-- /wp:paragraph -->
 				</div>
 				<!-- /wp:group -->
-				<!-- wp:query {"queryId":6,"query":{"perPage":4,"postType":"post","order":"desc","orderBy":"date","inherit":false,"taxQuery":{"category_name":["technology"]}},"layout":{"type":"default"}} -->
+				<!-- Restricted to this section's category in PHP — see
+				     masthead_skin_scope_section_query() in inc/skin.php. This carried
+				     "taxQuery":{"category_name":["technology"]}, which core ignores: taxQuery is
+				     keyed by taxonomy and takes term IDs, so the rail showed posts from
+				     any category under a heading naming one. A term ID cannot live in a
+				     template because it differs per install. -->
+				<!-- wp:query {"queryId":6,"query":{"perPage":4,"postType":"post","order":"desc","orderBy":"date","inherit":false},"layout":{"type":"default"}} -->
 				<div class="wp-block-query">
 					<!-- wp:post-template {"layout":{"type":"grid","columnCount":2},"className":"np-grid-2"} -->
 						<!-- wp:group {"className":"np-story-card np-story-card--horizontal np-headline--compact","style":{"spacing":{"blockGap":"var:preset|spacing|4"}},"layout":{"type":"default"}} -->
@@ -257,7 +277,7 @@
 						<!-- /wp:group -->
 					<!-- /wp:post-template -->
 				</div>
-				<!-- /wp:query -->
+<!-- /wp:query -->
 			</div>
 			<!-- /wp:group -->
 
@@ -284,7 +304,13 @@
 		</div>
 		<!-- /wp:group -->
 
-		<!-- wp:query {"queryId":7,"query":{"perPage":4,"postType":"post","order":"desc","orderBy":"date","inherit":false,"taxQuery":{"category_name":["opinion"]}},"layout":{"type":"default"}} -->
+		<!-- Restricted to this section's category in PHP — see
+				     masthead_skin_scope_section_query() in inc/skin.php. This carried
+				     "taxQuery":{"category_name":["opinion"]}, which core ignores: taxQuery is
+				     keyed by taxonomy and takes term IDs, so the rail showed posts from
+				     any category under a heading naming one. A term ID cannot live in a
+				     template because it differs per install. -->
+				<!-- wp:query {"queryId":7,"query":{"perPage":4,"postType":"post","order":"desc","orderBy":"date","inherit":false},"layout":{"type":"default"}} -->
 		<div class="wp-block-query">
 			<!-- wp:post-template {"layout":{"type":"grid","columnCount":4},"className":"np-grid-4"} -->
 				<!-- wp:group {"className":"np-story-card np-headline--section","style":{"spacing":{"blockGap":"var:preset|spacing|3"}},"layout":{"type":"default"}} -->
@@ -299,7 +325,7 @@
 				<!-- /wp:group -->
 			<!-- /wp:post-template -->
 		</div>
-		<!-- /wp:query -->
+<!-- /wp:query -->
 
 	</div>
 	<!-- /wp:group -->

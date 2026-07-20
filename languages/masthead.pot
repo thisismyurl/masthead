@@ -1,255 +1,769 @@
 # Copyright (C) 2026 Christopher Ross
-# This file is distributed under the same license as the Masthead package.
+# This file is distributed under the GNU General Public License v2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: Masthead 1.6148\n"
+"Project-Id-Version: Masthead 1.6201.0911\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/masthead\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-06-04T00:00:00+00:00\n"
+"POT-Creation-Date: 2026-07-20T14:19:21+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"X-Generator: WP-CLI 2.x\n"
+"X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: masthead\n"
 
 #. Theme Name of the theme
+#: style.css
 msgid "Masthead"
 msgstr ""
 
 #. Theme URI of the theme
+#: style.css
 msgid "https://thisismyurl.com/masthead/"
 msgstr ""
 
 #. Description of the theme
-msgid "A modern, accessible, full-site editing newspaper theme for WordPress."
+#: style.css
+msgid "A modern, accessible, full-site editing newspaper theme for WordPress. Built for digital publishers who demand editorial quality — bold Playfair Display headlines, flexible multi-column layouts, zero plugin dependencies. Built to WCAG 2.2 AA guidance, Core Web Vitals optimised, pure-CSS reading-progress indicator, drop-cap support, dark mode, print-ready, and RTL-ready via CSS logical properties."
 msgstr ""
 
 #. Author of the theme
+#: style.css
 msgid "Christopher Ross"
 msgstr ""
 
 #. Author URI of the theme
+#: style.css
 msgid "https://thisismyurl.com/"
 msgstr ""
 
-#: inc/setup.php
-msgid "Primary Navigation"
+#. translators: %s: theme name.
+#: inc/admin.php:70
+#: inc/admin.php:314
+#, php-format
+msgid "%s: Get started"
 msgstr ""
 
-#: inc/setup.php
-msgid "Secondary Navigation"
+#. translators: %s: theme name.
+#: inc/admin.php:170
+#, php-format
+msgid "Welcome to %s."
 msgstr ""
 
-#: inc/setup.php
-msgid "Section Navigation"
+#: inc/admin.php:173
+msgid "Thanks for giving it a home. A few small steps will have your site reading the way it should."
 msgstr ""
 
-#: inc/setup.php
-msgid "Footer Column 1"
+#. translators: %s: theme name.
+#: inc/admin.php:179
+#, php-format
+msgid "Set up %s →"
 msgstr ""
 
-#: inc/setup.php
-msgid "Footer Column 2"
+#: inc/admin.php:183
+msgid "Dismiss"
 msgstr ""
 
-#: inc/setup.php
-msgid "Footer Column 3"
+#: inc/admin.php:199
+msgid "You do not have permission to do that."
 msgstr ""
 
-#: inc/setup.php
-msgid "Footer Legal"
+#. translators: %s: theme name.
+#: inc/admin.php:225
+#, php-format
+msgid "%s is a free, full-site-editing theme built to get out of the way of your content. Here is how to make it yours."
 msgstr ""
 
-#: inc/bindings.php
+#: inc/admin.php:239
+msgid "Choose what people land on."
+msgstr ""
+
+#: inc/admin.php:240
+msgid "A visitor's first second decides whether they stay. Set a static front page under Settings → Reading, and give your posts a page of their own."
+msgstr ""
+
+#: inc/admin.php:243
+msgid "Give people a way around."
+msgstr ""
+
+#: inc/admin.php:244
+msgid "A site without a menu is a room without doors. Open the Site Editor, edit the header, and assign your menu to Primary Navigation."
+msgstr ""
+
+#: inc/admin.php:247
+msgid "Start from a pattern, not a blank page."
+msgstr ""
+
+#: inc/admin.php:248
+msgid "In any page or post, open the block inserter, choose Patterns, and find this theme's group. Drop one in and change the words."
+msgstr ""
+
+#: inc/admin.php:251
+msgid "Make it sound like you."
+msgstr ""
+
+#: inc/admin.php:252
+msgid "In the Site Editor, open Styles to change colours and typefaces. Nothing you do there can break the theme — experiment freely."
+msgstr ""
+
+#: inc/admin.php:256
+msgid "This theme is fast by design: reading is JavaScript-free (only the breaking-news dismiss control ships a small script), self-hosted fonts that don't phone home, and tuning against the Core Web Vitals search engines actually measure."
+msgstr ""
+
+#: inc/admin.php:257
+msgid "It is built to WCAG 2.2 AA guidance — real focus outlines, a skip link, sensible heading order, and motion that respects a reduce-motion setting. Keep your own copy and images to that bar and the whole site stays welcoming."
+msgstr ""
+
+#: inc/admin.php:259
+msgid "There's a small credit in your footer. It's a thank-you, not a tax — remove it in two clicks in the Site Editor → Footer, or filter it out in code. No hard feelings either way."
+msgstr ""
+
+#. translators: %s: linked developer-guide anchor.
+#: inc/admin.php:262
+#, php-format
+msgid "This theme is built on Colophon, a small documented core meant to be reused. The %s walks through how to build your own theme on it."
+msgstr ""
+
+#: inc/admin.php:264
+msgid "developer guide"
+msgstr ""
+
+#: inc/admin.php:323
+msgid "Set up"
+msgstr ""
+
+#: inc/admin.php:335
+msgid "Optimize"
+msgstr ""
+
+#: inc/admin.php:342
+msgid "The footer credit"
+msgstr ""
+
+#: inc/admin.php:347
+msgid "For developers"
+msgstr ""
+
+#: inc/bindings.php:38
 msgid "Copyright line"
 msgstr ""
 
-#: inc/bindings.php
+#: inc/bindings.php:47
 msgid "Footer credit line"
 msgstr ""
 
-#: inc/bindings.php
+#: inc/bindings.php:56
+msgid "Publication date"
+msgstr ""
+
 #. translators: 1: four-digit year, 2: site title.
+#: inc/bindings.php:89
+#, php-format
 msgid "© %1$s %2$s. All rights reserved."
 msgstr ""
 
-#: inc/bindings.php
 #. translators: %s: linked theme name.
+#: inc/bindings.php:145
+#, php-format
 msgid "Built with the %s theme."
 msgstr ""
 
-#: inc/skin.php
+#: inc/setup.php:73
+#: inc/skin.php:53
+msgid "Primary Navigation"
+msgstr ""
+
+#: inc/setup.php:74
+msgid "Footer Navigation"
+msgstr ""
+
+#: inc/setup.php:227
+msgid "Skip to content"
+msgstr ""
+
+#: inc/skin.php:97
+msgid "Masthead Hero (1440×810)"
+msgstr ""
+
+#: inc/skin.php:98
+msgid "Masthead Featured (780×520)"
+msgstr ""
+
+#: inc/skin.php:99
+msgid "Masthead Card (600×400)"
+msgstr ""
+
+#: inc/skin.php:100
+msgid "Masthead Card Square (400×400)"
+msgstr ""
+
+#: inc/skin.php:101
+msgid "Masthead Wide (1280×720)"
+msgstr ""
+
+#: inc/skin.php:226
 msgid "Reading Time"
 msgstr ""
 
-#: inc/skin.php
 #. translators: %d: number of minutes
+#: inc/skin.php:238
+#, php-format
 msgid "%d min read"
 msgid_plural "%d min read"
 msgstr[0] ""
 msgstr[1] ""
 
-#: inc/skin.php
-msgid "Newspaper Section"
-msgstr ""
-
-#: inc/skin.php
-msgid "Section: News"
-msgstr ""
-
-#: inc/skin.php
-msgid "Section: Politics"
-msgstr ""
-
-#: inc/skin.php
-msgid "Section: Business"
-msgstr ""
-
-#: inc/skin.php
-msgid "Section: Culture"
-msgstr ""
-
-#: inc/skin.php
-msgid "Section: Sports"
-msgstr ""
-
-#: inc/skin.php
-msgid "Section: Technology"
-msgstr ""
-
-#: inc/skin.php
-msgid "Section: Opinion"
-msgstr ""
-
-#: inc/skin.php
-msgid "Section: World"
-msgstr ""
-
-#: inc/skin.php
-msgid "Hero Headline"
-msgstr ""
-
-#: inc/skin.php
-msgid "Secondary Headline"
-msgstr ""
-
-#: inc/skin.php
-msgid "Section Headline"
-msgstr ""
-
-#: inc/skin.php
-msgid "Compact Headline"
-msgstr ""
-
-#: inc/skin.php
-msgid "Wide Centred"
-msgstr ""
-
-#: inc/skin.php
-msgid "Heavy Rule"
-msgstr ""
-
-#: inc/skin.php
-msgid "With Photo Credit"
-msgstr ""
-
-#: inc/skin.php
+#: inc/skin.php:291
 msgid "Drop Cap"
 msgstr ""
 
-#: inc/skin.php
-msgid "Subscribe CTA"
-msgstr ""
-
-#: inc/skin.php
-msgid "Horizontal Cards"
-msgstr ""
-
-#: inc/skin.php
-msgid "Numbered List"
-msgstr ""
-
-#: inc/skin.php
+#: inc/skin.php:309
 msgid "Masthead: Layouts"
 msgstr ""
 
-#: inc/skin.php
+#: inc/skin.php:310
 msgid "Full page and section layout patterns."
 msgstr ""
 
-#: inc/skin.php
+#: inc/skin.php:313
 msgid "Masthead: Article Cards"
 msgstr ""
 
-#: inc/skin.php
+#: inc/skin.php:314
 msgid "Story card and article list patterns."
 msgstr ""
 
-#: inc/skin.php
+#: inc/skin.php:317
 msgid "Masthead: Sections"
 msgstr ""
 
-#: inc/skin.php
+#: inc/skin.php:318
 msgid "Editorial section header and divider patterns."
 msgstr ""
 
-#: inc/skin.php
+#: inc/skin.php:321
 msgid "Masthead: Sidebar"
 msgstr ""
 
-#: inc/skin.php
+#: inc/skin.php:322
 msgid "Sidebar widget and promotional patterns."
 msgstr ""
 
-#: inc/skin.php
+#: inc/skin.php:325
 msgid "Masthead: Calls to Action"
 msgstr ""
 
-#: inc/skin.php
+#: inc/skin.php:326
 msgid "Newsletter, subscribe, and promotional CTAs."
 msgstr ""
 
-#: inc/admin.php
-#. translators: %s: theme name.
-msgid "Welcome to %s."
+#: inc/skin.php:329
+msgid "Masthead: Site Chrome"
 msgstr ""
 
-#: inc/admin.php
-msgid "Thanks for giving it a home. A few small steps will have your site reading the way it should."
+#: inc/skin.php:330
+msgid "Site-level header, footer, and navigation patterns."
 msgstr ""
 
-#: inc/admin.php
-#. translators: %s: theme name.
-msgid "Set up %s →"
+#: patterns/article-card-horizontal.php
+msgctxt "Pattern title"
+msgid "Article Card — Horizontal"
 msgstr ""
 
-#: inc/admin.php
-msgid "Dismiss"
+#: patterns/article-card-horizontal.php:21
+msgid "Article thumbnail — replace with post image"
 msgstr ""
 
-#: inc/admin.php
-msgid "You do not have permission to do that."
+#: patterns/breaking-story.php
+msgctxt "Pattern title"
+msgid "Breaking Story"
 msgstr ""
 
-#: inc/admin.php
-#. translators: %s: theme name.
-msgid "%s: Get started"
+#: patterns/breaking-story.php
+msgctxt "Pattern description"
+msgid "Two-column lead story: featured image left (60%), bold headline stack right (40%)."
 msgstr ""
 
-#: inc/admin.php
-msgid "Set up"
+#: patterns/breaking-story.php:31
+msgid "Replace with a description of the story's lead photograph"
 msgstr ""
 
-#: inc/admin.php
-msgid "Optimize"
+#: patterns/newsletter-cta.php
+msgctxt "Pattern title"
+msgid "Newsletter CTA"
 msgstr ""
 
-#: inc/admin.php
-msgid "The footer credit"
+#: patterns/opinion-row.php
+msgctxt "Pattern title"
+msgid "Opinion Row"
 msgstr ""
 
-#: inc/admin.php
-msgid "For developers"
+#: patterns/opinion-row.php:31
+#: patterns/opinion-row.php:46
+#: patterns/opinion-row.php:61
+#: patterns/opinion-row.php:76
+msgid "Author photo — replace with author portrait"
+msgstr ""
+
+#: patterns/section-footer.php
+msgctxt "Pattern title"
+msgid "Section Footer"
+msgstr ""
+
+#: patterns/section-header.php
+msgctxt "Pattern title"
+msgid "Section Header"
+msgstr ""
+
+#: patterns/section-navigation.php
+msgctxt "Pattern title"
+msgid "Section Navigation"
+msgstr ""
+
+#: patterns/story-hero.php
+msgctxt "Pattern title"
+msgid "Story Hero"
+msgstr ""
+
+#: theme.json
+#: styles/broadsheet.json
+#: styles/digital-first.json
+#: styles/midnight-edition.json
+#: styles/tabloid.json
+#: styles/weekend-edition.json
+msgctxt "Color name"
+msgid "Ink Primary"
+msgstr ""
+
+#: theme.json
+#: styles/broadsheet.json
+#: styles/digital-first.json
+#: styles/midnight-edition.json
+#: styles/tabloid.json
+#: styles/weekend-edition.json
+msgctxt "Color name"
+msgid "Ink Secondary"
+msgstr ""
+
+#: theme.json
+#: styles/broadsheet.json
+#: styles/digital-first.json
+#: styles/midnight-edition.json
+#: styles/tabloid.json
+#: styles/weekend-edition.json
+msgctxt "Color name"
+msgid "Ink Muted"
+msgstr ""
+
+#: theme.json
+#: styles/broadsheet.json
+#: styles/digital-first.json
+#: styles/midnight-edition.json
+#: styles/tabloid.json
+#: styles/weekend-edition.json
+msgctxt "Color name"
+msgid "Ink Faint"
+msgstr ""
+
+#: theme.json
+#: styles/broadsheet.json
+#: styles/digital-first.json
+#: styles/midnight-edition.json
+#: styles/tabloid.json
+#: styles/weekend-edition.json
+msgctxt "Color name"
+msgid "Paper White"
+msgstr ""
+
+#: theme.json
+msgctxt "Color name"
+msgid "Paper Off-White"
+msgstr ""
+
+#: theme.json
+#: styles/broadsheet.json
+#: styles/digital-first.json
+#: styles/midnight-edition.json
+#: styles/tabloid.json
+#: styles/weekend-edition.json
+msgctxt "Color name"
+msgid "Paper Light"
+msgstr ""
+
+#: theme.json
+#: styles/broadsheet.json
+#: styles/digital-first.json
+#: styles/midnight-edition.json
+#: styles/tabloid.json
+#: styles/weekend-edition.json
+msgctxt "Color name"
+msgid "Rule Light"
+msgstr ""
+
+#: theme.json
+#: styles/broadsheet.json
+#: styles/digital-first.json
+#: styles/midnight-edition.json
+#: styles/tabloid.json
+#: styles/weekend-edition.json
+msgctxt "Color name"
+msgid "Rule Medium"
+msgstr ""
+
+#: theme.json
+#: styles/broadsheet.json
+#: styles/digital-first.json
+#: styles/midnight-edition.json
+#: styles/tabloid.json
+#: styles/weekend-edition.json
+msgctxt "Color name"
+msgid "Accent Red"
+msgstr ""
+
+#: theme.json
+#: styles/broadsheet.json
+#: styles/midnight-edition.json
+#: styles/tabloid.json
+msgctxt "Color name"
+msgid "Accent Red Light"
+msgstr ""
+
+#: theme.json
+#: styles/broadsheet.json
+#: styles/digital-first.json
+#: styles/midnight-edition.json
+#: styles/tabloid.json
+msgctxt "Color name"
+msgid "Accent Navy"
+msgstr ""
+
+#: theme.json
+#: styles/broadsheet.json
+#: styles/midnight-edition.json
+#: styles/tabloid.json
+msgctxt "Color name"
+msgid "Accent Navy Light"
+msgstr ""
+
+#: theme.json
+#: styles/broadsheet.json
+#: styles/midnight-edition.json
+msgctxt "Color name"
+msgid "Section Politics"
+msgstr ""
+
+#: theme.json
+#: styles/broadsheet.json
+#: styles/midnight-edition.json
+msgctxt "Color name"
+msgid "Section Business"
+msgstr ""
+
+#: theme.json
+#: styles/broadsheet.json
+#: styles/midnight-edition.json
+msgctxt "Color name"
+msgid "Section Culture"
+msgstr ""
+
+#: theme.json
+#: styles/broadsheet.json
+#: styles/midnight-edition.json
+msgctxt "Color name"
+msgid "Section Sports"
+msgstr ""
+
+#: theme.json
+#: styles/broadsheet.json
+#: styles/midnight-edition.json
+msgctxt "Color name"
+msgid "Section Technology"
+msgstr ""
+
+#: theme.json
+#: styles/broadsheet.json
+#: styles/midnight-edition.json
+msgctxt "Color name"
+msgid "Section World"
+msgstr ""
+
+#: theme.json
+msgctxt "Color name"
+msgid "Breaking Red"
+msgstr ""
+
+#: theme.json
+#: styles/broadsheet.json
+#: styles/digital-first.json
+#: styles/midnight-edition.json
+#: styles/tabloid.json
+#: styles/weekend-edition.json
+msgctxt "Color name"
+msgid "Base Black"
+msgstr ""
+
+#: theme.json
+msgctxt "Gradient name"
+msgid "Hero Overlay"
+msgstr ""
+
+#: theme.json
+msgctxt "Gradient name"
+msgid "Card Overlay"
+msgstr ""
+
+#: theme.json
+msgctxt "Gradient name"
+msgid "Footer Gradient"
+msgstr ""
+
+#: theme.json
+msgctxt "Gradient name"
+msgid "Breaking Red Gradient"
+msgstr ""
+
+#: theme.json
+msgctxt "Duotone name"
+msgid "Editorial Print"
+msgstr ""
+
+#: theme.json
+msgctxt "Duotone name"
+msgid "Editorial Red"
+msgstr ""
+
+#: theme.json
+msgctxt "Font family name"
+msgid "Playfair Display"
+msgstr ""
+
+#: theme.json
+msgctxt "Font family name"
+msgid "Lora"
+msgstr ""
+
+#: theme.json
+msgctxt "Font family name"
+msgid "Inter"
+msgstr ""
+
+#: theme.json
+msgctxt "Font size name"
+msgid "2X-Small"
+msgstr ""
+
+#: theme.json
+msgctxt "Font size name"
+msgid "X-Small"
+msgstr ""
+
+#: theme.json
+msgctxt "Font size name"
+msgid "Small"
+msgstr ""
+
+#: theme.json
+msgctxt "Font size name"
+msgid "Base"
+msgstr ""
+
+#: theme.json
+msgctxt "Font size name"
+msgid "Medium"
+msgstr ""
+
+#: theme.json
+msgctxt "Font size name"
+msgid "Large"
+msgstr ""
+
+#: theme.json
+msgctxt "Font size name"
+msgid "X-Large"
+msgstr ""
+
+#: theme.json
+msgctxt "Font size name"
+msgid "2X-Large"
+msgstr ""
+
+#: theme.json
+msgctxt "Font size name"
+msgid "3X-Large"
+msgstr ""
+
+#: theme.json
+msgctxt "Font size name"
+msgid "4X-Large"
+msgstr ""
+
+#: theme.json
+msgctxt "Font size name"
+msgid "Display"
+msgstr ""
+
+#: theme.json
+msgctxt "Space size name"
+msgid "1"
+msgstr ""
+
+#: theme.json
+msgctxt "Space size name"
+msgid "2"
+msgstr ""
+
+#: theme.json
+msgctxt "Space size name"
+msgid "3"
+msgstr ""
+
+#: theme.json
+msgctxt "Space size name"
+msgid "4"
+msgstr ""
+
+#: theme.json
+msgctxt "Space size name"
+msgid "5"
+msgstr ""
+
+#: theme.json
+msgctxt "Space size name"
+msgid "6"
+msgstr ""
+
+#: theme.json
+msgctxt "Space size name"
+msgid "8"
+msgstr ""
+
+#: theme.json
+msgctxt "Space size name"
+msgid "10"
+msgstr ""
+
+#: theme.json
+msgctxt "Space size name"
+msgid "12"
+msgstr ""
+
+#: theme.json
+msgctxt "Space size name"
+msgid "16"
+msgstr ""
+
+#: theme.json
+msgctxt "Space size name"
+msgid "20"
+msgstr ""
+
+#: theme.json
+msgctxt "Space size name"
+msgid "24"
+msgstr ""
+
+#: theme.json
+msgctxt "Shadow name"
+msgid "Card"
+msgstr ""
+
+#: theme.json
+msgctxt "Shadow name"
+msgid "Card Hover"
+msgstr ""
+
+#: theme.json
+msgctxt "Shadow name"
+msgid "Elevated"
+msgstr ""
+
+#: theme.json
+msgctxt "Shadow name"
+msgid "None"
+msgstr ""
+
+#: theme.json
+msgctxt "Template part name"
+msgid "Header"
+msgstr ""
+
+#: theme.json
+msgctxt "Template part name"
+msgid "Utility Bar"
+msgstr ""
+
+#: theme.json
+msgctxt "Template part name"
+msgid "Breaking News Bar"
+msgstr ""
+
+#: theme.json
+msgctxt "Template part name"
+msgid "Section Navigation"
+msgstr ""
+
+#: theme.json
+msgctxt "Template part name"
+msgid "Footer"
+msgstr ""
+
+#: theme.json
+msgctxt "Template part name"
+msgid "Sidebar"
+msgstr ""
+
+#: theme.json
+msgctxt "Template part name"
+msgid "Post Meta"
+msgstr ""
+
+#: theme.json
+msgctxt "Custom template name"
+msgid "Page: No Sidebar"
+msgstr ""
+
+#: theme.json
+msgctxt "Custom template name"
+msgid "Article: Wide Reading"
+msgstr ""
+
+#: theme.json
+msgctxt "Custom template name"
+msgid "Article: With Sidebar"
+msgstr ""
+
+#: styles/broadsheet.json
+msgctxt "Style variation name"
+msgid "Broadsheet"
+msgstr ""
+
+#: styles/broadsheet.json
+#: styles/digital-first.json
+#: styles/midnight-edition.json
+#: styles/tabloid.json
+#: styles/weekend-edition.json
+msgctxt "Color name"
+msgid "Paper Off White"
+msgstr ""
+
+#: styles/digital-first.json
+msgctxt "Style variation name"
+msgid "Digital First"
+msgstr ""
+
+#: styles/midnight-edition.json
+msgctxt "Style variation name"
+msgid "Midnight Edition"
+msgstr ""
+
+#: styles/tabloid.json
+msgctxt "Style variation name"
+msgid "Tabloid"
+msgstr ""
+
+#: styles/weekend-edition.json
+msgctxt "Style variation name"
+msgid "Weekend Edition"
 msgstr ""

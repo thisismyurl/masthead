@@ -43,7 +43,14 @@
 			<!-- wp:heading {"level":3,"className":"np-footer__nav-heading","style":{"color":{"text":"rgba(248,248,246,0.6)"},"typography":{"fontSize":"0.6875rem","fontFamily":"var:preset|font-family|inter","fontWeight":"800","letterSpacing":"0.12em","textTransform":"uppercase"}}} -->
 			<h3 class="np-footer__nav-heading" style="color:rgba(248,248,246,0.6)">Sections</h3>
 			<!-- /wp:heading -->
-			<!-- wp:navigation {"menuSlug":"footer-column-1","overlayMenu":"never","layout":{"type":"flex","orientation":"vertical"},"className":"np-footer__nav"} /-->
+			<!-- The site's real categories, which is what a newspaper's "Sections"
+			     column is. This was a wp:navigation with menuSlug:"footer-column-1".
+			     menuSlug is not a core/navigation attribute — core ignores it — so
+			     this and the two navigations below all fell back to the same
+			     auto-generated page list and rendered three identical menus in the
+			     footer. That is the same defect WP.org ticket #280625 reported in
+			     the header, one scroll further down. -->
+			<!-- wp:categories {"showPostCounts":false,"className":"np-footer__nav"} /-->
 		</div>
 		<!-- /wp:column -->
 
@@ -53,7 +60,10 @@
 			<!-- wp:heading {"level":3,"className":"np-footer__nav-heading","style":{"color":{"text":"rgba(248,248,246,0.6)"},"typography":{"fontSize":"0.6875rem","fontFamily":"var:preset|font-family|inter","fontWeight":"800","letterSpacing":"0.12em","textTransform":"uppercase"}}} -->
 			<h3 class="np-footer__nav-heading" style="color:rgba(248,248,246,0.6)">Company</h3>
 			<!-- /wp:heading -->
-			<!-- wp:navigation {"menuSlug":"footer-column-2","overlayMenu":"never","layout":{"type":"flex","orientation":"vertical"},"className":"np-footer__nav"} /-->
+			<!-- The site's pages — About, Contact and the like — which is what a
+			     "Company" column is. Deterministic and distinct from the categories
+			     above; see the note in the Sections column. -->
+			<!-- wp:page-list {"className":"np-footer__nav"} /-->
 		</div>
 		<!-- /wp:column -->
 
@@ -93,7 +103,12 @@
 		<p class="np-footer__copyright" style="color:rgba(248,248,246,0.6);font-family:var(--wp--preset--font-family--inter);font-size:0.8125rem"></p>
 		<!-- /wp:paragraph -->
 
-		<!-- wp:navigation {"menuSlug":"footer-legal","overlayMenu":"never","layout":{"type":"flex","flexWrap":"nowrap","justifyContent":"right"},"style":{"typography":{"fontSize":"0.8125rem"},"color":{"text":"rgba(248,248,246,0.6)"}}} /-->
+		<!-- A third navigation sat here with menuSlug:"footer-legal" and rendered the
+		     same fallback page list as the two columns above it. There is no core
+		     block for "legal pages" specifically, and inventing hardcoded English
+		     Privacy/Terms links would put untranslatable prose back into a template.
+		     So the bottom bar carries the copyright line alone; add a legal menu here
+		     in the Site Editor once those pages exist. -->
 
 	</div>
 	<!-- /wp:group -->

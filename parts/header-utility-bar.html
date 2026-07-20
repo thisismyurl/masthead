@@ -4,10 +4,13 @@
 	<!-- wp:group {"className":"np-utility-bar__inner","layout":{"type":"flex","flexWrap":"nowrap","justifyContent":"space-between","verticalAlignment":"center"}} -->
 	<div class="wp-block-group np-utility-bar__inner">
 
-		<!-- wp:paragraph {"className":"np-utility-bar__date","metadata":{"name":"Publication Date"}} -->
-		<p class="np-utility-bar__date" data-wp-text="context.siteDate">
-			<!-- Displays current date via Interactivity API; falls back to PHP date -->
-		</p>
+		<!-- Server-rendered via the masthead/publication-date binding. This used to
+		     carry data-wp-text="context.siteDate" and render an empty paragraph on
+		     every page: siteDate is interactivity STATE, not context, and this bar
+		     is not an interactivity island, so the directive never resolved. See
+		     masthead_get_publication_date_value() in inc/bindings.php. -->
+		<!-- wp:paragraph {"className":"np-utility-bar__date","metadata":{"name":"Publication Date","bindings":{"content":{"source":"masthead/publication-date"}}}} -->
+		<p class="np-utility-bar__date"></p>
 		<!-- /wp:paragraph -->
 
 		<!-- wp:group {"className":"np-utility-bar__actions","layout":{"type":"flex","flexWrap":"nowrap","verticalAlignment":"center"}} -->
@@ -28,7 +31,7 @@
 			<div class="wp-block-buttons">
 				<!-- wp:button {"className":"np-subscribe-btn"} -->
 				<div class="wp-block-button np-subscribe-btn">
-					<a class="wp-block-button__link wp-element-button" href="/subscribe">
+					<a class="wp-block-button__link wp-element-button" href="#">
 						Subscribe
 					</a>
 				</div>

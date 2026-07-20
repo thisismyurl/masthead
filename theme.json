@@ -159,6 +159,7 @@
     "typography": {
       "fluid": true,
       "customFontSize": false,
+      "dropCap": false,
       "lineHeight": true,
       "letterSpacing": true,
       "textTransform": true,

@@ -64,9 +64,9 @@
 			<!-- /wp:heading -->
 			<!-- wp:list {"className":"np-footer__nav-list","fontSize":"sm","fontFamily":"inter","style":{"spacing":{"blockGap":"var:preset|spacing|3"}}} -->
 			<ul class="wp-block-list np-footer__nav-list has-inter-font-family has-sm-font-size">
-				<!-- wp:list-item --><li><a href="https://example.com/masthead">X</a></li><!-- /wp:list-item -->
-				<!-- wp:list-item --><li><a href="https://example.com/masthead">Facebook</a></li><!-- /wp:list-item -->
-				<!-- wp:list-item --><li><a href="https://example.com/masthead">Instagram</a></li><!-- /wp:list-item -->
+				<!-- wp:list-item --><li><a href="#">X</a></li><!-- /wp:list-item -->
+				<!-- wp:list-item --><li><a href="#">Facebook</a></li><!-- /wp:list-item -->
+				<!-- wp:list-item --><li><a href="#">Instagram</a></li><!-- /wp:list-item -->
 				<!-- wp:list-item --><li><a href="/feed">RSS</a></li><!-- /wp:list-item -->
 			</ul>
 			<!-- /wp:list -->
@@ -84,7 +84,7 @@
 			<!-- wp:buttons -->
 			<div class="wp-block-buttons">
 				<!-- wp:button {"className":"np-footer__subscribe","fontSize":"xs","fontFamily":"inter","style":{"color":{"background":"var:preset|color|accent-red","text":"var:preset|color|paper-white"},"typography":{"fontWeight":"700","letterSpacing":"0.04em","textTransform":"uppercase"}}} -->
-				<div class="wp-block-button np-footer__subscribe has-custom-font-size has-inter-font-family has-xs-font-size"><a class="wp-block-button__link has-text-color has-background wp-element-button" href="/newsletter" style="background-color:var(--wp--preset--color--accent-red);color:var(--wp--preset--color--paper-white);font-weight:700;letter-spacing:0.04em;text-transform:uppercase">Subscribe Free</a></div>
+				<div class="wp-block-button np-footer__subscribe has-custom-font-size has-inter-font-family has-xs-font-size"><a class="wp-block-button__link has-text-color has-background wp-element-button" href="#" style="background-color:var(--wp--preset--color--accent-red);color:var(--wp--preset--color--paper-white);font-weight:700;letter-spacing:0.04em;text-transform:uppercase">Subscribe Free</a></div>
 				<!-- /wp:button -->
 			</div>
 			<!-- /wp:buttons -->

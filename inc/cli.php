@@ -8,14 +8,12 @@
  * against a future loader change that drops the guard.
  *
  * Registers:
- *   wp masthead version  — theme name and version, read from SLUG + VERSION.
+ *   wp masthead version  — theme name and version, read from MASTHEAD_SLUG + MASTHEAD_VERSION.
  *   wp masthead info     — name, version, active template, .pot presence.
  *   wp masthead flush    — wp_cache_flush().
  *
  * @package masthead
  */
-
-namespace Masthead;
 
 defined( 'ABSPATH' ) || exit;
 
@@ -26,7 +24,7 @@ if ( ! ( defined( 'WP_CLI' ) && \WP_CLI ) ) {
 /**
  * Colophon: theme operations from the command line.
  */
-class CLI_Command {
+class Masthead_CLI_Command {
 
 	/**
 	 * Output the theme name and version.
@@ -39,7 +37,7 @@ class CLI_Command {
 	 */
 	public function version(): void {
 		$theme = wp_get_theme();
-		\WP_CLI::log( sprintf( '%s %s', (string) $theme->get( 'Name' ), VERSION ) );
+		\WP_CLI::log( sprintf( '%s %s', (string) $theme->get( 'Name' ), MASTHEAD_VERSION ) );
 	}
 
 	/**
@@ -54,15 +52,15 @@ class CLI_Command {
 	public function info(): void {
 		$theme         = wp_get_theme();
 		$template      = (string) get_template();
-		$languages_dir = DIR . '/languages';
-		$pot_path      = $languages_dir . '/' . SLUG . '.pot';
+		$languages_dir = MASTHEAD_DIR . '/languages';
+		$pot_path      = $languages_dir . '/' . MASTHEAD_SLUG . '.pot';
 		$has_pot       = is_dir( $languages_dir ) && file_exists( $pot_path );
 
 		\WP_CLI::log( 'Name:            ' . (string) $theme->get( 'Name' ) );
-		\WP_CLI::log( 'Slug:            ' . SLUG );
-		\WP_CLI::log( 'Version:         ' . VERSION );
+		\WP_CLI::log( 'Slug:            ' . MASTHEAD_SLUG );
+		\WP_CLI::log( 'Version:         ' . MASTHEAD_VERSION );
 		\WP_CLI::log( 'Active template: ' . $template );
-		\WP_CLI::log( 'languages/.pot:  ' . ( $has_pot ? 'present' : 'missing — run: wp i18n make-pot . languages/' . SLUG . '.pot' ) );
+		\WP_CLI::log( 'languages/.pot:  ' . ( $has_pot ? 'present' : 'missing — run: wp i18n make-pot . languages/' . MASTHEAD_SLUG . '.pot' ) );
 	}
 
 	/**
@@ -80,4 +78,4 @@ class CLI_Command {
 	}
 }
 
-\WP_CLI::add_command( 'masthead', __NAMESPACE__ . '\\CLI_Command' );
+\WP_CLI::add_command( 'masthead', 'Masthead_CLI_Command' );

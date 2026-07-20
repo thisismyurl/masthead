@@ -4,7 +4,7 @@
  *
  * This is the mechanism, and it's portable. Every theme in the line inherits a
  * WordPress.org-compliant onboarding flow for free; the WORDS on the page come
- * from the theme, supplied through the `SLUG . '/get_started_content'` filter
+ * from the theme, supplied through the `MASTHEAD_SLUG . '/get_started_content'` filter
  * (inc/skin.php is the conventional home for it). Core ships a plain, honest default so the page is coherent even
  * before a theme writes its own copy.
  *
@@ -18,8 +18,6 @@
  * @package masthead
  */
 
-namespace Masthead;
-
 defined( 'ABSPATH' ) || exit;
 
 /**
@@ -28,17 +26,17 @@ defined( 'ABSPATH' ) || exit;
  * An option, not a transient: it must survive an object-cache flush and clear
  * deterministically. Stored autoload=no — it is read only on wp-admin requests.
  */
-const WELCOME_FLAG = 'masthead_welcome_notice'; // hardcoded slug — CLI rewrites on re-skin.
+define( 'MASTHEAD_WELCOME_FLAG', 'masthead_welcome_notice' ); // hardcoded slug — CLI rewrites on re-skin.
 
 /**
  * Admin-post action and nonce action string for dismissing the welcome notice.
  */
-const DISMISS_ACTION = 'masthead_dismiss_welcome'; // hardcoded slug — CLI rewrites on re-skin.
+define( 'MASTHEAD_DISMISS_ACTION', 'masthead_dismiss_welcome' ); // hardcoded slug — CLI rewrites on re-skin.
 
 /**
  * Admin-menu slug for the Get-started page.
  */
-const GET_STARTED_SLUG = 'masthead-get-started';
+define( 'MASTHEAD_GET_STARTED_SLUG', 'masthead-get-started' );
 
 /**
  * Raise the one-time welcome flag when the theme becomes active.
@@ -46,44 +44,44 @@ const GET_STARTED_SLUG = 'masthead-get-started';
  * The after_switch_theme hook fires once, on the activating request — the correct hook
  * for a one-time cue. autoload=no keeps it off the front-end option bundle.
  */
-function flag_welcome_notice(): void {
-	add_option( WELCOME_FLAG, '1', '', 'no' );
+function masthead_flag_welcome_notice(): void {
+	add_option( MASTHEAD_WELCOME_FLAG, '1', '', 'no' );
 }
-add_action( 'after_switch_theme', __NAMESPACE__ . '\\flag_welcome_notice' );
+add_action( 'after_switch_theme', 'masthead_flag_welcome_notice' );
 
 /**
  * Clear the welcome flag — from the dismiss handler, and once the user reaches
  * the Get-started page (seeing it is its own dismissal).
  */
-function clear_welcome_notice(): void {
-	delete_option( WELCOME_FLAG );
+function masthead_clear_welcome_notice(): void {
+	delete_option( MASTHEAD_WELCOME_FLAG );
 }
 
 /**
  * Register the "Get started" page under Appearance.
  *
- * The required capability comes from get_onboarding_capability() — default is
+ * The required capability comes from masthead_get_onboarding_capability() — default is
  * edit_theme_options (users who can switch themes and configure global styles),
- * filterable via SLUG . '/onboarding_capability'.
+ * filterable via MASTHEAD_SLUG . '/onboarding_capability'.
  */
-function register_get_started_page(): void {
+function masthead_register_get_started_page(): void {
 	add_theme_page(
 		/* translators: %s: theme name. */
-		sprintf( esc_html__( '%s: Get started', 'masthead' ), get_theme_name() ),
-		get_theme_name(),
-		get_onboarding_capability(),
-		GET_STARTED_SLUG,
-		__NAMESPACE__ . '\\render_get_started_page'
+		sprintf( esc_html__( '%s: Get started', 'masthead' ), masthead_get_theme_name() ),
+		masthead_get_theme_name(),
+		masthead_get_onboarding_capability(),
+		MASTHEAD_GET_STARTED_SLUG,
+		'masthead_render_get_started_page'
 	);
 }
-add_action( 'admin_menu', __NAMESPACE__ . '\\register_get_started_page' );
+add_action( 'admin_menu', 'masthead_register_get_started_page' );
 
 /**
  * The active theme's display name, for headings and notices.
  *
  * @return string The theme Name from the style.css header.
  */
-function get_theme_name(): string {
+function masthead_get_theme_name(): string {
 	return (string) wp_get_theme()->get( 'Name' );
 }
 
@@ -97,7 +95,7 @@ function get_theme_name(): string {
  *
  * @return string WordPress capability slug.
  */
-function get_onboarding_capability(): string {
+function masthead_get_onboarding_capability(): string {
 	/**
 	 * Filters the capability required to see the Get-started page and welcome notice.
 	 *
@@ -108,7 +106,7 @@ function get_onboarding_capability(): string {
 	 *
 	 * @param string $capability WordPress capability slug.
 	 */
-	return (string) apply_filters( SLUG . '/onboarding_capability', 'edit_theme_options' ); // phpcs:ignore WordPress.NamingConventions.ValidHookName.UseUnderscores
+	return (string) apply_filters( MASTHEAD_SLUG . '/onboarding_capability', 'edit_theme_options' ); // phpcs:ignore WordPress.NamingConventions.ValidHookName.UseUnderscores
 }
 
 /**
@@ -119,50 +117,50 @@ function get_onboarding_capability(): string {
  *
  * @param string $hook_suffix The current admin page's hook suffix.
  */
-function enqueue_get_started_assets( string $hook_suffix ): void {
-	if ( 'appearance_page_' . GET_STARTED_SLUG !== $hook_suffix ) {
+function masthead_enqueue_get_started_assets( string $hook_suffix ): void {
+	if ( 'appearance_page_' . MASTHEAD_GET_STARTED_SLUG !== $hook_suffix ) {
 		return;
 	}
 
-	$sheet = DIR . '/assets/css/admin-get-started.css';
+	$sheet = MASTHEAD_DIR . '/assets/css/admin-get-started.css';
 	if ( ! file_exists( $sheet ) ) {
 		return;
 	}
 
 	wp_enqueue_style(
-		SLUG . '-get-started',
-		URI . '/assets/css/admin-get-started.css',
+		MASTHEAD_SLUG . '-get-started',
+		MASTHEAD_URI . '/assets/css/admin-get-started.css',
 		array(),
 		(string) filemtime( $sheet )
 	);
 }
-add_action( 'admin_enqueue_scripts', __NAMESPACE__ . '\\enqueue_get_started_assets' );
+add_action( 'admin_enqueue_scripts', 'masthead_enqueue_get_started_assets' );
 
 /**
  * Show the dismissible welcome notice while the flag is set.
  *
- * Shown only to users who pass get_onboarding_capability(), and never on the Get-started
+ * Shown only to users who pass masthead_get_onboarding_capability(), and never on the Get-started
  * page itself. A standard `notice is-dismissible`, so core renders the close
  * button and handles keyboard dismissal; the persistent server-side dismissal
  * rides the nonce link.
  */
-function render_welcome_notice(): void {
-	if ( ! current_user_can( get_onboarding_capability() ) ) {
+function masthead_render_welcome_notice(): void {
+	if ( ! current_user_can( masthead_get_onboarding_capability() ) ) {
 		return;
 	}
 
-	if ( '1' !== get_option( WELCOME_FLAG ) ) {
+	if ( '1' !== get_option( MASTHEAD_WELCOME_FLAG ) ) {
 		return;
 	}
 
 	$screen = get_current_screen();
-	if ( $screen instanceof \WP_Screen && 'appearance_page_' . GET_STARTED_SLUG === $screen->id ) {
+	if ( $screen instanceof \WP_Screen && 'appearance_page_' . MASTHEAD_GET_STARTED_SLUG === $screen->id ) {
 		return;
 	}
 
-	$page_url = admin_url( 'themes.php?page=' . GET_STARTED_SLUG );
-	$theme    = get_theme_name();
-	$dismiss  = wp_nonce_url( admin_url( 'admin-post.php?action=' . DISMISS_ACTION ), DISMISS_ACTION );
+	$page_url = admin_url( 'themes.php?page=' . MASTHEAD_GET_STARTED_SLUG );
+	$theme    = masthead_get_theme_name();
+	$dismiss  = wp_nonce_url( admin_url( 'admin-post.php?action=' . MASTHEAD_DISMISS_ACTION ), MASTHEAD_DISMISS_ACTION );
 	?>
 	<div class="notice notice-info is-dismissible masthead-welcome-notice">
 		<p>
@@ -188,7 +186,7 @@ function render_welcome_notice(): void {
 	</div>
 	<?php
 }
-add_action( 'admin_notices', __NAMESPACE__ . '\\render_welcome_notice' );
+add_action( 'admin_notices', 'masthead_render_welcome_notice' );
 
 /**
  * Handle the persistent dismissal of the welcome notice.
@@ -196,64 +194,73 @@ add_action( 'admin_notices', __NAMESPACE__ . '\\render_welcome_notice' );
  * State-changing request, so the order holds: capability check, nonce, then the
  * mutation. Redirects back to the dashboard so a refresh does not replay it.
  */
-function handle_welcome_dismiss(): void {
-	if ( ! current_user_can( get_onboarding_capability() ) ) {
+function masthead_handle_welcome_dismiss(): void {
+	if ( ! current_user_can( masthead_get_onboarding_capability() ) ) {
 		wp_die( esc_html__( 'You do not have permission to do that.', 'masthead' ) );
 	}
 
-	check_admin_referer( DISMISS_ACTION );
-	clear_welcome_notice();
+	check_admin_referer( MASTHEAD_DISMISS_ACTION );
+	masthead_clear_welcome_notice();
 	wp_safe_redirect( admin_url() );
 	exit;
 }
-add_action( 'admin_post_' . DISMISS_ACTION, __NAMESPACE__ . '\\handle_welcome_dismiss' );
+add_action( 'admin_post_' . MASTHEAD_DISMISS_ACTION, 'masthead_handle_welcome_dismiss' );
 
 /**
  * The Get-started page content.
  *
  * Core supplies a plain, honest default so the page is coherent out of the box.
- * A theme overrides any part of it through the `SLUG . '/get_started_content'`
+ * A theme overrides any part of it through the `MASTHEAD_SLUG . '/get_started_content'`
  * filter in inc/skin.php — that is where each theme's voice lives, kept out of
  * this synced file.
  *
  * @return array{lead:string,steps:array<int,array{title:string,body:string}>,optimize:string[],credit:string,developers:array{text:string,url:string,label:string}} The page content.
  */
-function get_started_content(): array {
-	$theme = get_theme_name();
+function masthead_get_started_content(): array {
+	$theme = masthead_get_theme_name();
 
 	$default = array(
 		'lead'       => sprintf(
 			/* translators: %s: theme name. */
-			__( '%s is a free, full-site-editing theme built to get out of the way of your content. Here is how to make it yours.', 'masthead' ),
+			esc_html__( '%s is a free, full-site-editing theme built to get out of the way of your content. Here is how to make it yours.', 'masthead' ),
 			$theme
 		),
+		/*
+		 * Step titles, the developer-guide label, and the developer-guide text below
+		 * stay bare __() ON PURPOSE. Each is escaped with esc_html() at the point of
+		 * echo in masthead_render_get_started_page() (the 'title' at the <strong>, the
+		 * 'label' inside the anchor, the 'text' as the sprintf format). Wrapping them
+		 * in esc_html__() here would escape the same string twice, so an apostrophe
+		 * would render on screen as a literal &#039;. Every other translated string in
+		 * this theme uses esc_html__(); these seven are the escape-at-output exceptions.
+		 */
 		'steps'      => array(
 			array(
 				'title' => __( 'Choose what people land on.', 'masthead' ),
-				'body'  => __( "A visitor's first second decides whether they stay. Set a static front page under Settings → Reading, and give your posts a page of their own.", 'masthead' ),
+				'body'  => esc_html__( "A visitor's first second decides whether they stay. Set a static front page under Settings → Reading, and give your posts a page of their own.", 'masthead' ),
 			),
 			array(
 				'title' => __( 'Give people a way around.', 'masthead' ),
-				'body'  => __( 'A site without a menu is a room without doors. Open the Site Editor, edit the header, and assign your menu to Primary Navigation.', 'masthead' ),
+				'body'  => esc_html__( 'A site without a menu is a room without doors. Open the Site Editor, edit the header, and assign your menu to Primary Navigation.', 'masthead' ),
 			),
 			array(
 				'title' => __( 'Start from a pattern, not a blank page.', 'masthead' ),
-				'body'  => __( 'In any page or post, open the block inserter, choose Patterns, and find this theme\'s group. Drop one in and change the words.', 'masthead' ),
+				'body'  => esc_html__( 'In any page or post, open the block inserter, choose Patterns, and find this theme\'s group. Drop one in and change the words.', 'masthead' ),
 			),
 			array(
 				'title' => __( 'Make it sound like you.', 'masthead' ),
-				'body'  => __( 'In the Site Editor, open Styles to change colours and typefaces. Nothing you do there can break the theme — experiment freely.', 'masthead' ),
+				'body'  => esc_html__( 'In the Site Editor, open Styles to change colours and typefaces. Nothing you do there can break the theme — experiment freely.', 'masthead' ),
 			),
 		),
 		'optimize'   => array(
-			__( "This theme is fast by design: reading is JavaScript-free (only the breaking-news dismiss control ships a small script), self-hosted fonts that don't phone home, and tuning against the Core Web Vitals search engines actually measure.", 'masthead' ),
-			__( 'It is built to WCAG 2.2 AA guidance — real focus outlines, a skip link, sensible heading order, and motion that respects a reduce-motion setting. Keep your own copy and images to that bar and the whole site stays welcoming.', 'masthead' ),
+			esc_html__( "This theme is fast by design: reading is JavaScript-free (only the breaking-news dismiss control ships a small script), self-hosted fonts that don't phone home, and tuning against the Core Web Vitals search engines actually measure.", 'masthead' ),
+			esc_html__( 'It is built to WCAG 2.2 AA guidance — real focus outlines, a skip link, sensible heading order, and motion that respects a reduce-motion setting. Keep your own copy and images to that bar and the whole site stays welcoming.', 'masthead' ),
 		),
-		'credit'     => __( "There's a small credit in your footer. It's a thank-you, not a tax — remove it in two clicks in the Site Editor → Footer, or filter it out in code. No hard feelings either way.", 'masthead' ),
+		'credit'     => esc_html__( "There's a small credit in your footer. It's a thank-you, not a tax — remove it in two clicks in the Site Editor → Footer, or filter it out in code. No hard feelings either way.", 'masthead' ),
 		'developers' => array(
 			/* translators: %s: linked developer-guide anchor. */
 			'text'  => __( 'This theme is built on Colophon, a small documented core meant to be reused. The %s walks through how to build your own theme on it.', 'masthead' ),
-			'url'   => apply_filters( SLUG . '/developer_guide_url', 'https://thisismyurl.com/colophon' ), // phpcs:ignore WordPress.NamingConventions.ValidHookName.UseUnderscores
+			'url'   => apply_filters( MASTHEAD_SLUG . '/developer_guide_url', 'https://thisismyurl.com/colophon' ), // phpcs:ignore WordPress.NamingConventions.ValidHookName.UseUnderscores
 			'label' => __( 'developer guide', 'masthead' ),
 		),
 	);
@@ -261,14 +268,14 @@ function get_started_content(): array {
 	/**
 	 * Filters the Get-started page content.
 	 *
-	 * A theme replaces any key with its own voice. See get_started_content() for
+	 * A theme replaces any key with its own voice. See masthead_get_started_content() for
 	 * the array shape.
 	 *
 	 * @since 1.0.0
 	 *
 	 * @param array $default The default page content.
 	 */
-	return (array) apply_filters( SLUG . '/get_started_content', $default ); // phpcs:ignore WordPress.NamingConventions.ValidHookName.UseUnderscores
+	return (array) apply_filters( MASTHEAD_SLUG . '/get_started_content', $default ); // phpcs:ignore WordPress.NamingConventions.ValidHookName.UseUnderscores
 }
 
 /**
@@ -277,15 +284,15 @@ function get_started_content(): array {
  * One <h1>, then <h2> sections in reading order. All dynamic output is escaped
  * at the point of echo. Reaching this page clears the welcome flag.
  */
-function render_get_started_page(): void {
-	if ( ! current_user_can( get_onboarding_capability() ) ) {
+function masthead_render_get_started_page(): void {
+	if ( ! current_user_can( masthead_get_onboarding_capability() ) ) {
 		return;
 	}
 
-	clear_welcome_notice();
+	masthead_clear_welcome_notice();
 
-	$theme   = get_theme_name();
-	$content = get_started_content();
+	$theme   = masthead_get_theme_name();
+	$content = masthead_get_started_content();
 
 	// Step / lead / optimize / credit bodies may carry inline links to admin
 	// destinations (a theme links its setup steps to Settings, the Site Editor,

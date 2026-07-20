@@ -10,19 +10,17 @@
  * @package masthead
  */
 
-namespace Masthead;
-
 defined( 'ABSPATH' ) || exit;
 
 /**
  * Register theme feature supports, the text domain, and navigation menus.
  */
-function setup(): void {
+function masthead_setup(): void {
 
 	// i18n. The domain is the literal 'masthead' (a constant would break
-	// make-pot — see bootstrap.php); the path uses DIR so it travels with a
+	// make-pot — see bootstrap.php); the path uses MASTHEAD_DIR so it travels with a
 	// re-skin. The CLI rewrites the literal when it generates a theme.
-	load_theme_textdomain( 'masthead', DIR . '/languages' );
+	load_theme_textdomain( 'masthead', MASTHEAD_DIR . '/languages' );
 
 	/**
 	 * Filters the fallback content width for oEmbeds.
@@ -35,7 +33,7 @@ function setup(): void {
 	 *
 	 * @param int $width Content width in pixels.
 	 */
-	$GLOBALS['content_width'] = (int) apply_filters( SLUG . '/content_width', 720 );
+	$GLOBALS['content_width'] = (int) apply_filters( MASTHEAD_SLUG . '/content_width', 720 );
 
 	add_theme_support( 'wp-block-styles' );
 	add_theme_support( 'editor-styles' );
@@ -70,7 +68,7 @@ function setup(): void {
 	 */
 	register_nav_menus(
 		(array) apply_filters(
-			SLUG . '/register_nav_menus',
+			MASTHEAD_SLUG . '/register_nav_menus',
 			array(
 				'primary' => esc_html__( 'Primary Navigation', 'masthead' ),
 				'footer'  => esc_html__( 'Footer Navigation', 'masthead' ),
@@ -87,9 +85,9 @@ function setup(): void {
 	 *
 	 * @since 1.0.0
 	 */
-	do_action( SLUG . '/setup' );
+	do_action( MASTHEAD_SLUG . '/setup' );
 }
-add_action( 'after_setup_theme', __NAMESPACE__ . '\\setup' );
+add_action( 'after_setup_theme', 'masthead_setup' );
 
 /**
  * Declare minimum WooCommerce support so a shop renders without conflict.
@@ -107,7 +105,7 @@ add_action( 'after_setup_theme', __NAMESPACE__ . '\\setup' );
  * Guarded on the WooCommerce class so the supports are only declared when the
  * plugin is active.
  */
-function woocommerce_support(): void {
+function masthead_woocommerce_support(): void {
 	if ( ! class_exists( 'WooCommerce' ) ) {
 		return;
 	}
@@ -117,7 +115,7 @@ function woocommerce_support(): void {
 	add_theme_support( 'wc-product-gallery-lightbox' );
 	add_theme_support( 'wc-product-gallery-slider' );
 }
-add_action( 'after_setup_theme', __NAMESPACE__ . '\\woocommerce_support' );
+add_action( 'after_setup_theme', 'masthead_woocommerce_support' );
 
 /**
  * Register the editor stylesheet so the block editor mirrors the front end.
@@ -126,10 +124,10 @@ add_action( 'after_setup_theme', __NAMESPACE__ . '\\woocommerce_support' );
  * carries only the ::before/::after personality theme.json cannot express. The
  * file is skin-owned (assets/css/editor-style.css); a missing file is harmless.
  */
-function editor_styles(): void {
+function masthead_editor_styles(): void {
 	add_editor_style( array( 'assets/css/editor-style.css' ) );
 }
-add_action( 'after_setup_theme', __NAMESPACE__ . '\\editor_styles' );
+add_action( 'after_setup_theme', 'masthead_editor_styles' );
 
 /**
  * Drop the emoji-detection script and its styles.
@@ -139,13 +137,13 @@ add_action( 'after_setup_theme', __NAMESPACE__ . '\\editor_styles' );
  * dead weight on the critical path — removing it is a Core Web Vitals line
  * standard.
  */
-function disable_emoji_assets(): void {
+function masthead_disable_emoji_assets(): void {
 	// Front-end only — leave the admin emoji picker intact.
 	// Themes must not alter admin-area behaviour users haven't opted into.
 	remove_action( 'wp_head', 'print_emoji_detection_script', 7 );
 	remove_action( 'wp_print_styles', 'print_emoji_styles' );
 }
-add_action( 'init', __NAMESPACE__ . '\\disable_emoji_assets' );
+add_action( 'init', 'masthead_disable_emoji_assets' );
 
 /**
  * Add autocomplete and enterkeyhint hints to the comment-form fields.
@@ -156,7 +154,7 @@ add_action( 'init', __NAMESPACE__ . '\\disable_emoji_assets' );
  * @param array $fields The default comment-form field markup, keyed by field.
  * @return array The fields with input attributes added.
  */
-function comment_form_field_attributes( array $fields ): array {
+function masthead_comment_form_field_attributes( array $fields ): array {
 	$attributes = array(
 		'author' => 'autocomplete="name" enterkeyhint="next"',
 		'email'  => 'autocomplete="email" inputmode="email" enterkeyhint="next"',
@@ -191,7 +189,7 @@ function comment_form_field_attributes( array $fields ): array {
 
 	return $fields;
 }
-add_filter( 'comment_form_default_fields', __NAMESPACE__ . '\\comment_form_field_attributes' );
+add_filter( 'comment_form_default_fields', 'masthead_comment_form_field_attributes' );
 
 /**
  * Output a skip-to-content link immediately after the opening <body> tag.
@@ -200,7 +198,7 @@ add_filter( 'comment_form_default_fields', __NAMESPACE__ . '\\comment_form_field
  * hides it off-screen until focused; it targets #main-content, which every
  * template's <main> carries.
  */
-function skip_link(): void {
+function masthead_skip_link(): void {
 	/**
 	 * Filters the skip-link anchor target ID (without the leading #).
 	 *
@@ -211,7 +209,7 @@ function skip_link(): void {
 	 *
 	 * @param string $target Element ID, without the leading #.
 	 */
-	$target = (string) apply_filters( SLUG . '/skip_link_target', 'main-content' );
+	$target = (string) apply_filters( MASTHEAD_SLUG . '/skip_link_target', 'main-content' );
 
 	/**
 	 * Filters the visible skip-link label.
@@ -223,10 +221,13 @@ function skip_link(): void {
 	 *
 	 * @param string $label The link text.
 	 */
-	$label = (string) apply_filters( SLUG . '/skip_link_label', __( 'Skip to content', 'masthead' ) );
+	// Bare __() on purpose: $label is escaped with esc_html() at the echo below.
+	// The filter can return arbitrary text, so the escape has to happen at output
+	// rather than here — and doing both would render an apostrophe as &#039;.
+	$label = (string) apply_filters( MASTHEAD_SLUG . '/skip_link_label', __( 'Skip to content', 'masthead' ) );
 
 	echo '<a class="skip-link" href="#' . esc_attr( $target ) . '">'
 		. esc_html( $label )
 		. '</a>';
 }
-add_action( 'wp_body_open', __NAMESPACE__ . '\\skip_link' );
+add_action( 'wp_body_open', 'masthead_skip_link' );

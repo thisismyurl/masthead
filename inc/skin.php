@@ -10,8 +10,6 @@
  * @package masthead
  */
 
-namespace Masthead;
-
 defined( 'ABSPATH' ) || exit;
 
 // Opt this theme into GitHub-release self-updates (see inc/github-updater.php).
@@ -32,26 +30,27 @@ if ( file_exists( __DIR__ . '/github-updater.php' ) ) {
 // =========================================================================
 
 /**
- * Replace the core default menus with Masthead's full set via the setup filter.
+ * Register the one menu location this theme actually renders.
  *
  * Returning a complete replacement array (not merging) drops the generic 'footer'
  * location from core defaults — that location maps to no template region in this
  * theme and would appear as an orphaned slot in Appearance → Menus.
  *
+ * This list used to carry six more locations — secondary, section-nav, three
+ * footer columns and footer-legal — registered for navigation blocks that no
+ * longer exist. The header now renders one navigation, and the footer columns
+ * render the site's real categories and pages instead (see WP.org ticket
+ * #280625). Registering locations nothing consumes produces exactly the orphaned
+ * slots this docblock says the filter exists to prevent.
+ *
  * @param array $menus Ignored — replaced wholesale.
  * @return array Complete Masthead menu registrations.
  */
 add_filter(
-	SLUG . '/register_nav_menus',
+	MASTHEAD_SLUG . '/register_nav_menus',
 	static function ( array $_menus ): array {
 		return array(
-			'primary'         => esc_html__( 'Primary Navigation', 'masthead' ),
-			'secondary'       => esc_html__( 'Secondary Navigation', 'masthead' ),
-			'section-nav'     => esc_html__( 'Section Navigation', 'masthead' ),
-			'footer-column-1' => esc_html__( 'Footer Column 1', 'masthead' ),
-			'footer-column-2' => esc_html__( 'Footer Column 2', 'masthead' ),
-			'footer-column-3' => esc_html__( 'Footer Column 3', 'masthead' ),
-			'footer-legal'    => esc_html__( 'Footer Legal', 'masthead' ),
+			'primary' => esc_html__( 'Primary Navigation', 'masthead' ),
 		);
 	}
 );
@@ -59,7 +58,7 @@ add_filter(
 /**
  * Register Masthead post formats and image sizes.
  */
-function skin_setup(): void {
+function masthead_skin_setup(): void {
 
 	add_theme_support(
 		'post-formats',
@@ -83,7 +82,7 @@ function skin_setup(): void {
 	add_image_size( 'masthead-thumb', 300, 200, true );       // Small thumb.
 	add_image_size( 'masthead-wide', 1280, 720, true );       // 16:9 wide.
 }
-add_action( 'after_setup_theme', __NAMESPACE__ . '\\skin_setup' );
+add_action( 'after_setup_theme', 'masthead_skin_setup' );
 
 /**
  * Expose Masthead image sizes in the block editor media library.
@@ -91,7 +90,7 @@ add_action( 'after_setup_theme', __NAMESPACE__ . '\\skin_setup' );
  * @param array<string, string> $sizes Existing size labels.
  * @return array<string, string>
  */
-function skin_image_size_names( array $sizes ): array {
+function masthead_skin_image_size_names( array $sizes ): array {
 	return array_merge(
 		$sizes,
 		array(
@@ -103,27 +102,34 @@ function skin_image_size_names( array $sizes ): array {
 		)
 	);
 }
-add_filter( 'image_size_names_choose', __NAMESPACE__ . '\\skin_image_size_names' );
+add_filter( 'image_size_names_choose', 'masthead_skin_image_size_names' );
 
 // =========================================================================
 // INTERACTIVITY API — breaking-news ticker date state
 // =========================================================================
 
 /**
- * Expose the current date to the Interactivity API store (breaking news ticker).
+ * Expose the breaking-news dismiss state to the Interactivity API store.
+ *
+ * A 'siteDate' value used to live here too, for the utility bar's publication
+ * date. Nothing reads it any more: the date is server-rendered through the
+ * masthead/publication-date block binding, because the directive that consumed
+ * this value never resolved (it read `context.siteDate`, but this is state, and
+ * the utility bar was not an interactivity island). It is removed rather than
+ * left in place so nobody re-wires a directive to it and reproduces the empty
+ * paragraph — see WP.org ticket #280625.
  */
-function skin_interactivity_state(): void {
+function masthead_skin_interactivity_state(): void {
 	// Namespace must match data-wp-interactive="masthead" in
 	// parts/header-breaking-news.html — they are the same context.
 	wp_interactivity_state(
 		'masthead',
 		array(
 			'breakingDismissed' => false,
-			'siteDate'          => wp_date( get_option( 'date_format' ) ),
 		)
 	);
 }
-add_action( 'wp_enqueue_scripts', __NAMESPACE__ . '\\skin_interactivity_state' );
+add_action( 'wp_enqueue_scripts', 'masthead_skin_interactivity_state' );
 
 /**
  * Enqueue the Interactivity API view module for the breaking news ticker.
@@ -132,20 +138,20 @@ add_action( 'wp_enqueue_scripts', __NAMESPACE__ . '\\skin_interactivity_state' )
  * script uses the 'wp-interactivity' import map entry which the block editor
  * runtime provides — no manual dependency array needed.
  */
-function skin_enqueue_interactivity(): void {
+function masthead_skin_enqueue_interactivity(): void {
 	$script = get_template_directory() . '/assets/js/breaking-news.js';
 	if ( ! file_exists( $script ) ) {
 		return;
 	}
 	wp_register_script_module(
-		SLUG . '-breaking-news-view',
+		MASTHEAD_SLUG . '-breaking-news-view',
 		get_template_directory_uri() . '/assets/js/breaking-news.js',
 		array( array( 'id' => '@wordpress/interactivity' ) ),
 		(string) filemtime( $script )
 	);
-	wp_enqueue_script_module( SLUG . '-breaking-news-view' );
+	wp_enqueue_script_module( MASTHEAD_SLUG . '-breaking-news-view' );
 }
-add_action( 'wp_enqueue_scripts', __NAMESPACE__ . '\\skin_enqueue_interactivity' );
+add_action( 'wp_enqueue_scripts', 'masthead_skin_enqueue_interactivity' );
 
 // =========================================================================
 // EXCERPT
@@ -157,10 +163,10 @@ add_action( 'wp_enqueue_scripts', __NAMESPACE__ . '\\skin_enqueue_interactivity'
  * @param int $_length Default excerpt length (unused — overrides the length unconditionally).
  * @return int
  */
-function skin_excerpt_length( int $_length ): int {
+function masthead_skin_excerpt_length( int $_length ): int {
 	return 30;
 }
-add_filter( 'excerpt_length', __NAMESPACE__ . '\\skin_excerpt_length' );
+add_filter( 'excerpt_length', 'masthead_skin_excerpt_length' );
 
 /**
  * Replace the default excerpt ellipsis with the proper HTML entity.
@@ -168,10 +174,10 @@ add_filter( 'excerpt_length', __NAMESPACE__ . '\\skin_excerpt_length' );
  * @param string $_more Default ellipsis string (unused — always returns &hellip;).
  * @return string
  */
-function skin_excerpt_more( string $_more ): string {
+function masthead_skin_excerpt_more( string $_more ): string {
 	return '&hellip;';
 }
-add_filter( 'excerpt_more', __NAMESPACE__ . '\\skin_excerpt_more' );
+add_filter( 'excerpt_more', 'masthead_skin_excerpt_more' );
 
 // =========================================================================
 // READING TIME + BLOCK BINDINGS
@@ -183,7 +189,7 @@ add_filter( 'excerpt_more', __NAMESPACE__ . '\\skin_excerpt_more' );
  * @param int $post_id Post ID; defaults to current post in the loop.
  * @return int Minutes to read (minimum 1).
  */
-function skin_reading_time( int $post_id = 0 ): int {
+function masthead_skin_reading_time( int $post_id = 0 ): int {
 	if ( ! $post_id ) {
 		$post_id = (int) get_the_ID();
 	}
@@ -210,23 +216,34 @@ function skin_reading_time( int $post_id = 0 ): int {
 /**
  * Register a Block Bindings source for reading time so templates can bind to it.
  */
-function skin_register_bindings(): void {
+function masthead_skin_register_bindings(): void {
 	if ( ! function_exists( 'register_block_bindings_source' ) ) {
 		return;
 	}
 	register_block_bindings_source(
 		'masthead/reading-time',
 		array(
-			'label'              => __( 'Reading Time', 'masthead' ),
+			'label'              => esc_html__( 'Reading Time', 'masthead' ),
 			'get_value_callback' => static function ( array $_source_args ): string {
-				$minutes = skin_reading_time();
-				/* translators: %d: number of minutes */
-				return sprintf( _n( '%d min read', '%d min read', $minutes, 'masthead' ), $minutes );
+				$minutes = masthead_skin_reading_time();
+				// Escaped here, not at output: this is a block-bindings
+				// get_value_callback, so the return value goes straight into the
+				// rendered block with nothing else escaping it on the way.
+				//
+				// The translators comment must sit immediately above the _n() call
+				// with nothing between them, or make-pot will not associate it.
+				return esc_html(
+					sprintf(
+						/* translators: %d: number of minutes */
+						_n( '%d min read', '%d min read', $minutes, 'masthead' ),
+						$minutes
+					)
+				);
 			},
 		)
 	);
 }
-add_action( 'init', __NAMESPACE__ . '\\skin_register_bindings' );
+add_action( 'init', 'masthead_skin_register_bindings' );
 
 // =========================================================================
 // EDITOR UX
@@ -248,101 +265,36 @@ add_action( 'init', __NAMESPACE__ . '\\skin_register_bindings' );
 // =========================================================================
 
 /**
- * Register Masthead custom block styles.
+ * Register the theme's one block style: the drop cap.
  *
- * Style slugs use the np- prefix (newspaper) — kept for CSS continuity.
- * These map to is-style-np-* classes used in templates and patterns.
+ * Twenty styles were registered here once and all twenty were dead:
+ * register_block_style() emits an `is-style-` prefixed class, and `is-style-np-`
+ * appeared nowhere in the stylesheet, which is written against the `np-*` classes
+ * the templates apply directly. Nine were worse than inert — the class they
+ * produced could not be matched by masthead_skin_gated_sections(), so an editor
+ * applying the theme's own "Section: Politics" style silently disabled both the
+ * empty-section gate and the category scoping for that section.
+ *
+ * The drop cap was dead too, by a different route: its rule targeted an ancestor
+ * class that appeared in no template. It is the one kept, rather than the one that
+ * worked, because it is a real editorial feature and a per-paragraph editor control
+ * is the right seam for it. Its CSS now matches the class the style emits. Core offers its own drop
+ * cap, which would normally make a custom style redundant — but core's rule ships
+ * UNLAYERED, and this theme's CSS lives in cascade layers, so a theme rule could
+ * never override it. Rather than hoist one rule out of the layer system, the
+ * theme keeps its own style and disables core's duplicate in theme.json
+ * (settings.typography.dropCap = false), leaving exactly one control.
  */
-function skin_register_block_styles(): void {
-
-	$group_styles = array(
-		'np-section'          => __( 'Newspaper Section', 'masthead' ),
-		'np-section-news'     => __( 'Section: News', 'masthead' ),
-		'np-section-politics' => __( 'Section: Politics', 'masthead' ),
-		'np-section-business' => __( 'Section: Business', 'masthead' ),
-		'np-section-culture'  => __( 'Section: Culture', 'masthead' ),
-		'np-section-sports'   => __( 'Section: Sports', 'masthead' ),
-		'np-section-tech'     => __( 'Section: Technology', 'masthead' ),
-		'np-section-opinion'  => __( 'Section: Opinion', 'masthead' ),
-		'np-section-world'    => __( 'Section: World', 'masthead' ),
-	);
-	foreach ( $group_styles as $name => $label ) {
-		register_block_style(
-			'core/group',
-			array(
-				'name'  => $name,
-				'label' => $label,
-			)
-		);
-	}
-
-	$headline_styles = array(
-		'np-headline-hero'      => __( 'Hero Headline', 'masthead' ),
-		'np-headline-secondary' => __( 'Secondary Headline', 'masthead' ),
-		'np-headline-section'   => __( 'Section Headline', 'masthead' ),
-		'np-headline-compact'   => __( 'Compact Headline', 'masthead' ),
-	);
-	foreach ( $headline_styles as $name => $label ) {
-		register_block_style(
-			'core/post-title',
-			array(
-				'name'  => $name,
-				'label' => $label,
-			)
-		);
-	}
-
-	register_block_style(
-		'core/pullquote',
-		array(
-			'name'  => 'np-pullquote-wide',
-			'label' => __( 'Wide Centred', 'masthead' ),
-		)
-	);
-	register_block_style(
-		'core/separator',
-		array(
-			'name'  => 'np-rule-heavy',
-			'label' => __( 'Heavy Rule', 'masthead' ),
-		)
-	);
-	register_block_style(
-		'core/image',
-		array(
-			'name'  => 'np-image-credit',
-			'label' => __( 'With Photo Credit', 'masthead' ),
-		)
-	);
+function masthead_skin_register_block_styles(): void {
 	register_block_style(
 		'core/paragraph',
 		array(
 			'name'  => 'np-dropcap',
-			'label' => __( 'Drop Cap', 'masthead' ),
+			'label' => esc_html__( 'Drop Cap', 'masthead' ),
 		)
 	);
-	register_block_style(
-		'core/buttons',
-		array(
-			'name'  => 'np-subscribe-cta',
-			'label' => __( 'Subscribe CTA', 'masthead' ),
-		)
-	);
-
-	$query_styles = array(
-		'np-query-horizontal' => __( 'Horizontal Cards', 'masthead' ),
-		'np-query-numbered'   => __( 'Numbered List', 'masthead' ),
-	);
-	foreach ( $query_styles as $name => $label ) {
-		register_block_style(
-			'core/query',
-			array(
-				'name'  => $name,
-				'label' => $label,
-			)
-		);
-	}
 }
-add_action( 'init', __NAMESPACE__ . '\\skin_register_block_styles' );
+add_action( 'init', 'masthead_skin_register_block_styles' );
 
 // =========================================================================
 // BLOCK PATTERN CATEGORIES
@@ -352,32 +304,32 @@ add_action( 'init', __NAMESPACE__ . '\\skin_register_block_styles' );
  * Register Masthead pattern categories.
  * Individual patterns live in /patterns/ and are auto-registered by WordPress 6.0+.
  */
-function skin_register_pattern_categories(): void {
+function masthead_skin_register_pattern_categories(): void {
 
 	$categories = array(
 		'masthead-layouts'  => array(
-			'label'       => __( 'Masthead: Layouts', 'masthead' ),
-			'description' => __( 'Full page and section layout patterns.', 'masthead' ),
+			'label'       => esc_html__( 'Masthead: Layouts', 'masthead' ),
+			'description' => esc_html__( 'Full page and section layout patterns.', 'masthead' ),
 		),
 		'masthead-articles' => array(
-			'label'       => __( 'Masthead: Article Cards', 'masthead' ),
-			'description' => __( 'Story card and article list patterns.', 'masthead' ),
+			'label'       => esc_html__( 'Masthead: Article Cards', 'masthead' ),
+			'description' => esc_html__( 'Story card and article list patterns.', 'masthead' ),
 		),
 		'masthead-sections' => array(
-			'label'       => __( 'Masthead: Sections', 'masthead' ),
-			'description' => __( 'Editorial section header and divider patterns.', 'masthead' ),
+			'label'       => esc_html__( 'Masthead: Sections', 'masthead' ),
+			'description' => esc_html__( 'Editorial section header and divider patterns.', 'masthead' ),
 		),
 		'masthead-sidebar'  => array(
-			'label'       => __( 'Masthead: Sidebar', 'masthead' ),
-			'description' => __( 'Sidebar widget and promotional patterns.', 'masthead' ),
+			'label'       => esc_html__( 'Masthead: Sidebar', 'masthead' ),
+			'description' => esc_html__( 'Sidebar widget and promotional patterns.', 'masthead' ),
 		),
 		'masthead-cta'      => array(
-			'label'       => __( 'Masthead: Calls to Action', 'masthead' ),
-			'description' => __( 'Newsletter, subscribe, and promotional CTAs.', 'masthead' ),
+			'label'       => esc_html__( 'Masthead: Calls to Action', 'masthead' ),
+			'description' => esc_html__( 'Newsletter, subscribe, and promotional CTAs.', 'masthead' ),
 		),
 		'masthead-site'     => array(
-			'label'       => __( 'Masthead: Site Chrome', 'masthead' ),
-			'description' => __( 'Site-level header, footer, and navigation patterns.', 'masthead' ),
+			'label'       => esc_html__( 'Masthead: Site Chrome', 'masthead' ),
+			'description' => esc_html__( 'Site-level header, footer, and navigation patterns.', 'masthead' ),
 		),
 	);
 
@@ -385,4 +337,379 @@ function skin_register_pattern_categories(): void {
 		register_block_pattern_category( $slug, $args );
 	}
 }
-add_action( 'init', __NAMESPACE__ . '\\skin_register_pattern_categories' );
+add_action( 'init', 'masthead_skin_register_pattern_categories' );
+
+/**
+ * Whether there is any breaking news to show.
+ *
+ * @since 1.6201.0911
+ *
+ * @return bool True when at least one published post is in the breaking-news category.
+ */
+function masthead_skin_has_breaking_news(): bool {
+	$found = wp_cache_get( 'masthead_has_breaking_news' );
+
+	if ( false === $found ) {
+		$query = new WP_Query(
+			array(
+				'post_type'              => 'post',
+				'posts_per_page'         => 1,
+				'category_name'          => 'breaking-news',
+				'fields'                 => 'ids',
+				'no_found_rows'          => true,
+				'ignore_sticky_posts'    => true,
+				'update_post_meta_cache' => false,
+				'update_post_term_cache' => false,
+			)
+		);
+
+		$found = $query->have_posts() ? '1' : '0';
+		wp_cache_set( 'masthead_has_breaking_news', $found );
+	}
+
+	return '1' === $found;
+}
+
+/**
+ * Suppress the breaking-news bar when there is no breaking news.
+ *
+ * WHY: the bar is a red band carrying a "Breaking" label, a blinking dot, an
+ * animated ticker, and a dismiss button. On a fresh install the breaking-news
+ * category does not exist, so the ticker's query returns nothing and the band
+ * renders announcing breaking news and showing none. WP.org ticket #280625
+ * flagged that state as a layout that "does not flow gracefully" — an empty
+ * animated bar is worse than no bar.
+ *
+ * Gating at render rather than hiding with CSS keeps the markup honest: no dead
+ * DOM, no announced-but-empty aria-live region for a screen-reader user to land in.
+ *
+ * @since 1.6201.0911
+ *
+ * @param string $block_content The rendered block markup.
+ * @param array  $block         The parsed block.
+ * @return string The markup, or an empty string when there is nothing to announce.
+ */
+function masthead_skin_hide_empty_breaking_news( string $block_content, array $block ): string {
+	if ( 'core/template-part' !== ( $block['blockName'] ?? '' ) ) {
+		return $block_content;
+	}
+
+	if ( 'header-breaking-news' !== ( $block['attrs']['slug'] ?? '' ) ) {
+		return $block_content;
+	}
+
+	// The ticker is finished rendering: clear the section flag so it cannot leak
+	// into any query further down the page. Paired with the set in
+	// masthead_skin_mark_section_start().
+	masthead_skin_rendering_category( null );
+
+	return masthead_skin_has_breaking_news() ? $block_content : '';
+}
+add_filter( 'render_block', 'masthead_skin_hide_empty_breaking_news', 10, 2 );
+
+/**
+ * Category slug for each gated front-page section, keyed by its modifier class.
+ *
+ * @since 1.6201.0911
+ *
+ * @return array<string,string> Modifier class => category slug.
+ */
+function masthead_skin_gated_sections(): array {
+	return array(
+		'np-section--politics' => 'politics',
+		'np-section--business' => 'business',
+		'np-section--tech'     => 'technology',
+		'np-section--opinion'  => 'opinion',
+	);
+}
+
+/**
+ * Hide a front-page category section when that category has no posts.
+ *
+ * WHY: the section heading ("Politics", "Business"…) is a SIBLING of its query,
+ * not its parent, so a wp:query-no-results inside the query cannot hide the
+ * heading — an empty category rendered a heading and a rule above a blank gap.
+ * On a fresh install none of these categories exist, so the front page showed
+ * four headed-but-empty zones stacked down the column. WP.org ticket #280625
+ * finding 2 ("the structure and layout does not follow typical layout and
+ * design") is the reviewer describing that page.
+ *
+ * The first attempt at this put a "Nothing in this section yet." paragraph in
+ * the block template instead. That was wrong twice over: block template HTML
+ * cannot carry a translatable string (this theme's own changelog, 1.6164.1530,
+ * records removing exactly that class of hardcoded English from archive.html as
+ * an i18n fix), and a placeholder is worse than an absence — a section with
+ * nothing in it should not be on the page at all. Gating in PHP keeps the
+ * strings translatable because there are no strings.
+ *
+ * The section reappears by itself the moment the category has a post.
+ *
+ * @since 1.6201.0911
+ *
+ * @param string $block_content The rendered block markup.
+ * @param array  $block         The parsed block.
+ * @return string The markup, or an empty string when the section has no posts.
+ */
+function masthead_skin_hide_empty_section( string $block_content, array $block ): string {
+	if ( 'core/group' !== ( $block['blockName'] ?? '' ) ) {
+		return $block_content;
+	}
+
+	$class_name = $block['attrs']['className'] ?? '';
+	if ( '' === $class_name ) {
+		return $block_content;
+	}
+
+	foreach ( masthead_skin_gated_sections() as $modifier => $category ) {
+		// Match the modifier as a whole class, so np-section--tech cannot be
+		// matched by a longer class that merely starts with it.
+		if ( ! in_array( $modifier, preg_split( '/\s+/', $class_name ), true ) ) {
+			continue;
+		}
+
+		// This section is finished rendering: clear the flag so the next query on
+		// the page is not scoped to this section's category. Paired with the set
+		// in masthead_skin_mark_section_start().
+		masthead_skin_rendering_category( null );
+
+		if ( ! masthead_skin_category_has_posts( $category ) ) {
+			return '';
+		}
+
+		return masthead_skin_resolve_section_more_link( $block_content, $category );
+	}
+
+	return $block_content;
+}
+
+/**
+ * Point a section's "More Politics →" link at that category's archive.
+ *
+ * The section headers ship `href="#"` because a template cannot know a term's
+ * permalink — it differs per install, as the term ID does. The link therefore
+ * went nowhere on every site. That is the same dead-out-of-the-box experience
+ * WP.org ticket #280625 was filed about, in a place the first fixes did not
+ * reach; and the empty-section gate sharpened it, because a section now only
+ * renders once its category genuinely has posts — exactly when a real archive
+ * URL exists and the link still pointed at nothing.
+ *
+ * Only the first href="#" in the section is replaced: that is the one in the
+ * section header, and story cards below it carry real post permalinks already.
+ *
+ * @since 1.6201.0911
+ *
+ * @param string $block_content The rendered section markup.
+ * @param string $category      Category slug for this section.
+ * @return string The markup with the section link resolved.
+ */
+function masthead_skin_resolve_section_more_link( string $block_content, string $category ): string {
+	if ( false === strpos( $block_content, 'href="#"' ) ) {
+		return $block_content;
+	}
+
+	$term = get_category_by_slug( $category );
+
+	if ( ! $term instanceof WP_Term ) {
+		return $block_content;
+	}
+
+	$link = get_category_link( $term->term_id );
+
+	if ( ! $link ) {
+		return $block_content;
+	}
+
+	$position = strpos( $block_content, 'href="#"' );
+
+	return substr_replace(
+		$block_content,
+		'href="' . esc_url( $link ) . '"',
+		$position,
+		strlen( 'href="#"' )
+	);
+}
+add_filter( 'render_block', 'masthead_skin_hide_empty_section', 10, 2 );
+
+/**
+ * Whether a category has at least one published post.
+ *
+ * Result is cached per request — the front page asks this once per gated
+ * section, and every answer is the same across the four.
+ *
+ * @since 1.6201.0911
+ *
+ * @param string $category Category slug.
+ * @return bool True when the category has at least one published post.
+ */
+function masthead_skin_category_has_posts( string $category ): bool {
+	$cache_key = 'masthead_cat_has_posts_' . $category;
+	$found     = wp_cache_get( $cache_key );
+
+	if ( false === $found ) {
+		$query = new WP_Query(
+			array(
+				'post_type'              => 'post',
+				'posts_per_page'         => 1,
+				'category_name'          => $category,
+				'fields'                 => 'ids',
+				'no_found_rows'          => true,
+				'ignore_sticky_posts'    => true,
+				'update_post_meta_cache' => false,
+				'update_post_term_cache' => false,
+			)
+		);
+
+		$found = $query->have_posts() ? '1' : '0';
+		wp_cache_set( $cache_key, $found );
+	}
+
+	return '1' === $found;
+}
+
+
+// =========================================================================
+// CATEGORY-SCOPED QUERIES — the front-page section rails and the ticker
+// =========================================================================
+
+/*
+ * WHY ANY OF THIS EXISTS.
+ *
+ * Five query blocks in this theme are supposed to be restricted to one
+ * category each: the breaking-news ticker, and the Politics / Business /
+ * Technology / Opinion rails on the front page. Every one of them tried to say
+ * so declaratively, as "taxQuery":{"category_name":["politics"]}. Core ignores
+ * that: taxQuery is keyed by TAXONOMY name and takes term IDs, and
+ * "category_name" is not a taxonomy. So all five silently returned the most
+ * recent posts of any category, under headings naming a category. The theme
+ * asserted a falsehood — and after the empty-section gate landed, it asserted a
+ * worse one: it checked that Politics had posts, showed the section on that
+ * basis, then filled it with posts that were not Politics.
+ *
+ * A template cannot carry the fix, because a term ID differs on every install.
+ * So the restriction is applied here, in PHP.
+ *
+ * WHY IT IS RENDER-SCOPED AND NOT ATTRIBUTE-MATCHED.
+ *
+ * The first attempt at this hooked query_loop_block_query_vars and set the
+ * category unconditionally. That filter fires for EVERY non-inherit query loop
+ * on the page, so it did not restrict the ticker — it restricted the entire
+ * site to one category, and on a fresh install (where the breaking-news
+ * category does not exist) its match-nothing branch blanked the front page
+ * outright, h1 included.
+ *
+ * The obvious repair is to match on the block's "namespace" attribute. That was
+ * rejected: the key that attribute arrives under has not been stable across
+ * core releases, and a check against the wrong key does not fail loudly — it
+ * fails OPEN, silently restoring the site-wide behaviour above. A guard that
+ * quietly stops matching is the same bug wearing a comment.
+ *
+ * So instead: a flag is set while a known section is rendering, and the query
+ * filter does nothing at all unless that flag is set. The default is untouched
+ * queries. If the marking ever stops working, the theme loses a category
+ * restriction on five blocks — visible, and merely the old bug. It cannot
+ * blank the site.
+ */
+
+/**
+ * Get, set, or clear the category slug whose section is currently rendering.
+ *
+ * @since 1.6201.0911
+ *
+ * @param string|null|false $category Slug to set, null to clear, false to read.
+ * @return string|null The category slug currently rendering, if any.
+ */
+function masthead_skin_rendering_category( $category = false ): ?string {
+	static $current = null;
+
+	if ( false !== $category ) {
+		$current = is_string( $category ) ? $category : null;
+	}
+
+	return $current;
+}
+
+/**
+ * Mark the start of a category-scoped section, before its query runs.
+ *
+ * pre_render_block fires for a block before its inner blocks render, so the
+ * flag is already set by the time the nested query block builds its query vars.
+ * The matching clear happens in the render_block filters below, which fire
+ * after the block's inner content is complete.
+ *
+ * @since 1.6201.0911
+ *
+ * @param string|null $pre_render   Short-circuit value; passed through untouched.
+ * @param array       $parsed_block The parsed block.
+ * @return string|null The unmodified $pre_render.
+ */
+function masthead_skin_mark_section_start( $pre_render, array $parsed_block ) {
+	$block_name = $parsed_block['blockName'] ?? '';
+
+	if ( 'core/template-part' === $block_name
+		&& 'header-breaking-news' === ( $parsed_block['attrs']['slug'] ?? '' ) ) {
+		masthead_skin_rendering_category( 'breaking-news' );
+		return $pre_render;
+	}
+
+	if ( 'core/group' === $block_name ) {
+		$classes = preg_split( '/\s+/', (string) ( $parsed_block['attrs']['className'] ?? '' ) );
+
+		foreach ( masthead_skin_gated_sections() as $modifier => $category ) {
+			if ( in_array( $modifier, $classes, true ) ) {
+				masthead_skin_rendering_category( $category );
+				break;
+			}
+		}
+	}
+
+	return $pre_render;
+}
+add_filter( 'pre_render_block', 'masthead_skin_mark_section_start', 10, 2 );
+
+/**
+ * Restrict a query loop to the section category currently rendering.
+ *
+ * Does nothing — returns the query untouched — unless a section is marked. See
+ * the block comment above for why that default matters.
+ *
+ * @since 1.6201.0911
+ *
+ * @param array $query  Arguments for WP_Query.
+ * @param mixed $_block The block instance (unused; scoping is by render flag).
+ * @return array The query arguments.
+ */
+function masthead_skin_scope_section_query( array $query, $_block ): array {
+	$category = masthead_skin_rendering_category();
+
+	if ( null === $category ) {
+		return $query;
+	}
+
+	// Consume the flag on read. Each gated section holds exactly one query block,
+	// and so does the ticker, so this is lossless — and it means correctness no
+	// longer depends on the matching clear in the render_block filters running at
+	// all. It has to, because render_block does NOT run when a plugin
+	// short-circuits a block through pre_render_block: apply_filters still calls
+	// every callback (so this flag is already set), but a non-null return from any
+	// of them makes core skip the render and its filter entirely. Without
+	// consume-on-read, one plugin short-circuiting a gated group would scope every
+	// remaining query loop on the page to that category.
+	masthead_skin_rendering_category( null );
+
+	$term = get_category_by_slug( $category );
+
+	if ( ! $term instanceof WP_Term ) {
+		// The category does not exist on this install. Match nothing rather than
+		// silently widening to every post — a rail headed "Politics" must not fill
+		// with posts that are not Politics. Both the ticker and the section rails
+		// are hidden outright in this case anyway; this is the belt to that braces.
+		$query['post__in'] = array( 0 );
+
+		return $query;
+	}
+
+	$query['cat'] = $term->term_id;
+
+	return $query;
+}
+add_filter( 'query_loop_block_query_vars', 'masthead_skin_scope_section_query', 10, 2 );

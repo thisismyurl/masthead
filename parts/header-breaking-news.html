@@ -19,7 +19,15 @@
 		<!-- wp:group {"className":"np-breaking-ticker","layout":{"type":"default"}} -->
 		<div class="wp-block-group np-breaking-ticker">
 
-			<!-- wp:query {"queryId":10,"query":{"perPage":5,"postType":"post","order":"desc","orderBy":"date","taxQuery":{"category_name":["breaking-news"]},"inherit":false},"layout":{"type":"default"}} -->
+			<!-- Restricted to the breaking-news category in PHP — see
+			     masthead_skin_scope_section_query() in inc/skin.php, the same
+			     mechanism that scopes the four front-page section rails. This
+			     carried "taxQuery":{"category_name":["breaking-news"]}, which core
+			     ignores: taxQuery is keyed by taxonomy and takes term IDs, so the
+			     ticker showed the five most recent posts of any category under a
+			     "Breaking" label. A term ID cannot live in a template because it
+			     differs per install. -->
+			<!-- wp:query {"queryId":10,"query":{"perPage":5,"postType":"post","order":"desc","orderBy":"date","inherit":false},"layout":{"type":"default"}} -->
 			<div class="wp-block-query">
 				<!-- wp:post-template {"layout":{"type":"default"}} -->
 					<!-- wp:post-title {"isLink":true,"style":{"typography":{"fontFamily":"var:preset|font-family|inter","fontWeight":"700","fontSize":"var:preset|font-size|xs"}}} /-->

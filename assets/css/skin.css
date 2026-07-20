@@ -369,6 +369,9 @@ body {
 		display: flex;
 		gap: 4rem;
 		white-space: nowrap;
+		/* width: max-content so the track is as wide as its content rather than
+		   the container — without it the headlines wrap and the scroll is wrong. */
+		width: max-content;
 		animation: np-ticker 35s linear infinite;
 	}
 
@@ -382,9 +385,25 @@ body {
 	}
 	.np-breaking-ticker a:hover { color: var(--wp--preset--color--accent-red, #c62828); }
 
+	/*
+	 * Scroll the whole track across the bar, entering from the right edge and
+	 * leaving past the left.
+	 *
+	 * This previously animated translateX(0) → translateX(-50%), which is the
+	 * seamless-loop trick — but that only works when the content is rendered
+	 * TWICE in the DOM, so the halfway point lands exactly on the start of the
+	 * second copy. The ticker renders its query once, so the animation ran to
+	 * the middle of a single list and then snapped back to the start: a visible
+	 * jump-cut on every loop, even fully populated. That artifact is what
+	 * WP.org ticket #280625 read as "does not flow gracefully".
+	 *
+	 * Scrolling fully across fixes it without duplicating the markup (which
+	 * would have meant either a second identical wp:query and a second database
+	 * round-trip, or hand-cloned nodes that drift from the live ones).
+	 */
 	@keyframes np-ticker {
-		from { transform: translateX(0); }
-		to   { transform: translateX(-50%); }
+		from { transform: translateX(100%); }
+		to   { transform: translateX(-100%); }
 	}
 
 	.np-breaking-dismiss {
@@ -644,6 +663,18 @@ body {
 		height: 1px;
 		background: var(--wp--preset--color--rule-light, #e0e0db);
 	}
+
+	/* Empty-state line under a section heading whose query returned nothing.
+	   Quiet on purpose: it should read as "this section is waiting for copy",
+	   not as an error. See templates/front-page.html and WP.org #280625. */
+	.np-section-empty {
+		font-family: var(--wp--preset--font-family--inter, system-ui, sans-serif);
+		font-size: 0.875rem;
+		font-style: italic;
+		color: var(--wp--preset--color--ink-muted, #6b6b6b);
+		margin-block: 0;
+		padding-block: 1.5rem;
+	}
 	.np-section-header__more {
 		font-family: var(--wp--preset--font-family--inter, system-ui, sans-serif);
 		font-size: 0.75rem;
@@ -835,7 +866,23 @@ body {
 	.wp-block-post-content > * + * { margin-block-start: 1.5em; }
 	.wp-block-post-content p { max-width: 68ch; }
 
-	.np-dropcap .wp-block-post-content > p:first-of-type::first-letter {
+	/*
+	 * Drop cap — applied per paragraph from the block Styles panel.
+	 *
+	 * The original rule here was `.np-dropcap .wp-block-post-content >
+	 * p:first-of-type::first-letter`, an ancestor selector expecting a
+	 * `np-dropcap` class that appeared in no template, part or pattern, so the
+	 * drop cap never rendered while style.css and readme.txt both advertised it.
+	 *
+	 * Styling core's own `.has-drop-cap` seam instead would be the tidier answer
+	 * and does NOT work here: core ships `.has-drop-cap:not(:focus)::first-letter`
+	 * UNLAYERED, and unlayered CSS beats every layer, so this rule — inside
+	 * @layer components — would lose the cascade no matter what specificity it
+	 * carried. Rather than hoist one rule out of the layer system, the theme keeps
+	 * its own block style and switches core's duplicate control off in theme.json
+	 * (settings.typography.dropCap), so editors see exactly one drop-cap control.
+	 */
+	.is-style-np-dropcap::first-letter {
 		float: inline-start;
 		font-family: var(--wp--preset--font-family--playfair-display, Georgia, serif);
 		font-size: 4.5em;
@@ -1266,6 +1313,10 @@ body {
 		flex-wrap: wrap;
 		gap: 1rem;
 		white-space: normal;
+		/* Undo the max-content track width used for the scroll: it is what makes
+		   the animated track wider than the bar, and it would stop flex-wrap
+		   above from ever wrapping. */
+		width: auto;
 	}
 	.np-breaking-ticker-wrap {
 		mask-image: none;

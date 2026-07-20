@@ -13,24 +13,22 @@
  * Fonts load via theme.json @font-face (no render-blocking <link>), so there is
  * no font enqueue here — only an optional preload for the largest-paint glyph.
  *
- * Portable: every handle derives from the SLUG constant, so a re-skin needs no
+ * Portable: every handle derives from the MASTHEAD_SLUG constant, so a re-skin needs no
  * edit. The list of sheets is fixed core; the skin sheet's CONTENT is the
  * theme's, but its path is stable.
  *
  * @package masthead
  */
 
-namespace Masthead;
-
 defined( 'ABSPATH' ) || exit;
 
 /**
  * Enqueue the front-end stylesheets in cascade order.
  *
- * Cache-buster is each file's modification time, not the VERSION constant, so a
+ * Cache-buster is each file's modification time, not the MASTHEAD_VERSION constant, so a
  * CSS edit busts caches immediately during iteration without a version bump.
  */
-function enqueue_assets(): void {
+function masthead_enqueue_assets(): void {
 	$dir = get_template_directory();
 	$uri = get_template_directory_uri();
 
@@ -51,7 +49,7 @@ function enqueue_assets(): void {
 			continue;
 		}
 
-		$handle = SLUG . '-' . $name;
+		$handle = MASTHEAD_SLUG . '-' . $name;
 		wp_enqueue_style( $handle, $uri . '/' . $rel, $deps, (string) filemtime( $path ) );
 		$deps = array( $handle ); // Next sheet loads after this one.
 	}
@@ -62,7 +60,7 @@ function enqueue_assets(): void {
 	$print = $dir . '/assets/css/core/print.css';
 	if ( file_exists( $print ) ) {
 		wp_enqueue_style(
-			SLUG . '-print',
+			MASTHEAD_SLUG . '-print',
 			$uri . '/assets/css/core/print.css',
 			array(),
 			(string) filemtime( $print ),
@@ -70,7 +68,7 @@ function enqueue_assets(): void {
 		);
 	}
 }
-add_action( 'wp_enqueue_scripts', __NAMESPACE__ . '\\enqueue_assets' );
+add_action( 'wp_enqueue_scripts', 'masthead_enqueue_assets' );
 
 /**
  * Preload the LCP-critical font, if the theme names one.
@@ -85,7 +83,7 @@ add_action( 'wp_enqueue_scripts', __NAMESPACE__ . '\\enqueue_assets' );
  * off-origin entries are dropped so a filter can never become an injection or
  * an off-origin fetch.
  */
-function preload_fonts(): void {
+function masthead_preload_fonts(): void {
 	/**
 	 * Filters the list of fonts preloaded in the document head.
 	 *
@@ -94,7 +92,7 @@ function preload_fonts(): void {
 	 *
 	 * @since 1.0.0
 	 */
-	$fonts = (array) apply_filters( SLUG . '/preload_fonts', array() );
+	$fonts = (array) apply_filters( MASTHEAD_SLUG . '/preload_fonts', array() );
 
 	foreach ( $fonts as $font ) {
 		if ( ! is_string( $font ) || '' === $font || false !== strpos( $font, '://' ) ) {
@@ -103,8 +101,8 @@ function preload_fonts(): void {
 
 		printf(
 			'<link rel="preload" href="%s" as="font" type="font/woff2" crossorigin>' . "\n",
-			esc_url( URI . '/' . ltrim( $font, '/' ) )
+			esc_url( MASTHEAD_URI . '/' . ltrim( $font, '/' ) )
 		);
 	}
 }
-add_action( 'wp_head', __NAMESPACE__ . '\\preload_fonts', 1 );
+add_action( 'wp_head', 'masthead_preload_fonts', 1 );

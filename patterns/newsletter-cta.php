@@ -36,7 +36,7 @@
 		<div class="wp-block-buttons">
 			<!-- wp:button {"style":{"color":{"background":"var:preset|color|accent-red","text":"var:preset|color|paper-white"}}} -->
 			<div class="wp-block-button">
-				<a class="wp-block-button__link wp-element-button" href="/newsletter">Subscribe — It&rsquo;s Free</a>
+				<a class="wp-block-button__link wp-element-button" href="#">Subscribe — It&rsquo;s Free</a>
 			</div>
 			<!-- /wp:button -->
 		</div>
