@@ -3,7 +3,7 @@ Contributors: thisismyurl
 Requires at least: 6.7
 Tested up to: 7.1
 Requires PHP: 7.4
-Stable tag: 1.6264.1804
+Stable tag: 1.6265.1630
 License: GPL-2.0-or-later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 Tags: news, blog, two-columns, grid-layout, full-site-editing, block-patterns, translation-ready, wide-blocks, custom-colors, custom-logo, custom-menu, editor-style, featured-images, sticky-post
@@ -229,6 +229,22 @@ No. Zero plugin dependencies. Works with popular plugins but requires none.
 Each section category gets its accent colour from a CSS custom property. Override in Appearance → Editor → Styles → (⋮) Additional CSS (see Section Colours section above).
 
 == Changelog ==
+
+= 1.6265.1630 =
+Synced two fixes from Colophon core (1.6265.1620), found during independent
+wp-expert reviews of Kerf and Halyard, since this theme was still running
+the pre-fix core:
+
+* functions.php gained the file_exists() guard on the WP-CLI require that a
+  separate regression had dropped (inc/cli.php isn't present in this theme;
+  a wp-cli command against it would otherwise fatal). inc/bindings.php also
+  now registers the masthead/footer-credit source, available if a future
+  revision adds a credit line back — this theme's own footer intentionally
+  carries none today, so nothing currently renders from it.
+* settings.typography.defaultFontSizes and
+  settings.spacing.defaultSpacingSizes set to false, matching the rest of the
+  collection, so the editor's own auto-generated presets stop merging with
+  this theme's own curated set.
 
 = 1.6264.1804 =
 Addresses every item raised on WordPress.org theme review ticket #282661.

@@ -159,6 +159,7 @@
     "typography": {
       "fluid": true,
       "customFontSize": false,
+      "defaultFontSizes": false,
       "dropCap": false,
       "lineHeight": true,
       "letterSpacing": true,
@@ -334,6 +335,7 @@
     },
     "spacing": {
       "customSpacingSize": false,
+      "defaultSpacingSizes": false,
       "spacingSizes": [
         {
           "name": "1",
