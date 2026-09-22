@@ -4,11 +4,6 @@
 	<!-- wp:group {"className":"np-utility-bar__inner","layout":{"type":"flex","flexWrap":"nowrap","justifyContent":"space-between","verticalAlignment":"center"}} -->
 	<div class="wp-block-group np-utility-bar__inner">
 
-		<!-- Server-rendered via the masthead/publication-date binding. This used to
-		     carry data-wp-text="context.siteDate" and render an empty paragraph on
-		     every page: siteDate is interactivity STATE, not context, and this bar
-		     is not an interactivity island, so the directive never resolved. See
-		     masthead_get_publication_date_value() in inc/bindings.php. -->
 		<!-- wp:paragraph {"className":"np-utility-bar__date","metadata":{"name":"Publication Date","bindings":{"content":{"source":"masthead/publication-date"}}}} -->
 		<p class="np-utility-bar__date"></p>
 		<!-- /wp:paragraph -->
@@ -16,28 +11,7 @@
 		<!-- wp:group {"className":"np-utility-bar__actions","layout":{"type":"flex","flexWrap":"nowrap","verticalAlignment":"center"}} -->
 		<div class="wp-block-group np-utility-bar__actions">
 
-			<!-- wp:search {"label":"Search","showLabel":false,"placeholder":"Search…","buttonText":"Search","buttonPosition":"button-only","buttonUseIcon":true,"isExpanded":false} /-->
-
-			<!-- wp:social-links {"size":"has-small-font-size","className":"np-utility-social","layout":{"type":"flex","justifyContent":"right"}} -->
-			<ul class="wp-block-social-links has-small-font-size np-utility-social">
-				<!-- wp:social-link {"url":"#","service":"twitter","label":"X / Twitter"} /-->
-				<!-- wp:social-link {"url":"#","service":"facebook","label":"Facebook"} /-->
-				<!-- wp:social-link {"url":"#","service":"instagram","label":"Instagram"} /-->
-				<!-- wp:social-link {"url":"#","service":"youtube","label":"YouTube"} /-->
-			</ul>
-			<!-- /wp:social-links -->
-
-			<!-- wp:buttons -->
-			<div class="wp-block-buttons">
-				<!-- wp:button {"className":"np-subscribe-btn"} -->
-				<div class="wp-block-button np-subscribe-btn">
-					<a class="wp-block-button__link wp-element-button" href="#">
-						Subscribe
-					</a>
-				</div>
-				<!-- /wp:button -->
-			</div>
-			<!-- /wp:buttons -->
+			<!-- wp:search {"className":"np-utility-search","showLabel":false,"buttonPosition":"button-only","buttonUseIcon":true,"isExpanded":false} /-->
 
 		</div>
 		<!-- /wp:group -->

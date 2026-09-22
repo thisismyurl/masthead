@@ -14,6 +14,13 @@ PILLARS.md
 *.sh
 bin/
 
+# Community health / repo-only files — belong on GitHub, not the WP.org zip
+# (flagged by the theme review team on ticket #282661)
+README.md
+SECURITY.md
+CODE_OF_CONDUCT.md
+CONTRIBUTING.md
+
 # Preview system
 preview/
 

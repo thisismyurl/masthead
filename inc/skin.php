@@ -12,19 +12,6 @@
 
 defined( 'ABSPATH' ) || exit;
 
-// Opt this theme into GitHub-release self-updates (see inc/github-updater.php).
-// Gated on the updater file existing: the WordPress.org distribution strips
-// inc/github-updater.php via .distignore, so this opt-in is inert in the
-// shipped theme and only activates in the GitHub-hosted build.
-if ( file_exists( __DIR__ . '/github-updater.php' ) ) {
-	add_filter(
-		'masthead/github_updater_repo',
-		static function (): string {
-			return 'thisismyurl/masthead';
-		}
-	);
-}
-
 // =========================================================================
 // SETUP — menus, post formats, image sizes
 // =========================================================================
@@ -59,6 +46,16 @@ add_filter(
  * Register Masthead post formats and image sizes.
  */
 function masthead_skin_setup(): void {
+
+	add_theme_support(
+		'custom-logo',
+		array(
+			'height'      => 80,
+			'width'       => 320,
+			'flex-height' => true,
+			'flex-width'  => true,
+		)
+	);
 
 	add_theme_support(
 		'post-formats',
@@ -98,6 +95,7 @@ function masthead_skin_image_size_names( array $sizes ): array {
 			'masthead-featured'    => esc_html__( 'Masthead Featured (780×520)', 'masthead' ),
 			'masthead-card'        => esc_html__( 'Masthead Card (600×400)', 'masthead' ),
 			'masthead-card-square' => esc_html__( 'Masthead Card Square (400×400)', 'masthead' ),
+			'masthead-thumb'       => esc_html__( 'Masthead Thumb (300×200)', 'masthead' ),
 			'masthead-wide'        => esc_html__( 'Masthead Wide (1280×720)', 'masthead' ),
 		)
 	);
@@ -408,6 +406,52 @@ function masthead_skin_hide_empty_breaking_news( string $block_content, array $b
 add_filter( 'render_block', 'masthead_skin_hide_empty_breaking_news', 10, 2 );
 
 /**
+ * Add the Interactivity API directives and translated ARIA labels to the
+ * breaking-news bar.
+ *
+ * WHY in PHP: core/group has no data-wp-* or aria-live attributes, so writing
+ * them into the template part's block markup made the part fail block validation
+ * as soon as it was opened in the Site Editor. The Tag Processor adds them to the
+ * rendered output instead, and lets the labels be translated.
+ *
+ * @since 1.6264.1804
+ *
+ * @param string $block_content The rendered block markup.
+ * @param array  $block         The parsed block.
+ * @return string The markup with directives and labels applied.
+ */
+function masthead_skin_enhance_breaking_news( string $block_content, array $block ): string {
+	if ( '' === $block_content
+		|| 'core/template-part' !== ( $block['blockName'] ?? '' )
+		|| 'header-breaking-news' !== ( $block['attrs']['slug'] ?? '' ) ) {
+		return $block_content;
+	}
+
+	$tags = new WP_HTML_Tag_Processor( $block_content );
+
+	if ( $tags->next_tag( array( 'class_name' => 'np-breaking-bar' ) ) ) {
+		$tags->set_attribute( 'data-wp-interactive', 'masthead' );
+		$tags->set_attribute( 'data-wp-init', 'callbacks.initDismissState' );
+		$tags->set_attribute( 'data-wp-context', wp_json_encode( array( 'dismissed' => false ) ) );
+		$tags->set_attribute( 'data-wp-class--hidden', 'context.dismissed' );
+		$tags->set_attribute( 'aria-label', __( 'Breaking news', 'masthead' ) );
+	}
+
+	if ( $tags->next_tag( array( 'class_name' => 'np-breaking-ticker-wrap' ) ) ) {
+		$tags->set_attribute( 'aria-live', 'polite' );
+	}
+
+	if ( $tags->next_tag( 'button' ) ) {
+		$tags->set_attribute( 'aria-label', __( 'Dismiss breaking news bar', 'masthead' ) );
+		$tags->set_attribute( 'data-wp-on--click', 'actions.dismiss' );
+		$tags->set_attribute( 'data-wp-bind--aria-pressed', 'context.dismissed' );
+	}
+
+	return $tags->get_updated_html();
+}
+add_filter( 'render_block', 'masthead_skin_enhance_breaking_news', 11, 2 );
+
+/**
  * Category slug for each gated front-page section, keyed by its modifier class.
  *
  * @since 1.6201.0911
@@ -476,58 +520,12 @@ function masthead_skin_hide_empty_section( string $block_content, array $block )
 			return '';
 		}
 
-		return masthead_skin_resolve_section_more_link( $block_content, $category );
+		return $block_content;
 	}
 
 	return $block_content;
 }
 
-/**
- * Point a section's "More Politics →" link at that category's archive.
- *
- * The section headers ship `href="#"` because a template cannot know a term's
- * permalink — it differs per install, as the term ID does. The link therefore
- * went nowhere on every site. That is the same dead-out-of-the-box experience
- * WP.org ticket #280625 was filed about, in a place the first fixes did not
- * reach; and the empty-section gate sharpened it, because a section now only
- * renders once its category genuinely has posts — exactly when a real archive
- * URL exists and the link still pointed at nothing.
- *
- * Only the first href="#" in the section is replaced: that is the one in the
- * section header, and story cards below it carry real post permalinks already.
- *
- * @since 1.6201.0911
- *
- * @param string $block_content The rendered section markup.
- * @param string $category      Category slug for this section.
- * @return string The markup with the section link resolved.
- */
-function masthead_skin_resolve_section_more_link( string $block_content, string $category ): string {
-	if ( false === strpos( $block_content, 'href="#"' ) ) {
-		return $block_content;
-	}
-
-	$term = get_category_by_slug( $category );
-
-	if ( ! $term instanceof WP_Term ) {
-		return $block_content;
-	}
-
-	$link = get_category_link( $term->term_id );
-
-	if ( ! $link ) {
-		return $block_content;
-	}
-
-	$position = strpos( $block_content, 'href="#"' );
-
-	return substr_replace(
-		$block_content,
-		'href="' . esc_url( $link ) . '"',
-		$position,
-		strlen( 'href="#"' )
-	);
-}
 add_filter( 'render_block', 'masthead_skin_hide_empty_section', 10, 2 );
 
 /**
@@ -713,3 +711,203 @@ function masthead_skin_scope_section_query( array $query, $_block ): array {
 	return $query;
 }
 add_filter( 'query_loop_block_query_vars', 'masthead_skin_scope_section_query', 10, 2 );
+
+
+/**
+ * Whether at least one sticky post is published.
+ *
+ * The sticky_posts option can outlive a trashed or drafted post, so its being
+ * non-empty does not mean the lead query will find anything.
+ *
+ * @since 1.6264.1804
+ *
+ * @return bool True when a published sticky post exists.
+ */
+function masthead_skin_has_published_sticky(): bool {
+	$sticky = (array) get_option( 'sticky_posts', array() );
+	if ( empty( $sticky ) ) {
+		return false;
+	}
+
+	$found = get_posts(
+		array(
+			'post__in'            => $sticky,
+			'post_status'         => 'publish',
+			'posts_per_page'      => 1,
+			'fields'              => 'ids',
+			'ignore_sticky_posts' => true,
+			'no_found_rows'       => true,
+		)
+	);
+
+	return ! empty( $found );
+}
+
+/**
+ * Exclude the post being read from its own "Related Stories" query.
+ *
+ * @since 1.6264.1804
+ *
+ * @param array    $query Query vars for the Query Loop block.
+ * @param WP_Block $block The Query Loop block.
+ * @return array The query vars, excluding the current post on a singular view.
+ */
+function masthead_skin_exclude_current_post_from_related( array $query, $block ): array {
+	if ( ! is_singular() ) {
+		return $query;
+	}
+
+	$query_id = (int) ( $block->context['queryId'] ?? 0 );
+
+	if ( 10 === $query_id ) {
+		$excluded              = isset( $query['post__not_in'] ) ? (array) $query['post__not_in'] : array();
+		$query['post__not_in'] = array_merge( $excluded, array( get_the_ID() ) );
+	}
+
+	return $query;
+}
+add_filter( 'query_loop_block_query_vars', 'masthead_skin_exclude_current_post_from_related', 10, 2 );
+
+/**
+ * Keep the front page from showing the same story twice on a fresh install.
+ *
+ * The lead query takes the sticky post; with no sticky post it falls back to the
+ * latest post, which the secondary column and the Top Stories rail would then
+ * repeat. When no post is sticky, start those two queries after what the lead
+ * and secondary columns already used.
+ *
+ * @since 1.6264.1804
+ *
+ * @param array    $query Query vars for the Query Loop block.
+ * @param WP_Block $block The Query Loop block.
+ * @return array The query vars, offset when there is no sticky post.
+ */
+function masthead_skin_offset_front_page_rails( array $query, $block ): array {
+	if ( ! is_front_page() || masthead_skin_has_published_sticky() ) {
+		return $query;
+	}
+
+	$query_id = (int) ( $block->context['queryId'] ?? 0 );
+
+	if ( 2 === $query_id ) {
+		$query['offset'] = 1;
+	} elseif ( 3 === $query_id ) {
+		$query['offset'] = 3;
+	}
+
+	return $query;
+}
+add_filter( 'query_loop_block_query_vars', 'masthead_skin_offset_front_page_rails', 10, 2 );
+
+/**
+ * Give the utility-bar search form its own accessible name, so pages that also
+ * carry a search form in their content do not expose two identical landmarks.
+ *
+ * @since 1.6264.1804
+ *
+ * @param string $block_content The rendered block markup.
+ * @param array  $block         The parsed block.
+ * @return string The markup with an aria-label on the utility-bar form.
+ */
+function masthead_skin_label_utility_search( string $block_content, array $block ): string {
+	if ( 'core/search' !== ( $block['blockName'] ?? '' ) ) {
+		return $block_content;
+	}
+
+	$class_name = (string) ( $block['attrs']['className'] ?? '' );
+	if ( false !== strpos( $class_name, 'np-utility-search' ) ) {
+		$marker = 'np-utility-search';
+		$label  = __( 'Site search', 'masthead' );
+	} elseif ( false !== strpos( $class_name, 'np-no-results-search' ) ) {
+		// Empty index/archive states.
+		$marker = 'np-no-results-search';
+		$label  = __( 'Search this site', 'masthead' );
+	} elseif ( false !== strpos( $class_name, 'np-404-search' ) ) {
+		$marker = 'np-404-search';
+		$label  = __( 'Search this site', 'masthead' );
+	} elseif ( 'search.html' === masthead_skin_current_template_slug() && ! masthead_skin_search_form_labelled() ) {
+		// search.html carries two identical np-search-form instances (header
+		// retry form, and the no-results fallback further down the page); only
+		// the first rendered on a given request gets the primary name.
+		$marker = 'wp-block-search';
+		$label  = __( 'Search this site', 'masthead' );
+	} elseif ( 'search.html' === masthead_skin_current_template_slug() ) {
+		$marker = 'wp-block-search';
+		$label  = __( 'Search again', 'masthead' );
+	} else {
+		// A search block placed anywhere else (a page, a widget area, a
+		// user-inserted pattern) keeps core's own default accessible name.
+		return $block_content;
+	}
+
+	$tags = new WP_HTML_Tag_Processor( $block_content );
+	if ( $tags->next_tag( array( 'class_name' => $marker ) ) ) {
+		$tags->set_attribute( 'aria-label', $label );
+	}
+
+	return $tags->get_updated_html();
+}
+add_filter( 'render_block', 'masthead_skin_label_utility_search', 10, 2 );
+
+/**
+ * The slug of the block template currently being rendered, if resolvable.
+ *
+ * @since 1.6264.1804
+ *
+ * @return string The template slug (e.g. "search"), or '' if unknown.
+ */
+function masthead_skin_current_template_slug(): string {
+	global $_wp_current_template_id;
+	if ( empty( $_wp_current_template_id ) ) {
+		return '';
+	}
+	$parts = explode( '//', (string) $_wp_current_template_id );
+	return end( $parts ) . '.html';
+}
+
+/**
+ * Whether a primary "Search this site" label has already been assigned this
+ * request. search.html renders the same np-search-form class twice (the
+ * header retry form and the empty-results fallback); only the first gets the
+ * primary name, so the two forms are not indistinguishable landmarks.
+ *
+ * @since 1.6264.1804
+ *
+ * @return bool True once a primary label has already been given out.
+ */
+function masthead_skin_search_form_labelled(): bool {
+	static $labelled = false;
+	if ( $labelled ) {
+		return true;
+	}
+	$labelled = true;
+	return false;
+}
+
+/**
+ * Label the Section Navigation pattern's <nav> landmark.
+ *
+ * core/group has no aria-label attribute, so writing it into the pattern's block
+ * markup made the pattern fail block validation (and "Attempt recovery" then
+ * deleted the label). It is added to the rendered output instead, translated.
+ *
+ * @since 1.6264.1804
+ *
+ * @param string $block_content The rendered block markup.
+ * @param array  $block         The parsed block.
+ * @return string The markup with an aria-label on the section navigation.
+ */
+function masthead_skin_label_section_navigation( string $block_content, array $block ): string {
+	if ( 'core/group' !== ( $block['blockName'] ?? '' )
+		|| false === strpos( (string) ( $block['attrs']['className'] ?? '' ), 'np-pattern-section-navigation' ) ) {
+		return $block_content;
+	}
+
+	$tags = new WP_HTML_Tag_Processor( $block_content );
+	if ( $tags->next_tag( array( 'class_name' => 'np-pattern-section-navigation' ) ) ) {
+		$tags->set_attribute( 'aria-label', __( 'Sections', 'masthead' ) );
+	}
+
+	return $tags->get_updated_html();
+}
+add_filter( 'render_block', 'masthead_skin_label_section_navigation', 10, 2 );

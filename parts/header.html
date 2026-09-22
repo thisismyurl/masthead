@@ -1,25 +1,18 @@
-<!-- Skip link is emitted by inc/setup.php on the wp_body_open hook (translatable
-     via __() and filterable via masthead/skip_link_label + masthead/skip_link_target);
-     it is intentionally NOT duplicated here to avoid two skip links per page. -->
 
 <!-- wp:template-part {"slug":"header-utility-bar","tagName":"div"} /-->
 
-<!-- wp:group {"className":"np-masthead","tagName":"header","aria-label":"Site header","metadata":{"name":"Masthead"},"layout":{"type":"default"}} -->
-<header class="wp-block-group np-masthead" aria-label="Site header">
+<!-- wp:group {"className":"np-masthead","tagName":"div","metadata":{"name":"Masthead"},"layout":{"type":"default"}} -->
+<div class="wp-block-group np-masthead">
 
 	<!-- wp:group {"className":"np-masthead__inner","layout":{"type":"default"}} -->
 	<div class="wp-block-group np-masthead__inner">
 
-		<!-- Primary navigation (start) -->
 		<!-- wp:group {"className":"np-masthead__nav-start","layout":{"type":"default"}} -->
 		<div class="wp-block-group np-masthead__nav-start">
-			<!-- wp:navigation {"overlayMenu":"mobile","layout":{"type":"flex","orientation":"horizontal","flexWrap":"nowrap","justifyContent":"left","verticalAlignment":"center"},"className":"np-nav-primary"} -->
-				<!-- wp:page-list /-->
-			<!-- /wp:navigation -->
+			<!-- wp:navigation {"overlayMenu":"mobile","layout":{"type":"flex","orientation":"horizontal","flexWrap":"wrap","justifyContent":"left","verticalAlignment":"center"},"className":"np-nav-primary"} /-->
 		</div>
 		<!-- /wp:group -->
 
-		<!-- Branding (centre) -->
 		<!-- wp:group {"className":"np-masthead__branding","layout":{"type":"flex","orientation":"vertical","justifyContent":"center","verticalAlignment":"center"}} -->
 		<div class="wp-block-group np-masthead__branding">
 
@@ -32,38 +25,8 @@
 		</div>
 		<!-- /wp:group -->
 
-		<!-- Search (end) -->
-		<!--
-			The secondary navigation that used to sit here has been removed from the
-			default header, and the header-section-nav template part below it with it.
-			menuSlug is not a core/navigation attribute at all — core ignores it — so
-			a navigation block carrying only a menuSlug renders core's fallback page
-			list. Every unconfigured navigation therefore rendered the SAME menu, and
-			three of them stacked in one header. That is what WP.org ticket #280625
-			reported as "multiple instances of the primary menu in the site header",
-			and it closed the theme as not-approved. The one navigation left below now
-			carries an explicit wp:page-list child, so it renders deterministically
-			rather than depending on a fallback.
-
-			The full masthead expression — left nav, centred branding, right utility
-			nav, section rail beneath — is still available: insert the "Section
-			Navigation" pattern (patterns/section-navigation.php) into the header in
-			the Site Editor once real menus exist. Shipping it by default meant the
-			out-of-box render depended on three menus nobody had created yet.
-		-->
-		<!--
-			The search block that used to sit here has been removed: the utility bar
-			included at the top of this same header already carries one, so every page
-			rendered two identical search controls in its header.
-		-->
-		<!-- wp:group {"className":"np-masthead__nav-end","layout":{"type":"flex","flexWrap":"nowrap","verticalAlignment":"center","justifyContent":"right"}} -->
-		<div class="wp-block-group np-masthead__nav-end">
-
-		</div>
-		<!-- /wp:group -->
-
 	</div>
 	<!-- /wp:group -->
 
-</header>
+</div>
 <!-- /wp:group -->

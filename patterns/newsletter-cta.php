@@ -15,28 +15,28 @@
  */
 ?>
 <!-- wp:group {"className":"np-newsletter np-pattern-newsletter","metadata":{"categories":["masthead-cta"],"name":"Newsletter CTA"},"style":{"color":{"background":"var:preset|color|paper-light"},"spacing":{"padding":{"top":"var:preset|spacing|10","bottom":"var:preset|spacing|10"}}},"layout":{"type":"constrained","contentSize":"640px"}} -->
-<div class="wp-block-group np-newsletter np-pattern-newsletter" style="background-color:var(--wp--preset--color--paper-light)">
+<div class="wp-block-group np-newsletter np-pattern-newsletter has-background" style="background-color:var(--wp--preset--color--paper-light);padding-top:var(--wp--preset--spacing--10);padding-bottom:var(--wp--preset--spacing--10)">
 
 	<!-- wp:group {"style":{"border":{"left":{"color":"var:preset|color|accent-red","style":"solid","width":"4px"}},"spacing":{"padding":{"left":"var:preset|spacing|8"}}},"layout":{"type":"default"}} -->
-	<div class="wp-block-group" style="border-left:4px solid var(--wp--preset--color--accent-red);padding-left:var(--wp--preset--spacing--8)">
+	<div class="wp-block-group" style="border-left-color:var(--wp--preset--color--accent-red);border-left-style:solid;border-left-width:4px;padding-left:var(--wp--preset--spacing--8)">
 
 		<!-- wp:paragraph {"className":"np-newsletter__eyebrow","style":{"typography":{"fontFamily":"var:preset|font-family|inter","fontSize":"0.7rem","fontWeight":"800","letterSpacing":"0.1em","textTransform":"uppercase"},"color":{"text":"var:preset|color|accent-red"}}} -->
-		<p class="np-newsletter__eyebrow" style="color:var(--wp--preset--color--accent-red)">Daily Briefing</p>
+		<p class="np-newsletter__eyebrow" style="color:var(--wp--preset--color--accent-red)"><?php esc_html_e( 'Daily Briefing', 'masthead' ); ?></p>
 		<!-- /wp:paragraph -->
 
 		<!-- wp:heading {"level":2,"style":{"typography":{"fontFamily":"var:preset|font-family|playfair-display","fontSize":"clamp(1.5rem,3vw,2rem)","fontWeight":"700","lineHeight":"1.2"},"spacing":{"margin":{"bottom":"0.75rem"}}}} -->
-		<h2>Never miss the story that matters.</h2>
+		<h2><?php esc_html_e( 'Never miss the story that matters.', 'masthead' ); ?></h2>
 		<!-- /wp:heading -->
 
 		<!-- wp:paragraph {"style":{"color":{"text":"var:preset|color|ink-secondary"},"typography":{"fontFamily":"var:preset|font-family|lora"},"spacing":{"margin":{"bottom":"var:preset|spacing|6"}}}} -->
-		<p style="color:var(--wp--preset--color--ink-secondary)">Thousands of readers start their morning with our free daily digest. Join them.</p>
+		<p style="color:var(--wp--preset--color--ink-secondary)"><?php esc_html_e( 'Thousands of readers start their morning with our free daily digest. Join them.', 'masthead' ); ?></p>
 		<!-- /wp:paragraph -->
 
 		<!-- wp:buttons -->
 		<div class="wp-block-buttons">
 			<!-- wp:button {"style":{"color":{"background":"var:preset|color|accent-red","text":"var:preset|color|paper-white"}}} -->
 			<div class="wp-block-button">
-				<a class="wp-block-button__link wp-element-button" href="#">Subscribe — It&rsquo;s Free</a>
+				<a class="wp-block-button__link has-text-color has-background wp-element-button" style="color:var(--wp--preset--color--paper-white);background-color:var(--wp--preset--color--accent-red)"><?php esc_html_e( 'Subscribe — It’s Free', 'masthead' ); ?></a>
 			</div>
 			<!-- /wp:button -->
 		</div>

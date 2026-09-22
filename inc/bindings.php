@@ -22,7 +22,7 @@
 defined( 'ABSPATH' ) || exit;
 
 /**
- * Register the copyright and footer-credit binding sources.
+ * Register the copyright, site-strings and publication-date binding sources.
  *
  * Guarded on register_block_bindings_source() so the theme degrades cleanly on
  * any pre-6.5 install that slips past the "Requires at least" header.
@@ -42,10 +42,10 @@ function masthead_register_bindings(): void {
 	);
 
 	register_block_bindings_source(
-		MASTHEAD_SLUG . '/footer-credit',
+		MASTHEAD_SLUG . '/site-strings',
 		array(
-			'label'              => esc_html__( 'Footer credit line', 'masthead' ),
-			'get_value_callback' => 'masthead_get_footer_credit_value',
+			'label'              => esc_html__( 'Theme strings', 'masthead' ),
+			'get_value_callback' => 'masthead_get_site_string_value',
 			'uses_context'       => array(),
 		)
 	);
@@ -60,6 +60,33 @@ function masthead_register_bindings(): void {
 	);
 }
 add_action( 'init', 'masthead_register_bindings' );
+
+/**
+ * Resolve a translatable theme string or URL for a block binding.
+ *
+ * Template files cannot call __(), so the few UI strings the default templates
+ * need (the breaking-news label, the 404 "back to the front page" link) come
+ * through this binding, translated and escaped here.
+ *
+ * @param array $source_args Binding args; `key` selects the value.
+ * @return string The escaped string or URL, or an empty string for an unknown key.
+ */
+function masthead_get_site_string_value( array $source_args ): string {
+	switch ( $source_args['key'] ?? '' ) {
+		case 'breaking-label':
+			return esc_html__( 'Breaking', 'masthead' );
+		case 'home-label':
+			return esc_html__( 'Back to the front page', 'masthead' );
+		case 'home-url':
+			return esc_url( home_url( '/' ) );
+		case 'not-found-title':
+			return esc_html__( 'Page not found', 'masthead' );
+		case 'posts-title':
+			$posts_page = (int) get_option( 'page_for_posts' );
+			return $posts_page ? esc_html( get_the_title( $posts_page ) ) : esc_html__( 'Latest news', 'masthead' );
+	}
+	return '';
+}
 
 /**
  * Resolve the copyright line: © {current year} {Site Title}. All rights reserved.
@@ -109,57 +136,6 @@ function masthead_get_copyright_value(): string {
 	// stops being noticed.
 	return wp_kses(
 		$copyright,
-		array(
-			'a' => array(
-				'href'   => array(),
-				'rel'    => array(),
-				'target' => array(),
-			),
-		)
-	);
-}
-
-/**
- * Resolve the "Built with the {Theme} theme." footer credit.
- *
- * The theme name and home link come from the style.css header (Name + Theme
- * URI), so this stays generic across the line — no theme types its own name
- * here. Bound by parts/footer.html so the credit is filterable without a
- * template edit; return an empty string from the filter to drop it entirely.
- * Output is run through wp_kses to a minimal anchor allow-list so a filtered
- * value can't inject arbitrary tags.
- *
- * @return string The credit line markup (possibly empty).
- */
-function masthead_get_footer_credit_value(): string {
-	$theme = wp_get_theme();
-	$name  = $theme->get( 'Name' );
-	$home  = $theme->get( 'ThemeURI' );
-
-	$linked = $home
-		? '<a href="' . esc_url( $home ) . '" rel="nofollow">' . esc_html( $name ) . '</a>'
-		: esc_html( $name );
-
-	$credit = sprintf(
-		/* translators: %s: linked theme name. */
-		esc_html__( 'Built with the %s theme.', 'masthead' ),
-		$linked
-	);
-
-	/**
-	 * Filters the footer credit line.
-	 *
-	 * Return an empty string to remove the credit, or any string to replace it.
-	 * Output is sanitized with wp_kses to a minimal anchor allow-list.
-	 *
-	 * @since 1.0.0
-	 *
-	 * @param string $credit The default "Built with the {Theme} theme." markup.
-	 */
-	$credit = (string) apply_filters( MASTHEAD_SLUG . '/footer_credit', $credit );
-
-	return wp_kses(
-		$credit,
 		array(
 			'a' => array(
 				'href'   => array(),

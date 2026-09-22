@@ -26,7 +26,7 @@ function masthead_setup(): void {
 	 * Filters the fallback content width for oEmbeds.
 	 *
 	 * The default 720 matches the reading-column contentSize in theme.json and
-	 * singular.html. A re-skin with a wider column should override this so
+	 * the single-post templates. A re-skin with a wider column should override this so
 	 * oEmbed providers (YouTube, Vimeo, Twitter) size their output correctly.
 	 *
 	 * @since 1.6150
@@ -130,22 +130,6 @@ function masthead_editor_styles(): void {
 add_action( 'after_setup_theme', 'masthead_editor_styles' );
 
 /**
- * Drop the emoji-detection script and its styles.
- *
- * Core injects a render-blocking inline script plus a stylesheet to polyfill
- * emoji on older platforms. Modern browsers render emoji natively, so this is
- * dead weight on the critical path — removing it is a Core Web Vitals line
- * standard.
- */
-function masthead_disable_emoji_assets(): void {
-	// Front-end only — leave the admin emoji picker intact.
-	// Themes must not alter admin-area behaviour users haven't opted into.
-	remove_action( 'wp_head', 'print_emoji_detection_script', 7 );
-	remove_action( 'wp_print_styles', 'print_emoji_styles' );
-}
-add_action( 'init', 'masthead_disable_emoji_assets' );
-
-/**
  * Add autocomplete and enterkeyhint hints to the comment-form fields.
  *
  * Lets mobile keyboards offer the right input mode and autofill, and gives the
@@ -191,43 +175,3 @@ function masthead_comment_form_field_attributes( array $fields ): array {
 }
 add_filter( 'comment_form_default_fields', 'masthead_comment_form_field_attributes' );
 
-/**
- * Output a skip-to-content link immediately after the opening <body> tag.
- *
- * WCAG 2.4.1 (Bypass Blocks). The .skip-link rule in assets/css/core/base.css
- * hides it off-screen until focused; it targets #main-content, which every
- * template's <main> carries.
- */
-function masthead_skip_link(): void {
-	/**
-	 * Filters the skip-link anchor target ID (without the leading #).
-	 *
-	 * The default 'main-content' matches the id="main-content" on the <main>
-	 * element in every core template. Override if you rename that id.
-	 *
-	 * @since 1.6150
-	 *
-	 * @param string $target Element ID, without the leading #.
-	 */
-	$target = (string) apply_filters( MASTHEAD_SLUG . '/skip_link_target', 'main-content' );
-
-	/**
-	 * Filters the visible skip-link label.
-	 *
-	 * Override to match the language or phrasing of your site without editing
-	 * a translation file — useful for single-language sites or custom copy.
-	 *
-	 * @since 1.6150
-	 *
-	 * @param string $label The link text.
-	 */
-	// Bare __() on purpose: $label is escaped with esc_html() at the echo below.
-	// The filter can return arbitrary text, so the escape has to happen at output
-	// rather than here — and doing both would render an apostrophe as &#039;.
-	$label = (string) apply_filters( MASTHEAD_SLUG . '/skip_link_label', __( 'Skip to content', 'masthead' ) );
-
-	echo '<a class="skip-link" href="#' . esc_attr( $target ) . '">'
-		. esc_html( $label )
-		. '</a>';
-}
-add_action( 'wp_body_open', 'masthead_skip_link' );

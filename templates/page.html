@@ -1,13 +1,48 @@
 <!-- wp:template-part {"slug":"header"} /-->
 
 <!-- wp:group {"tagName":"main","className":"np-main np-page","id":"main-content","layout":{"type":"constrained","contentSize":"780px"},"style":{"spacing":{"padding":{"top":"var:preset|spacing|12","bottom":"var:preset|spacing|20"}}}} -->
-<main class="wp-block-group np-main np-page" id="main-content">
+<main id="main-content" class="wp-block-group np-main np-page" style="padding-top:var(--wp--preset--spacing--12);padding-bottom:var(--wp--preset--spacing--20)">
 
 	<!-- wp:post-title {"level":1,"className":"np-headline--hero","style":{"typography":{"fontFamily":"var:preset|font-family|playfair-display","fontWeight":"700","lineHeight":"1.1"},"spacing":{"margin":{"bottom":"var:preset|spacing|8"}}}} /-->
 
 	<!-- wp:post-featured-image {"aspectRatio":"16/9","style":{"spacing":{"margin":{"bottom":"var:preset|spacing|10"}}}} /-->
 
 	<!-- wp:post-content {"layout":{"type":"constrained","contentSize":"640px"},"className":"np-page-body"} /-->
+
+	<!-- wp:comments {"className":"np-comments"} -->
+	<div class="wp-block-comments np-comments">
+		<!-- wp:comments-title {"level":2} /-->
+
+		<!-- wp:comment-template -->
+			<!-- wp:columns {"className":"np-comment"} -->
+			<div class="wp-block-columns np-comment">
+				<!-- wp:column {"width":"40px"} -->
+				<div class="wp-block-column" style="flex-basis:40px">
+					<!-- wp:avatar {"size":40,"style":{"border":{"radius":"999px"}}} /-->
+				</div>
+				<!-- /wp:column -->
+
+				<!-- wp:column -->
+				<div class="wp-block-column">
+					<!-- wp:comment-author-name /-->
+					<!-- wp:comment-date /-->
+					<!-- wp:comment-content /-->
+					<!-- wp:comment-reply-link /-->
+				</div>
+				<!-- /wp:column -->
+			</div>
+			<!-- /wp:columns -->
+		<!-- /wp:comment-template -->
+
+		<!-- wp:comments-pagination -->
+		<!-- wp:comments-pagination-previous /-->
+		<!-- wp:comments-pagination-numbers /-->
+		<!-- wp:comments-pagination-next /-->
+		<!-- /wp:comments-pagination -->
+
+		<!-- wp:post-comments-form /-->
+	</div>
+	<!-- /wp:comments -->
 
 </main>
 <!-- /wp:group -->

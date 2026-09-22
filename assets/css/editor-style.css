@@ -29,12 +29,12 @@
 
 /* Pull quote — mirrored so the editor preview matches the front end. */
 .editor-styles-wrapper .wp-block-pullquote {
-	border-block:  2px solid var(--wp--preset--color--line);
+	border-block:  2px solid var(--wp--preset--color--rule-medium);
 	padding-block: var(--wp--preset--spacing--8);
 	text-align:    center;
 }
 .editor-styles-wrapper .wp-block-pullquote blockquote p {
-	font-family:            var(--wp--preset--font-family--eb-garamond), Georgia, serif;
+	font-family:            var(--wp--preset--font-family--lora), Georgia, serif;
 	font-style:             italic;
 	font-size:              clamp(1.25rem, 2.5vw, 1.75rem);
 	line-height:            1.35;
@@ -51,16 +51,3 @@
 	color:          var(--wp--preset--color--ink-muted);
 }
 
-/* Eyebrow paragraph style — lets editors see the treatment at write-time. */
-.editor-styles-wrapper .is-style-cl-eyebrow {
-	font-size:      0.75rem;
-	font-weight:    400;
-	letter-spacing: 0.12em;
-	text-transform: uppercase;
-	color:          var(--wp--preset--color--ink-muted);
-}
-
-/* Card lift — mirrored so the editor preview matches the front end. */
-.editor-styles-wrapper .cl-card {
-	transition: transform 200ms cubic-bezier(0.4, 0, 0.2, 1);
-}

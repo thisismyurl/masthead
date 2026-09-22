@@ -87,7 +87,7 @@ body {
 	--np-section-color: var(--np-col-news);
 }
 
-@layer reset, base, layout, components, blocks, utilities;
+@layer reset, base;
 
 @layer reset {
 	*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -96,7 +96,7 @@ body {
 		scroll-behavior: smooth;
 		-webkit-text-size-adjust: 100%;
 		text-size-adjust: 100%;
-		color-scheme: light dark;
+		color-scheme: light;
 		hanging-punctuation: first last;
 	}
 
@@ -160,7 +160,7 @@ body {
 	.skip-link:focus { inset-block-start: 0; }
 }
 
-@layer layout {
+
 
 	/* Hero: 2/3 + 1/3 */
 	.np-hero-grid {
@@ -199,9 +199,9 @@ body {
 	@media (min-width: 1024px) {
 		.np-content-sidebar { grid-template-columns: minmax(0, 2fr) minmax(280px, 1fr); }
 	}
-}
 
-@layer components {
+
+
 
 	/* Utility bar */
 	.np-utility-bar {
@@ -258,7 +258,8 @@ body {
 	.np-subscribe-btn:hover { background: #a32020 !important; color: #fff !important; }
 
 	@media (max-width: 767px) {
-		.np-utility-bar { display: none; }
+		.np-utility-bar__date { display: none; }
+		.np-utility-bar__inner { justify-content: flex-end; }
 	}
 
 	/* Masthead / header */
@@ -314,7 +315,9 @@ body {
 			grid-template-rows: auto auto;
 		}
 		.np-masthead__branding { grid-column: 1 / -1; justify-self: center; }
-		.np-masthead__nav-start { display: none; }
+		/* The primary navigation (and its mobile menu button) stays visible; hiding
+		   it here left no navigation at all on small screens. */
+		.np-masthead__nav-start { min-width: 0; }
 	}
 
 	/* Breaking news bar */
@@ -590,19 +593,23 @@ body {
 	}
 	.wp-block-post-title a:hover { color: var(--wp--preset--color--accent-red, #c62828); }
 
+	.np-headline--hero.wp-block-post-title,
 	.np-headline--hero .wp-block-post-title {
 		font-size: clamp(1.75rem, 2.5vw + 1rem, 3.5rem);
 		line-height: 1.05;
 		letter-spacing: -0.025em;
 		-webkit-line-clamp: 3;
 	}
+	.np-headline--secondary.wp-block-post-title,
 	.np-headline--secondary .wp-block-post-title {
 		font-size: clamp(1.125rem, 1.5vw, 1.75rem);
 		-webkit-line-clamp: 3;
 	}
+	.np-headline--section.wp-block-post-title,
 	.np-headline--section .wp-block-post-title {
 		font-size: clamp(1rem, 1.25vw, 1.375rem);
 	}
+	.np-headline--compact.wp-block-post-title,
 	.np-headline--compact .wp-block-post-title {
 		font-size: clamp(0.9375rem, 0.9vw, 1.0625rem);
 		font-weight: 600;
@@ -966,19 +973,132 @@ body {
 		padding-block-start: 2rem;
 		border-block-start: var(--np-rule-weight) solid var(--wp--preset--color--ink-primary, #1a1a1a);
 	}
-	.np-comments-title {
+	.np-comments .wp-block-comments-title {
 		font-family: var(--wp--preset--font-family--inter, system-ui, sans-serif);
 		font-size: 0.75rem;
 		font-weight: 800;
 		letter-spacing: 0.1em;
 		text-transform: uppercase;
-		margin-block-end: 1.5rem;
+		color: var(--wp--preset--color--ink-muted, #6b6b6b);
+		margin-block-end: 2rem;
 	}
-	.comment-body {
+	.np-comments .wp-block-comment-template {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+	}
+	.np-comments .np-comment {
+		padding-block: 1.5rem;
+		border-block-start: 1px solid var(--wp--preset--color--rule-light, #e0e0db);
+	}
+	.np-comments .np-comment:first-child { border-block-start: none; padding-block-start: 0; }
+	.np-comments .wp-block-avatar img { display: block; }
+	.np-comments .wp-block-comment-author-name a {
+		font-family: var(--wp--preset--font-family--inter, system-ui, sans-serif);
+		font-size: 0.875rem;
+		font-weight: 700;
+		color: var(--wp--preset--color--ink-primary, #1a1a1a);
+		text-decoration: none;
+	}
+	.np-comments .wp-block-comment-date {
+		font-family: var(--wp--preset--font-family--inter, system-ui, sans-serif);
+		font-size: 0.75rem;
+		color: var(--wp--preset--color--ink-muted, #6b6b6b);
+		margin-block-start: 0.125rem;
+		margin-block-end: 0.75rem;
+	}
+	.np-comments .wp-block-comment-date a { color: inherit; text-decoration: none; }
+	.np-comments .wp-block-comment-content {
 		font-family: var(--wp--preset--font-family--lora, Georgia, serif);
 		font-size: 0.9375rem;
 		line-height: 1.7;
+		color: var(--wp--preset--color--ink-secondary, #3d3d3d);
 	}
+	.np-comments .wp-block-comment-content p:last-child { margin-block-end: 0; }
+	.np-comments .wp-block-comment-reply-link {
+		margin-block-start: 0.5rem;
+	}
+	.np-comments .wp-block-comment-reply-link a {
+		font-family: var(--wp--preset--font-family--inter, system-ui, sans-serif);
+		font-size: 0.75rem;
+		font-weight: 700;
+		letter-spacing: 0.04em;
+		text-transform: uppercase;
+		color: var(--wp--preset--color--accent-red, #c62828);
+		text-decoration: none;
+	}
+	.np-comments .wp-block-comments-pagination {
+		margin-block-start: 1.5rem;
+	}
+	.np-comments .comment-reply-title {
+		font-family: var(--wp--preset--font-family--playfair-display, Georgia, serif);
+		font-size: 1.375rem;
+		font-weight: 700;
+		margin-block: 2rem 1rem;
+	}
+	.np-comments .comment-reply-title small a {
+		font-family: var(--wp--preset--font-family--inter, system-ui, sans-serif);
+		font-size: 0.75rem;
+		font-weight: 500;
+		text-transform: none;
+		letter-spacing: normal;
+		color: var(--wp--preset--color--ink-muted, #6b6b6b);
+	}
+	.np-comments .comment-form p { margin-block-end: 1rem; }
+	.np-comments .comment-form label {
+		display: block;
+		font-family: var(--wp--preset--font-family--inter, system-ui, sans-serif);
+		font-size: 0.75rem;
+		font-weight: 700;
+		letter-spacing: 0.04em;
+		text-transform: uppercase;
+		color: var(--wp--preset--color--ink-muted, #6b6b6b);
+		margin-block-end: 0.375rem;
+	}
+	.np-comments .comment-form input[type="text"],
+	.np-comments .comment-form input[type="email"],
+	.np-comments .comment-form input[type="url"],
+	.np-comments .comment-form textarea {
+		width: 100%;
+		font-family: var(--wp--preset--font-family--lora, Georgia, serif);
+		font-size: 0.9375rem;
+		padding: 0.625rem 0.75rem;
+		border: 1px solid var(--wp--preset--color--rule-medium, #c0c0b8);
+		border-radius: 0;
+		background: var(--wp--preset--color--paper-white, #fff);
+		color: var(--wp--preset--color--ink-primary, #1a1a1a);
+	}
+	.np-comments .comment-form input:focus,
+	.np-comments .comment-form textarea:focus {
+		outline: 3px solid var(--cl-focus-ring, var(--wp--preset--color--accent-red, #c62828));
+		outline-offset: 1px;
+	}
+	.np-comments .comment-form-cookies-consent {
+		display: flex;
+		align-items: center;
+		gap: 0.5rem;
+	}
+	.np-comments .comment-form-cookies-consent label {
+		display: inline;
+		font-weight: 400;
+		text-transform: none;
+		letter-spacing: normal;
+	}
+	.np-comments .form-submit input[type="submit"] {
+		min-height: 44px;
+		padding: 0.625rem 1.5rem;
+		font-family: var(--wp--preset--font-family--inter, system-ui, sans-serif);
+		font-size: 0.8125rem;
+		font-weight: 700;
+		letter-spacing: 0.04em;
+		text-transform: uppercase;
+		background: var(--wp--preset--color--accent-red, #c62828);
+		color: var(--np-on-accent, #fff);
+		border: none;
+		border-radius: 0;
+		cursor: pointer;
+	}
+	.np-comments .form-submit input[type="submit"]:hover { background: #a32020; }
 
 	/* Pagination */
 	.np-pagination,
@@ -1101,9 +1221,9 @@ body {
 		font-size: 0.8125rem;
 		/* Colour is set per-instance; no opacity dim — see nav-heading note. */
 	}
-}
 
-@layer blocks {
+
+
 
 	.wp-block-navigation .wp-block-navigation-item__content {
 		font-family: var(--wp--preset--font-family--inter, system-ui, sans-serif) !important;
@@ -1246,9 +1366,9 @@ body {
 		background: var(--wp--preset--color--ink-primary, #1a1a1a) !important;
 		color: var(--wp--preset--color--paper-white) !important;
 	}
-}
 
-@layer utilities {
+
+
 	.np-sr-only {
 		position: absolute;
 		width: 1px;
@@ -1296,7 +1416,7 @@ body {
 		background: #fff;
 		animation: np-blink 1.2s ease-in-out infinite;
 	}
-}
+
 
 @media (prefers-reduced-motion: reduce) {
 	/* Reading progress bar: animation-duration:0.01ms doesn't suppress
@@ -1327,50 +1447,6 @@ body {
 	.np-live-badge::before {
 		animation: none;
 	}
-}
-
-@media (prefers-color-scheme: dark) {
-	:root { color-scheme: dark; }
-
-	.np-utility-bar { background: #060607; }
-
-	.np-masthead {
-		background: #111113;
-		border-block-end-color: #2a2a2e;
-		box-shadow: 0 1px 8px rgba(0, 0, 0, 0.4);
-	}
-
-	.wp-block-site-title a { color: #e8e8e4; }
-
-	.np-breaking-bar { background: #1a1a1e; border-block-end-color: #2a2a2e; }
-
-	.np-section-nav { background: #111113; border-block-end-color: #e8e8e4; }
-	.np-section-nav a { color: #e8e8e4; }
-
-	.np-story-card__image { background: #1a1a1e; }
-
-	.np-date-banner { border-color: #2a2a2e; color: #888; }
-	.np-date-banner::before, .np-date-banner::after { background: #2a2a2e; }
-
-	.wp-block-post-title a { color: #e8e8e4; }
-	.wp-block-post-title a:hover { color: #ef9a9a; }
-
-	.wp-block-post-content { color: #c8c8c4; }
-
-	.np-newsletter { background: #1a1a1e; }
-	.np-newsletter__heading { color: #e8e8e4; }
-	.np-newsletter input[type="email"] { background: #111113; border-color: #3a3a3e; color: #e8e8e4; }
-
-	.np-author-card { background: #1a1a1e; }
-
-	.np-sidebar-widget { border-block-start-color: #e8e8e4; }
-
-	.np-ad-placeholder { background: #1a1a1e; border-color: #2a2a2e; color: #9b9b9b; }
-
-	.wp-block-table th { background: #2a2a2e; }
-	.wp-block-table tr:nth-child(even) td { background: #1a1a1e; }
-
-	.np-article-byline-bar { border-color: #2a2a2e; }
 }
 
 @media (prefers-contrast: more) {
@@ -1407,4 +1483,125 @@ body {
 	p { orphans: 3; widows: 3; }
 
 	@page { margin: 2cm; }
+}
+
+
+/* Review fixes (ticket #282661): keyboard focus on the utility-bar search,
+   readable primary navigation in dark mode, and a visible mobile menu. */
+
+
+	.np-utility-bar .wp-block-search__button:focus-visible,
+	.np-utility-bar .wp-block-search__button:focus,
+	.np-utility-bar a:focus-visible {
+		outline: 3px solid var(--cl-focus-ring-inverse) !important;
+		outline-offset: 2px !important;
+		opacity: 1 !important;
+	}
+	.np-utility-bar .wp-block-search__button:focus-visible,
+	.np-utility-bar .wp-block-search__button:focus {
+		background: var(--wp--preset--color--accent-red, #c62828) !important;
+		color: #fff !important;
+	}
+
+	.np-masthead .wp-block-navigation .wp-block-navigation-item__content {
+		color: var(--wp--preset--color--ink-primary, #1a1a1a);
+	}
+	.np-masthead .wp-block-navigation .wp-block-navigation-item__content:hover,
+	.np-masthead .wp-block-navigation .wp-block-navigation-item__content:focus-visible {
+		color: var(--wp--preset--color--accent-red, #c62828);
+	}
+	.np-masthead .wp-block-navigation__responsive-container-open,
+	.np-masthead .wp-block-navigation__responsive-container-close {
+		color: var(--wp--preset--color--ink-primary, #1a1a1a);
+	}
+	.np-masthead .wp-block-navigation__responsive-container.is-menu-open {
+		background-color: var(--wp--preset--color--paper-white, #fff);
+		color: var(--wp--preset--color--ink-primary, #1a1a1a);
+	}
+
+
+/* Unlayered on purpose. WordPress emits global styles (theme.json element and
+   block colours) outside any @layer, and unlayered rules beat layered ones. The
+   footer sits on a fixed dark ground, so its links, tagline and lists must set
+   their own light colour here or they inherit the dark link colour and vanish. */
+.np-footer a,
+.np-footer .wp-block-categories a,
+.np-footer .wp-block-page-list a,
+.np-footer__nav a {
+	color: var(--np-footer-fg, #f8f8f6);
+}
+.np-footer a:hover,
+.np-footer a:focus-visible {
+	color: #fff;
+	text-decoration: underline;
+}
+.np-footer .np-footer__tagline {
+	/* Fixed value: the footer ground is fixed near-black in every edition. */
+	color: #b0b0ab;
+}
+
+/* Side gutters: <main> and the footer use a constrained layout, which centres
+   content but adds no padding, so below the 1440px content width the text sat
+   flush against the viewport edge. */
+.np-main,
+.np-footer {
+	padding-inline: var(--np-gutter);
+}
+
+/* The breaking-news query renders a vertical <ul>; lay it out as the horizontal
+   track the ticker animation expects. */
+.np-breaking-ticker .wp-block-post-template {
+	display: flex;
+	gap: 4rem;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	white-space: nowrap;
+}
+.np-breaking-ticker .wp-block-post-template > li {
+	margin: 0;
+	flex: none;
+}
+
+/* WCAG 2.2 target size (2.5.8): the dismiss control and ticker links need a
+   comfortably large hit area. */
+.np-breaking-dismiss button {
+	min-width: 44px;
+	min-height: 44px;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+}
+.np-breaking-ticker .wp-block-post-title a {
+	display: inline-block;
+	padding-block: 0.75rem;
+}
+
+.np-breaking-bar {
+	min-height: max(var(--np-breaking-height, 2.5rem), 44px);
+}
+
+.np-breaking-dismiss {
+	position: relative;
+	z-index: 2;
+	background: var(--wp--preset--color--paper-off-white, #f8f8f6);
+}
+.np-breaking-ticker-wrap {
+	min-width: 0;
+	position: relative;
+	z-index: 1;
+}
+
+.np-breaking-bar.hidden {
+	display: none;
+}
+
+.np-trending-query .wp-block-post-template {
+	counter-reset: np-rank;
+}
+.np-story-card__rank {
+	counter-increment: np-rank;
+}
+.np-story-card__rank::before {
+	content: counter(np-rank);
 }

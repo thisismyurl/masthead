@@ -214,7 +214,7 @@ add_action( 'admin_post_' . MASTHEAD_DISMISS_ACTION, 'masthead_handle_welcome_di
  * filter in inc/skin.php — that is where each theme's voice lives, kept out of
  * this synced file.
  *
- * @return array{lead:string,steps:array<int,array{title:string,body:string}>,optimize:string[],credit:string,developers:array{text:string,url:string,label:string}} The page content.
+ * @return array{lead:string,steps:array<int,array{title:string,body:string}>,optimize:string[],developers:array{text:string,url:string,label:string}} The page content.
  */
 function masthead_get_started_content(): array {
 	$theme = masthead_get_theme_name();
@@ -256,11 +256,10 @@ function masthead_get_started_content(): array {
 			esc_html__( "This theme is fast by design: reading is JavaScript-free (only the breaking-news dismiss control ships a small script), self-hosted fonts that don't phone home, and tuning against the Core Web Vitals search engines actually measure.", 'masthead' ),
 			esc_html__( 'It is built to WCAG 2.2 AA guidance — real focus outlines, a skip link, sensible heading order, and motion that respects a reduce-motion setting. Keep your own copy and images to that bar and the whole site stays welcoming.', 'masthead' ),
 		),
-		'credit'     => esc_html__( "There's a small credit in your footer. It's a thank-you, not a tax — remove it in two clicks in the Site Editor → Footer, or filter it out in code. No hard feelings either way.", 'masthead' ),
 		'developers' => array(
 			/* translators: %s: linked developer-guide anchor. */
 			'text'  => __( 'This theme is built on Colophon, a small documented core meant to be reused. The %s walks through how to build your own theme on it.', 'masthead' ),
-			'url'   => apply_filters( MASTHEAD_SLUG . '/developer_guide_url', 'https://thisismyurl.com/colophon' ), // phpcs:ignore WordPress.NamingConventions.ValidHookName.UseUnderscores
+			'url'   => apply_filters( MASTHEAD_SLUG . '/developer_guide_url', 'https://thisismyurl.com/masthead/' ), // phpcs:ignore WordPress.NamingConventions.ValidHookName.UseUnderscores
 			'label' => __( 'developer guide', 'masthead' ),
 		),
 	);
@@ -336,11 +335,6 @@ function masthead_render_get_started_page(): void {
 			<?php foreach ( $content['optimize'] as $para ) : ?>
 				<p><?php echo wp_kses( $para, $cl_inline ); ?></p>
 			<?php endforeach; ?>
-		<?php endif; ?>
-
-		<?php if ( ! empty( $content['credit'] ) ) : ?>
-			<h2><?php esc_html_e( 'The footer credit', 'masthead' ); ?></h2>
-			<p><?php echo wp_kses( $content['credit'], $cl_inline ); ?></p>
 		<?php endif; ?>
 
 		<?php if ( ! empty( $content['developers']['text'] ) ) : ?>

@@ -3,11 +3,11 @@
 <!-- wp:template-part {"slug":"header-breaking-news","tagName":"div"} /-->
 
 <!-- wp:group {"tagName":"main","className":"np-main","id":"main-content","layout":{"type":"constrained","contentSize":"1280px"},"style":{"spacing":{"padding":{"top":"var:preset|spacing|10","bottom":"var:preset|spacing|16"}}}} -->
-<main class="wp-block-group np-main" id="main-content">
+<main id="main-content" class="wp-block-group np-main" style="padding-top:var(--wp--preset--spacing--10);padding-bottom:var(--wp--preset--spacing--16)">
 
-	<!-- Page heading (required per WCAG 2.1 1.3.1): one h1 per template. On the
-	     blog home this resolves to the page title; on fallback archives, the term. -->
-	<!-- wp:query-title {"level":1} /-->
+	<!-- wp:heading {"level":1,"metadata":{"bindings":{"content":{"source":"masthead/site-strings","args":{"key":"posts-title"}}}}} -->
+	<h1 class="wp-block-heading"></h1>
+	<!-- /wp:heading -->
 
 	<!-- wp:query {"queryId":0,"query":{"perPage":10,"postType":"post","order":"desc","orderBy":"date","inherit":true},"layout":{"type":"default"}} -->
 	<div class="wp-block-query">
@@ -18,7 +18,7 @@
 			<div class="wp-block-group np-story-card">
 				<!-- wp:post-terms {"term":"category","className":"np-category-label"} /-->
 				<!-- wp:post-title {"level":2,"isLink":true,"className":"np-headline--section"} /-->
-				<!-- wp:post-excerpt {"moreText":"Continue reading","className":"np-excerpt"} /-->
+				<!-- wp:post-excerpt {"className":"np-excerpt"} /-->
 				<!-- wp:group {"className":"np-byline","layout":{"type":"flex","flexWrap":"wrap","verticalAlignment":"center"}} -->
 				<div class="wp-block-group np-byline">
 					<!-- wp:post-author {"showAvatar":false,"showBio":false,"isLink":true} /-->
@@ -30,12 +30,8 @@
 
 		<!-- /wp:post-template -->
 
-		<!-- No-results state: no hardcoded visitor prose (translation-ready). The
-		     query-title h1 above already names the context; a search block offers
-		     a retry path. The search block's labels come from core block defaults,
-		     which WordPress localizes. -->
 		<!-- wp:query-no-results -->
-			<!-- wp:search {"showLabel":false,"placeholder":"Search…","buttonText":"Search","buttonPosition":"button-only","buttonUseIcon":true,"className":"np-no-results-search","style":{"spacing":{"padding":{"top":"var:preset|spacing|12","bottom":"var:preset|spacing|12"}}}} /-->
+			<!-- wp:search {"showLabel":false,"buttonPosition":"button-only","buttonUseIcon":true,"className":"np-no-results-search","style":{"spacing":{"padding":{"top":"var:preset|spacing|12","bottom":"var:preset|spacing|12"}}}} /-->
 		<!-- /wp:query-no-results -->
 
 		<!-- wp:query-pagination {"layout":{"type":"flex","justifyContent":"center","flexWrap":"wrap"},"className":"np-pagination"} -->

@@ -1,26 +1,20 @@
 <!-- wp:template-part {"slug":"header"} /-->
 
 <!-- wp:group {"tagName":"main","className":"np-main np-404-page","id":"main-content","layout":{"type":"constrained","contentSize":"780px"},"style":{"spacing":{"padding":{"top":"var:preset|spacing|24","bottom":"var:preset|spacing|24"}}}} -->
-<main class="wp-block-group np-main np-404-page" id="main-content">
+<main id="main-content" class="wp-block-group np-main np-404-page" style="padding-top:var(--wp--preset--spacing--24);padding-bottom:var(--wp--preset--spacing--24)">
 
-	<!-- The h1 below is the page's sole h1 (the language-neutral "404"); editors
-	     can replace it in the Site Editor. Visitor prose was removed so no
-	     untranslatable English ships in the template; the search form and home
-	     link below are the recovery path. -->
-	<!-- wp:heading {"level":1,"className":"np-headline--hero","textAlign":"center","style":{"typography":{"fontFamily":"var:preset|font-family|playfair-display","fontSize":"clamp(3rem, 8vw, 6rem)","fontWeight":"900","lineHeight":"1"}}} -->
-	<h1 class="has-text-align-center np-headline--hero">404</h1>
+	<!-- wp:heading {"level":1,"className":"np-headline--hero","textAlign":"center","style":{"typography":{"fontFamily":"var:preset|font-family|playfair-display","fontSize":"clamp(2.25rem, 6vw, 4.5rem)","fontWeight":"900","lineHeight":"1"}},"metadata":{"bindings":{"content":{"source":"masthead/site-strings","args":{"key":"not-found-title"}}}}} -->
+	<h1 class="wp-block-heading has-text-align-center np-headline--hero"></h1>
 	<!-- /wp:heading -->
 
-	<!-- wp:search {"label":"Search the archive","buttonText":"Search","buttonPosition":"button-outside","showLabel":true,"className":"np-404-search","style":{"spacing":{"margin":{"top":"2.5rem"}}}} /-->
+	<!-- wp:search {"buttonPosition":"button-outside","showLabel":true,"className":"np-404-search","style":{"spacing":{"margin":{"top":"2.5rem"}}}} /-->
 
 	<!-- wp:group {"style":{"spacing":{"padding":{"top":"var:preset|spacing|16"}}},"layout":{"type":"flex","justifyContent":"center","flexWrap":"wrap"}} -->
 	<div class="wp-block-group">
 		<!-- wp:buttons {"layout":{"type":"flex","justifyContent":"center"}} -->
 		<div class="wp-block-buttons">
-			<!-- wp:button {"className":"is-style-outline"} -->
-			<div class="wp-block-button is-style-outline">
-				<!-- wp:home-link {"label":"Back to Front Page"} /-->
-			</div>
+			<!-- wp:button {"className":"is-style-outline","metadata":{"bindings":{"url":{"source":"masthead/site-strings","args":{"key":"home-url"}},"text":{"source":"masthead/site-strings","args":{"key":"home-label"}}}}} -->
+			<div class="wp-block-button is-style-outline"><a class="wp-block-button__link wp-element-button"></a></div>
 			<!-- /wp:button -->
 		</div>
 		<!-- /wp:buttons -->

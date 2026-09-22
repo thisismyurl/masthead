@@ -5,8 +5,7 @@
  * This is the ONE place a theme's identity lives. Change the `masthead_` function
  * prefix and the MASTHEAD_* constants and the entire theme re-prefixes, because
  * every other file derives its asset handles, hooks, and i18n keys from them. With
- * Colophon you rarely edit this by hand — the `colophon` CLI rewrites the prefix,
- * slug, and version here from the theme's colophon.json every time it scaffolds or
+ * Colophon you rarely edit this by hand; the prefix, slug and version here are set when the theme is scaffolded or
  * syncs. The constants are still the source of truth at runtime; the CLI just keeps
  * them honest.
  *
@@ -27,7 +26,7 @@
  * make-pot` reads source statically and only recognises a literal as the domain
  * argument; hand it a constant and it extracts nothing and ships an
  * untranslatable theme. The CLI rewrites the literal too, so it survives a
- * re-skin. See ARCHITECTURE.md §4.
+ * re-skin.
  *
  * @package masthead
  */
@@ -43,9 +42,9 @@ define( 'MASTHEAD_SLUG', 'masthead' );
 
 /**
  * Theme version — cache-bust for enqueued assets and the WordPress.org version.
- * The CLI injects the theme's own version from colophon.json on every sync.
+ * Keep this in step with the Version header in style.css and Stable tag in readme.txt.
  */
-define( 'MASTHEAD_VERSION', '1.6201.0911' );
+define( 'MASTHEAD_VERSION', '1.6264.1804' );
 
 /**
  * Absolute filesystem path to the theme root (no trailing slash).

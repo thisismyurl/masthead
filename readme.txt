@@ -3,7 +3,7 @@ Contributors: thisismyurl
 Requires at least: 6.7
 Tested up to: 7.1
 Requires PHP: 7.4
-Stable tag: 1.6201.0911
+Stable tag: 1.6264.1804
 License: GPL-2.0-or-later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 Tags: news, blog, two-columns, grid-layout, full-site-editing, block-patterns, translation-ready, wide-blocks, custom-colors, custom-logo, custom-menu, editor-style, featured-images, sticky-post
@@ -20,18 +20,18 @@ Five named editions ship as one-click style variations, so the same content can 
 
 Key features:
 
-* Full Site Editing — every element customisable in the Site Editor
+* Full Site Editing — colours, typography and layout customisable in the Site Editor, with five one-click editions
 * Bold editorial typography — Playfair Display headlines, Lora body text, Inter UI (fonts are optional; beautiful system-font fallbacks included)
 * Editorial block patterns — story hero, breaking story, section header, section navigation, article and opinion rows, newsletter CTA, and a full section footer (eight patterns; see Block Patterns below)
 * Section colour coding — eight section accent colours (News, Politics, Business, Culture, Sports, Tech, Opinion, World) controlled by CSS custom properties
-* Reading progress indicator on the wide article template. Pure CSS, no JavaScript (see Accessibility & JavaScript below)
+* Reading progress indicator on the wide article template. Pure CSS, no JavaScript; shown in browsers that support scroll-driven animations (see Accessibility & JavaScript below)
 * Drop cap support. Select a paragraph, then choose the "Drop Cap" style in the block Styles panel
 * Breaking news ticker — animated with CSS, with a small Interactivity-API dismiss button
 * Newsletter signup pattern — integrates with any form plugin
-* Advertisement placeholder blocks in three IAB-standard sizes (see Advertisement Placeholders below)
+* Advertisement placeholder classes in three IAB-standard sizes (see Advertisement Placeholders below)
 * Accessibility built to WCAG 2.2 AA guidance — skip link, visible focus outlines, ARIA landmarks, logical heading order, reduced-motion support (see Accessibility & JavaScript below)
 * RTL-ready — layout written with CSS logical properties (see Accessibility & JavaScript below for the documented caveat)
-* Dark mode — respects prefers-color-scheme automatically
+* Midnight Edition — a dark reading mode, chosen in Appearance > Editor > Styles
 * High-contrast mode support
 * Print-optimised — navigation, ads, and sidebars hidden automatically
 * Core Web Vitals optimised — no render-blocking JavaScript, minimal CSS, lazy-loaded images
@@ -57,7 +57,7 @@ Homepage:
 3. Pin your featured story using the Sticky checkbox in the post publish panel.
 
 Section navigation:
-The section rail lists your site's categories automatically. Create the categories you publish under and they appear. To place the rail elsewhere, or to use hand-picked links instead, insert the "Section Navigation" pattern from the Patterns inserter.
+The "Section Navigation" pattern (Patterns inserter) gives you a static row of section labels. Replace the label text and add a link to each one for your own sections.
 
 Breaking news:
 Add a "Breaking News" category. Recent posts in that category populate the breaking news ticker (customisable in the Site Editor → Template Parts → Breaking News Bar).
@@ -73,13 +73,13 @@ Newsletter CTA             — Email signup block on a tinted panel
 Opinion Row                — Row of opinion columns with author photos
 Section Footer             — Full dark-ground footer with nameplate and links
 Section Header             — Coloured section title with horizontal rule
-Section Navigation         — Inline row of section links
+Section Navigation         — Static row of section labels; add your own links
 Story Hero                 — Full-width story headline, deck, and byline row
 
 == Advertisement Placeholders ==
 
-The sidebar ships a medium-rectangle placeholder. Two further IAB sizes are
-styled and available. Add the size class to any Group block via the block's
+Three IAB placeholder sizes are styled and available; none ships in the default
+templates. Add the size class to any Group block via the block's
 Advanced → Additional CSS class(es) field:
 
   np-ad-placeholder np-ad-placeholder--rectangle     (300×250)
@@ -92,20 +92,19 @@ the block's contents with your network's embed code when you have one.
 == Editions ==
 
 Masthead ships five named editions as one-click style variations (Appearance →
-Editor → Styles → Browse styles). Each is a complete typographic and colour
-re-skin built on the same accessible structure — switch editions without
-editing CSS or rebuilding layouts:
+Editor → Styles → Browse styles). Each is a colour re-skin on the same
+typography, spacing and layout — switch editions without editing CSS or
+rebuilding layouts:
 
-* Broadsheet — the default. Tall Playfair headlines, generous column rhythm,
-  the authority of a Sunday paper of record.
+* Broadsheet — an inverted edition: a near-black ground with warm off-white text,
+  tall Playfair headlines and generous column rhythm.
 * Tabloid — tighter, louder, higher-contrast. Built for breaking news and
   high-tempo regional desks.
 * Midnight Edition — a dark-mode reading experience for night desks and
   digital-native audiences.
 * Weekend Edition — softer rhythm and warmer accents for long-form features,
   essays, and culture coverage.
-* Digital First — a lean, screen-native treatment optimised for mobile reading
-  and Core Web Vitals.
+* Digital First — a high-contrast black-on-white treatment for screen reading.
 
 == Typography & Vertical Rhythm ==
 
@@ -125,16 +124,14 @@ Vertical rhythm is driven by the theme.json spacing preset scale rather than ad
 hoc margins, so blocks stack on a consistent baseline across every template. Body
 copy sits at a 1.65–1.7 line-height for sustained reading.
 
-Edition type-scale deltas: each named edition re-skins this system rather than
-replacing it. Broadsheet keeps the tallest headline scale and most generous
-rhythm; Tabloid tightens the scale and raises contrast for high-tempo desks;
-Digital First trims display sizes for screen-native, mobile-first reading;
-Weekend softens rhythm for long-form features; Midnight inverts the colour ground
-while holding the same metrics. Switching editions never touches layout or CSS.
+Editions and type: the five named editions change colour only — palette,
+accents and (for Broadsheet and Midnight) an inverted ground. Type scale,
+spacing and letter-spacing are one shared system across every edition;
+switching editions never touches layout, CSS or the type scale.
 
 == Section Colours ==
 
-Override section accent colours in Appearance → Customize → Additional CSS:
+Override section accent colours in Appearance → Editor → Styles → (⋮) Additional CSS:
 
   :root {
     --np-col-news:     #c62828;
@@ -173,7 +170,7 @@ claims are removed rather than restated.
 
 Accessibility is built to WCAG 2.2 AA guidance. This is not a third-party audit certification; it is a description of what ships and how to keep it. The specific measures in the theme are:
 
-* Skip link — a "skip to content" link is the first focusable element; every template's <main> carries id="main-content" as its target.
+* Skip link — WordPress core adds a "skip to content" link as the first focusable element; every template's <main> carries id="main-content" as its target.
 * Visible focus — focus outlines are never removed; interactive elements show a focus ring on keyboard navigation.
 * Landmarks — header, navigation, main, and footer regions use semantic landmarks for screen-reader navigation.
 * Heading order — every template has exactly one h1 and a logical heading sequence (WCAG 2.1 1.3.1).
@@ -182,10 +179,11 @@ Accessibility is built to WCAG 2.2 AA guidance. This is not a third-party audit 
 
 Keeping a site at this bar depends on your own content: write descriptive link text, add alt text to images, and maintain heading order in posts.
 
-JavaScript scope: the theme is JavaScript-free for reading. Two features ship small scripts:
+JavaScript scope: the theme is JavaScript-free for reading. One feature ships a small script:
 
 * Breaking-news dismiss button — assets/js/breaking-news.js plus an Interactivity API module power the dismiss control on the breaking-news bar.
-* Reading-progress indicator — this is the one feature that uses zero JavaScript; it is pure CSS.
+
+The reading-progress indicator uses no JavaScript; it is pure CSS.
 
 No analytics, tracking, or remote scripts are enqueued.
 
@@ -193,8 +191,7 @@ Translation scope: every string the theme generates from PHP — admin onboardin
 copy, block-style and pattern-category labels, image-size names, reading-time
 output — is wrapped in gettext functions against the "masthead" text domain and
 ships in languages/. The demo copy inside the block templates (the front-page
-section labels such as "Top Stories", the footer's "Subscribe Now" call to
-action, and similar editorial placeholders) is editor content, not theme code:
+section labels such as "Top Stories", the newsletter pattern's call to action, and similar editorial placeholders) is editor content, not theme code:
 it is meant to be replaced in the Site Editor for your own publication and is
 not localized, in keeping with standard Full Site Editing practice.
 
@@ -212,9 +209,9 @@ The Get-started screen's developer-guide link is filterable. Change where the
       }
   );
 
-Default: https://thisismyurl.com/colophon
+Default: https://thisismyurl.com/masthead/
 Filter type: filter (string in, string out).
-Fires from: get_started_content() in inc/admin.php.
+Fires from: masthead_get_started_content() in inc/admin.php.
 Syntax above is PHP 7.4-compatible.
 
 == Frequently Asked Questions ==
@@ -229,9 +226,37 @@ No. Zero plugin dependencies. Works with popular plugins but requires none.
 
 = Where do I set section colours? =
 
-Each section category gets its accent colour from a CSS custom property. Override in Appearance → Customize → Additional CSS (see Section Colours section above).
+Each section category gets its accent colour from a CSS custom property. Override in Appearance → Editor → Styles → (⋮) Additional CSS (see Section Colours section above).
 
 == Changelog ==
+
+= 1.6264.1804 =
+Addresses every item raised on WordPress.org theme review ticket #282661.
+
+* Accessibility: the utility-bar search button now shows a clear keyboard focus state.
+* Accessibility: primary navigation text is readable in the dark colour scheme, including the mobile menu overlay and its open and close buttons.
+* Mobile: the primary navigation and its menu button are no longer hidden below 1024px.
+* Packaging: removed repository-only files (SECURITY.md, CODE_OF_CONDUCT.md, CONTRIBUTING.md, README.md, .github) and the GitHub self-updater and CLI scaffolding from the distributed theme.
+* Internationalisation: every user-facing string in patterns/ is now translation-ready.
+* Assets: removed the bundled photographs and every reference to them; patterns no longer ship images that need a separate license.
+* Accessibility: the skip link is now core's single link (the theme's duplicate is gone), the breaking-news ticker no longer renders headings above the page's h1, footer and sidebar widget titles and front-page section titles are real h2 headings, the utility-bar search has its own accessible name, the dismiss control meets the 44px target size, and the search stays available on small screens.
+* Design: the theme stylesheet is no longer wrapped in cascade layers. WordPress prints its global styles outside any layer, which outranked the layered theme rules; the site title, gutters, category labels and footer links now render as designed. Reset and base rules stay layered.
+* Design: removed the automatic dark colour scheme, which darkened surfaces without recolouring all text. Dark reading is offered by the Midnight and Broadsheet editions (Appearance > Editor > Styles).
+* Design: content and footer now have side gutters below 1440px; the breaking-news ticker lays out horizontally; footer links and tagline are readable on the dark footer.
+* Front page: a fresh install no longer shows the lead story twice.
+* Editor: template parts and patterns now validate as blocks (empty paragraph, empty image, section-title and heading markup corrected); the breaking-news directives are added in PHP; the 404 link uses a block binding; two page templates (Wide, Blank Canvas) are now selectable.
+* Assets: added OFL.txt for each bundled font family and a real 1200x900 screenshot.
+* Internationalisation: regenerated languages/masthead.pot; removed hard-coded English from excerpt, tag and search block attributes.
+* Cleanup: removed dead footer-credit binding and its admin copy, the unused section-link resolver, and stray developer comments from template output; corrected the editor stylesheet.
+* Fixed a fatal error under WP-CLI caused by an include of a file that is not in the package.
+* Removed placeholder links that pointed nowhere and inert block markup from default template parts and patterns.
+* Comments: added a Comments block (comment list, pagination and reply form) to every singular template, styled to the theme's type system; comment support was declared but never rendered before this version.
+* Front page: fixed a corrupted edit that had deleted the function keeping the lead story from repeating (the fix was written but never wired up); the front page now genuinely shows each story once.
+* Typography: fixed five theme.json heading/element font-size references that used the pattern-file preset name instead of the CSS custom property WordPress actually emits for a slug starting with a digit (2xs/2xl/3xl/4xl serialize as 2-xs/2-xl/3-xl/4-xl); post and page titles, and headings inside post content, were rendering at body-copy size. The affected preset slugs were also renamed (2xs/2xl/3xl/4xl to xxs/xxl/xxxl/huge) so the trap cannot recur, and the hero/secondary/section/compact headline styles now match whether their class is on a wrapper or directly on the title block.
+* Related stories: the "Related Stories" query on single-post templates no longer lists the article you are already reading.
+* Accessibility: search landmarks are now distinguished by context (utility bar, 404/no-results, the search page's two forms) rather than sharing one label; a user-placed search block elsewhere keeps core's own accessible name.
+* Editions: corrected the readme's description of the five style variations, which change colour only; the type scale, spacing and layout are one shared system across all of them. Added the Weekend Edition's missing accent-navy colour so its own link-colour override actually applies.
+* Internationalisation: regenerated languages/masthead.pot against the final template set, including the two page-template titles added this version and the reading-time plural.
 
 = 1.6201.0911 =
 Addresses every item raised on WordPress.org theme review ticket #280625.
@@ -315,7 +340,7 @@ Addresses every item raised on WordPress.org theme review ticket #280625.
   inline, bypassing the accent-red inversion seam, so they fell to ~3:1 in the Midnight and
   Broadsheet editions; both now use Paper White (the inverting partner) like the footer button.
 * Accessibility: the newsletter input painted its own white ground under inverting
-  text, and the subscribe/newsletter button hover backgrounds (a stable dark red) carried
+  text, and the newsletter button hover backgrounds (a stable dark red) carried
   inverting text; the input now uses Paper White (the inverting partner) and the hovers pin
   light text. Resolves the last white-on-near-white pairs in the Midnight/Broadsheet editions.
 * Accessibility: the search button, table header, and pagination hover painted their own
@@ -353,7 +378,7 @@ Addresses every item raised on WordPress.org theme review ticket #280625.
   (large text and UI) in all five editions and the default — verified by an
   alpha-compositing relative-luminance audit of 168 edition x surface pairs.
 * Version: synced style.css, inc/bootstrap.php VERSION, the readme stable tag, and
-  the colophon.json version field (which had drifted to 1.6148).
+  the theme's own version constant (which had drifted to 1.6148).
 
 = 1.6165.1214 =
 * Accessibility (WCAG 2.2 AA contrast): an exhaustive relative-luminance audit
@@ -413,8 +438,8 @@ Addresses every item raised on WordPress.org theme review ticket #280625.
 * Accessibility: removed the duplicate skip link. The header template part
   hardcoded a second, non-translatable "Skip to content" link in raw HTML while
   inc/setup.php already emits a translatable, filterable skip link on
-  wp_body_open. Every page now renders exactly one skip link (the PHP one). A
-  comment in parts/header.html documents where the skip link originates.
+  wp_body_open. Every page rendered one skip link at that point; 1.6264.1804 removed the theme's own
+  PHP link as well, because WordPress core now emits its own on the same hook.
 * Consistency: the Section Footer pattern's copyright line is now bound to the
   masthead/copyright source (matching parts/footer.html) instead of a static
   "© 2026 The Masthead." It renders a live year and the real Site Title.
