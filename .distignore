@@ -24,6 +24,11 @@ CONTRIBUTING.md
 # Preview system
 preview/
 
+# WordPress.org directory listing assets (banner/icon) — pushed to the SVN
+# assets/ path by .github/workflows/deploy-wporg-assets.yml, never bundled
+# into the installed theme itself
+.wporg-assets/
+
 # Version-control artefacts
 .git
 .github
