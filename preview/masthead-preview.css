@@ -529,11 +529,9 @@
     gap: 0.5rem;
   }
 
-  /* Image placeholders (preview stand-ins for featured images) */
+  /* Featured images (was a text-label placeholder; now a real object-fit photo) */
   .np-story-card__img-placeholder {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    display: block;
     background: var(--wp--preset--color--paper-light);
     color: var(--wp--preset--color--ink-faint);
     font-family: var(--wp--preset--font-family--inter);
@@ -543,6 +541,8 @@
     text-align: center;
     aspect-ratio: 3 / 2;
     width: 100%;
+    object-fit: cover;
+    object-position: center;
   }
   .np-story-card__img-placeholder--hero { aspect-ratio: 16 / 9; }
   .np-story-card__img-placeholder--3-2  { aspect-ratio: 3 / 2; }
