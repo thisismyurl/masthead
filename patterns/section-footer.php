@@ -18,16 +18,16 @@
 <!-- wp:group {"tagName":"footer","className":"np-footer np-pattern-section-footer","metadata":{"categories":["masthead-site"],"name":"Section Footer"},"style":{"color":{"background":"var:preset|color|ink-primary","text":"var:preset|color|paper-white"},"spacing":{"padding":{"top":"var:preset|spacing|12","bottom":"var:preset|spacing|10"}}},"layout":{"type":"constrained","contentSize":"1280px"}} -->
 <footer class="wp-block-group np-footer np-pattern-section-footer has-text-color has-background" style="color:var(--wp--preset--color--paper-white);background-color:var(--wp--preset--color--ink-primary);padding-top:var(--wp--preset--spacing--12);padding-bottom:var(--wp--preset--spacing--10)">
 
-	<!-- wp:group {"className":"np-footer__nameplate-bar","style":{"spacing":{"padding":{"bottom":"var:preset|spacing|9"}},"border":{"bottom":{"color":"var:preset|color|ink-secondary","style":"solid","width":"1px"}}},"layout":{"type":"default"}} -->
-	<div class="wp-block-group np-footer__nameplate-bar" style="border-bottom-color:var(--wp--preset--color--ink-secondary);border-bottom-style:solid;border-bottom-width:1px;padding-bottom:var(--wp--preset--spacing--9)">
-		<!-- wp:heading {"level":2,"className":"np-footer__nameplate","fontSize":"3xl","fontFamily":"playfair-display","style":{"typography":{"fontWeight":"800","letterSpacing":"-0.01em"}}} -->
-		<h2 class="wp-block-heading np-footer__nameplate has-playfair-display-font-family has-3-xl-font-size" style="font-weight:800;letter-spacing:-0.01em"><?php esc_html_e( 'The Masthead', 'masthead' ); ?></h2>
+	<!-- wp:group {"className":"np-footer__nameplate-bar","style":{"spacing":{"padding":{"bottom":"var:preset|spacing|8"}},"border":{"bottom":{"color":"var:preset|color|ink-secondary","style":"solid","width":"1px"}}},"layout":{"type":"default"}} -->
+	<div class="wp-block-group np-footer__nameplate-bar" style="border-bottom-color:var(--wp--preset--color--ink-secondary);border-bottom-style:solid;border-bottom-width:1px;padding-bottom:var(--wp--preset--spacing--8)">
+		<!-- wp:heading {"level":2,"className":"np-footer__nameplate","fontSize":"xxxl","fontFamily":"playfair-display","style":{"typography":{"fontWeight":"800","letterSpacing":"-0.01em"}}} -->
+		<h2 class="wp-block-heading np-footer__nameplate has-playfair-display-font-family has-xxxl-font-size" style="font-weight:800;letter-spacing:-0.01em"><?php esc_html_e( 'The Masthead', 'masthead' ); ?></h2>
 		<!-- /wp:heading -->
 	</div>
 	<!-- /wp:group -->
 
-	<!-- wp:columns {"isStackedOnMobile":true,"className":"np-footer__columns","style":{"spacing":{"padding":{"top":"var:preset|spacing|9"},"blockGap":{"top":"var:preset|spacing|8","left":"var:preset|spacing|12"}}}} -->
-	<div class="wp-block-columns is-stacked-on-mobile np-footer__columns" style="padding-top:var(--wp--preset--spacing--9)">
+	<!-- wp:columns {"isStackedOnMobile":true,"className":"np-footer__columns","style":{"spacing":{"padding":{"top":"var:preset|spacing|8"},"blockGap":{"top":"var:preset|spacing|8","left":"var:preset|spacing|12"}}}} -->
+	<div class="wp-block-columns is-stacked-on-mobile np-footer__columns" style="padding-top:var(--wp--preset--spacing--8)">
 
 		<!-- wp:column {"width":"40%"} -->
 		<div class="wp-block-column" style="flex-basis:40%">

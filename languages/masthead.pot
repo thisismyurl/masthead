@@ -2,14 +2,14 @@
 # This file is distributed under the GNU General Public License v2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: Masthead 1.6201.0911\n"
+"Project-Id-Version: Masthead 1.6291.1557\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/masthead\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-07-20T14:19:21+00:00\n"
+"POT-Creation-Date: 2026-10-18T16:02:04+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: masthead\n"
@@ -21,12 +21,12 @@ msgstr ""
 
 #. Theme URI of the theme
 #: style.css
-msgid "https://thisismyurl.com/masthead/"
+msgid "https://themes.thisismyurl.com/masthead/"
 msgstr ""
 
 #. Description of the theme
 #: style.css
-msgid "A modern, accessible, full-site editing newspaper theme for WordPress. Built for digital publishers who demand editorial quality — bold Playfair Display headlines, flexible multi-column layouts, zero plugin dependencies. Built to WCAG 2.2 AA guidance, Core Web Vitals optimised, pure-CSS reading-progress indicator, drop-cap support, dark mode, print-ready, and RTL-ready via CSS logical properties."
+msgid "A modern, accessible, full-site editing newspaper theme for WordPress. Built for digital publishers who demand editorial quality — bold Playfair Display headlines, flexible multi-column layouts, zero plugin dependencies. Built to WCAG 2.2 AA guidance, Core Web Vitals optimised, pure-CSS reading-progress indicator, drop-cap support, a dark reading edition, print-ready, and RTL-ready via CSS logical properties."
 msgstr ""
 
 #. Author of the theme
@@ -41,7 +41,7 @@ msgstr ""
 
 #. translators: %s: theme name.
 #: inc/admin.php:70
-#: inc/admin.php:314
+#: inc/admin.php:313
 #, php-format
 msgid "%s: Get started"
 msgstr ""
@@ -116,33 +116,25 @@ msgstr ""
 msgid "It is built to WCAG 2.2 AA guidance — real focus outlines, a skip link, sensible heading order, and motion that respects a reduce-motion setting. Keep your own copy and images to that bar and the whole site stays welcoming."
 msgstr ""
 
-#: inc/admin.php:259
-msgid "There's a small credit in your footer. It's a thank-you, not a tax — remove it in two clicks in the Site Editor → Footer, or filter it out in code. No hard feelings either way."
-msgstr ""
-
 #. translators: %s: linked developer-guide anchor.
-#: inc/admin.php:262
+#: inc/admin.php:261
 #, php-format
 msgid "This theme is built on Colophon, a small documented core meant to be reused. The %s walks through how to build your own theme on it."
 msgstr ""
 
-#: inc/admin.php:264
+#: inc/admin.php:263
 msgid "developer guide"
 msgstr ""
 
-#: inc/admin.php:323
+#: inc/admin.php:322
 msgid "Set up"
 msgstr ""
 
-#: inc/admin.php:335
+#: inc/admin.php:334
 msgid "Optimize"
 msgstr ""
 
-#: inc/admin.php:342
-msgid "The footer credit"
-msgstr ""
-
-#: inc/admin.php:347
+#: inc/admin.php:341
 msgid "For developers"
 msgstr ""
 
@@ -151,27 +143,47 @@ msgid "Copyright line"
 msgstr ""
 
 #: inc/bindings.php:47
-msgid "Footer credit line"
+msgid "Theme strings"
 msgstr ""
 
 #: inc/bindings.php:56
 msgid "Publication date"
 msgstr ""
 
+#: inc/bindings.php:65
+msgid "Footer credit"
+msgstr ""
+
+#: inc/bindings.php:86
+msgid "Breaking"
+msgstr ""
+
+#: inc/bindings.php:88
+msgid "Back to the front page"
+msgstr ""
+
+#: inc/bindings.php:92
+msgid "Page not found"
+msgstr ""
+
+#: inc/bindings.php:95
+msgid "Latest news"
+msgstr ""
+
 #. translators: 1: four-digit year, 2: site title.
-#: inc/bindings.php:89
+#: inc/bindings.php:125
 #, php-format
 msgid "© %1$s %2$s. All rights reserved."
 msgstr ""
 
-#. translators: %s: linked theme name.
-#: inc/bindings.php:145
+#. translators: %s: linked or plain theme name.
+#: inc/bindings.php:188
 #, php-format
-msgid "Built with the %s theme."
+msgid "Built with %s."
 msgstr ""
 
 #: inc/setup.php:73
-#: inc/skin.php:53
+#: inc/skin.php:40
 msgid "Primary Navigation"
 msgstr ""
 
@@ -179,36 +191,36 @@ msgstr ""
 msgid "Footer Navigation"
 msgstr ""
 
-#: inc/setup.php:227
-msgid "Skip to content"
-msgstr ""
-
-#: inc/skin.php:97
+#: inc/skin.php:94
 msgid "Masthead Hero (1440×810)"
 msgstr ""
 
-#: inc/skin.php:98
+#: inc/skin.php:95
 msgid "Masthead Featured (780×520)"
 msgstr ""
 
-#: inc/skin.php:99
+#: inc/skin.php:96
 msgid "Masthead Card (600×400)"
 msgstr ""
 
-#: inc/skin.php:100
+#: inc/skin.php:97
 msgid "Masthead Card Square (400×400)"
 msgstr ""
 
-#: inc/skin.php:101
+#: inc/skin.php:98
+msgid "Masthead Thumb (300×200)"
+msgstr ""
+
+#: inc/skin.php:99
 msgid "Masthead Wide (1280×720)"
 msgstr ""
 
-#: inc/skin.php:226
+#: inc/skin.php:224
 msgid "Reading Time"
 msgstr ""
 
 #. translators: %d: number of minutes
-#: inc/skin.php:238
+#: inc/skin.php:236
 #, php-format
 msgid "%d min read"
 msgid_plural "%d min read"
@@ -267,13 +279,48 @@ msgstr ""
 msgid "Site-level header, footer, and navigation patterns."
 msgstr ""
 
+#: inc/skin.php:437
+msgid "Breaking news"
+msgstr ""
+
+#: inc/skin.php:445
+msgid "Dismiss breaking news bar"
+msgstr ""
+
+#: inc/skin.php:820
+msgid "Site search"
+msgstr ""
+
+#: inc/skin.php:824
+#: inc/skin.php:827
+#: inc/skin.php:833
+msgid "Search this site"
+msgstr ""
+
+#: inc/skin.php:836
+msgid "Search again"
+msgstr ""
+
+#: inc/skin.php:908
+#: patterns/section-footer.php:46
+msgid "Sections"
+msgstr ""
+
 #: patterns/article-card-horizontal.php
 msgctxt "Pattern title"
 msgid "Article Card — Horizontal"
 msgstr ""
 
-#: patterns/article-card-horizontal.php:21
-msgid "Article thumbnail — replace with post image"
+#: patterns/article-card-horizontal.php:25
+msgid "Category"
+msgstr ""
+
+#: patterns/article-card-horizontal.php:29
+msgid "A headline that fits in two tight lines without strain."
+msgstr ""
+
+#: patterns/article-card-horizontal.php:33
+msgid "By Jane Reporter  ·  June 1, 2026"
 msgstr ""
 
 #: patterns/breaking-story.php
@@ -283,11 +330,27 @@ msgstr ""
 
 #: patterns/breaking-story.php
 msgctxt "Pattern description"
-msgid "Two-column lead story: featured image left (60%), bold headline stack right (40%)."
+msgid "Lead story headline stack: category label, headline, deck and byline. Add your own photograph above or beside it."
 msgstr ""
 
-#: patterns/breaking-story.php:31
-msgid "Replace with a description of the story's lead photograph"
+#: patterns/breaking-story.php:32
+msgid "Breaking News"
+msgstr ""
+
+#: patterns/breaking-story.php:36
+msgid "The headline that demands attention and makes readers click."
+msgstr ""
+
+#: patterns/breaking-story.php:40
+msgid "The deck draws readers in with just enough context to make the headline irresistible — one sentence, no more."
+msgstr ""
+
+#: patterns/breaking-story.php:46
+msgid "By"
+msgstr ""
+
+#: patterns/breaking-story.php:46
+msgid "Jane Reporter"
 msgstr ""
 
 #: patterns/newsletter-cta.php
@@ -295,16 +358,61 @@ msgctxt "Pattern title"
 msgid "Newsletter CTA"
 msgstr ""
 
+#: patterns/newsletter-cta.php:24
+msgid "Daily Briefing"
+msgstr ""
+
+#: patterns/newsletter-cta.php:28
+msgid "Never miss the story that matters."
+msgstr ""
+
+#: patterns/newsletter-cta.php:32
+msgid "Thousands of readers start their morning with our free daily digest. Join them."
+msgstr ""
+
+#: patterns/newsletter-cta.php:39
+msgid "Subscribe — It’s Free"
+msgstr ""
+
 #: patterns/opinion-row.php
 msgctxt "Pattern title"
 msgid "Opinion Row"
 msgstr ""
 
-#: patterns/opinion-row.php:31
-#: patterns/opinion-row.php:46
-#: patterns/opinion-row.php:61
-#: patterns/opinion-row.php:76
-msgid "Author photo — replace with author portrait"
+#: patterns/opinion-row.php:21
+msgid "Opinion"
+msgstr ""
+
+#: patterns/opinion-row.php:30
+msgid "Opinion by Jane Commentator"
+msgstr ""
+
+#: patterns/opinion-row.php:33
+msgid "The case for slowing down before making the decision that cannot be unmade."
+msgstr ""
+
+#: patterns/opinion-row.php:41
+msgid "Opinion by Mark Analyst"
+msgstr ""
+
+#: patterns/opinion-row.php:44
+msgid "Why the numbers everyone is quoting tell only half the story worth knowing."
+msgstr ""
+
+#: patterns/opinion-row.php:52
+msgid "Opinion by Sarah Correspondent"
+msgstr ""
+
+#: patterns/opinion-row.php:55
+msgid "A generation of readers is not disengaged. They are waiting for someone to earn their trust."
+msgstr ""
+
+#: patterns/opinion-row.php:63
+msgid "Opinion by David Editor"
+msgstr ""
+
+#: patterns/opinion-row.php:66
+msgid "The institutions we stopped trusting a decade ago are not coming back. What replaces them?"
 msgstr ""
 
 #: patterns/section-footer.php
@@ -312,9 +420,102 @@ msgctxt "Pattern title"
 msgid "Section Footer"
 msgstr ""
 
+#: patterns/section-footer.php:24
+msgid "The Masthead"
+msgstr ""
+
+#: patterns/section-footer.php:35
+msgid "About Us"
+msgstr ""
+
+#: patterns/section-footer.php:38
+msgid "Add a short description of your publication here."
+msgstr ""
+
+#: patterns/section-footer.php:50
+#: patterns/section-navigation.php:25
+msgid "News"
+msgstr ""
+
+#: patterns/section-footer.php:51
+#: patterns/section-navigation.php:29
+msgid "Politics"
+msgstr ""
+
+#: patterns/section-footer.php:52
+#: patterns/section-navigation.php:33
+msgid "Business"
+msgstr ""
+
+#: patterns/section-footer.php:53
+#: patterns/section-navigation.php:37
+msgid "Culture"
+msgstr ""
+
+#: patterns/section-footer.php:54
+#: patterns/section-navigation.php:41
+msgid "Tech"
+msgstr ""
+
+#: patterns/section-footer.php:63
+msgid "Follow Us"
+msgstr ""
+
+#: patterns/section-footer.php:67
+msgid "X"
+msgstr ""
+
+#: patterns/section-footer.php:68
+msgid "Facebook"
+msgstr ""
+
+#: patterns/section-footer.php:69
+msgid "Instagram"
+msgstr ""
+
+#: patterns/section-footer.php:70
+msgid "RSS"
+msgstr ""
+
+#: patterns/section-footer.php:79
+msgid "Subscribe"
+msgstr ""
+
+#: patterns/section-footer.php:82
+msgid "Add your newsletter signup copy here."
+msgstr ""
+
+#: patterns/section-footer.php:87
+msgid "Subscribe Free"
+msgstr ""
+
+#: patterns/section-footer.php:103
+msgid "Privacy"
+msgstr ""
+
+#: patterns/section-footer.php:103
+msgid "Terms"
+msgstr ""
+
+#: patterns/section-footer.php:103
+msgid "Ethics Policy"
+msgstr ""
+
+#: patterns/section-footer.php:103
+msgid "Contact"
+msgstr ""
+
 #: patterns/section-header.php
 msgctxt "Pattern title"
 msgid "Section Header"
+msgstr ""
+
+#: patterns/section-header.php:21
+msgid "Section Name"
+msgstr ""
+
+#: patterns/section-header.php:27
+msgid "All stories →"
 msgstr ""
 
 #: patterns/section-navigation.php
@@ -322,9 +523,33 @@ msgctxt "Pattern title"
 msgid "Section Navigation"
 msgstr ""
 
+#: patterns/section-navigation.php:45
+msgid "Sports"
+msgstr ""
+
 #: patterns/story-hero.php
 msgctxt "Pattern title"
 msgid "Story Hero"
+msgstr ""
+
+#: patterns/story-hero.php:25
+msgid "Politics & Policy"
+msgstr ""
+
+#: patterns/story-hero.php:29
+msgid "New Legislation Would Reshape How Cities Fund Public Transit"
+msgstr ""
+
+#: patterns/story-hero.php:33
+msgid "A sweeping infrastructure bill moving through committee could redirect billions in federal dollars — and set off a reckoning for cities that have long relied on fare revenue to keep the lights on."
+msgstr ""
+
+#: patterns/story-hero.php:42
+msgid "Margaret L. Donovan"
+msgstr ""
+
+#: patterns/story-hero.php:48
+msgid "June 8, 2026  ·  8 min read"
 msgstr ""
 
 #: theme.json
@@ -435,6 +660,7 @@ msgstr ""
 #: styles/digital-first.json
 #: styles/midnight-edition.json
 #: styles/tabloid.json
+#: styles/weekend-edition.json
 msgctxt "Color name"
 msgid "Accent Navy"
 msgstr ""
@@ -701,11 +927,6 @@ msgstr ""
 
 #: theme.json
 msgctxt "Template part name"
-msgid "Section Navigation"
-msgstr ""
-
-#: theme.json
-msgctxt "Template part name"
 msgid "Footer"
 msgstr ""
 
@@ -732,6 +953,16 @@ msgstr ""
 #: theme.json
 msgctxt "Custom template name"
 msgid "Article: With Sidebar"
+msgstr ""
+
+#: theme.json
+msgctxt "Custom template name"
+msgid "Page: Wide"
+msgstr ""
+
+#: theme.json
+msgctxt "Custom template name"
+msgid "Page: Blank Canvas"
 msgstr ""
 
 #: styles/broadsheet.json

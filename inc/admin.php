@@ -259,7 +259,7 @@ function masthead_get_started_content(): array {
 		'developers' => array(
 			/* translators: %s: linked developer-guide anchor. */
 			'text'  => __( 'This theme is built on Colophon, a small documented core meant to be reused. The %s walks through how to build your own theme on it.', 'masthead' ),
-			'url'   => apply_filters( MASTHEAD_SLUG . '/developer_guide_url', 'https://thisismyurl.com/masthead/' ), // phpcs:ignore WordPress.NamingConventions.ValidHookName.UseUnderscores
+			'url'   => apply_filters( MASTHEAD_SLUG . '/developer_guide_url', 'https://themes.thisismyurl.com/masthead/' ), // phpcs:ignore WordPress.NamingConventions.ValidHookName.UseUnderscores
 			'label' => __( 'developer guide', 'masthead' ),
 		),
 	);

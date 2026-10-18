@@ -450,9 +450,6 @@
         "border": {
           "radius": false
         }
-      },
-      "core/post-featured-image": {
-        "allowResize": false
       }
     },
     "custom": {

@@ -3,7 +3,7 @@ Contributors: thisismyurl
 Requires at least: 6.7
 Tested up to: 7.1
 Requires PHP: 7.4
-Stable tag: 1.6291
+Stable tag: 1.6291.1557
 License: GPL-2.0-or-later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 Tags: news, blog, two-columns, grid-layout, full-site-editing, block-patterns, translation-ready, wide-blocks, custom-colors, custom-logo, custom-menu, editor-style, featured-images, sticky-post
@@ -209,7 +209,7 @@ The Get-started screen's developer-guide link is filterable. Change where the
       }
   );
 
-Default: https://thisismyurl.com/masthead/
+Default: https://themes.thisismyurl.com/masthead/
 Filter type: filter (string in, string out).
 Fires from: masthead_get_started_content() in inc/admin.php.
 Syntax above is PHP 7.4-compatible.
@@ -230,10 +230,14 @@ Each section category gets its accent colour from a CSS custom property. Overrid
 
 == Changelog ==
 
-= 1.6291 =
+= 1.6291.1557 =
 * Fixed a stray HTML comment in the blank page template. The block editor treats text outside a block as an unrecognised block, which WordPress.org's theme review check reports as an incomplete template. The rest of the theme's block markup already matched the editor's output.
-* Replaced an invalid "id" attribute on the main wrapper group with "anchor"; the rendered id is unchanged.
-* No visual change.
+* Every main wrapper group now sets its id with the "anchor" attribute instead of an "id" attribute the group block doesn't define. The rendered id is the same.
+* Restored the approved screenshot. The theme-root screenshot had been replaced with a render of the static preview page, which showed features the theme doesn't ship.
+* Fixed undefined preset references in the section footer pattern: the nameplate now uses the xxxl font size (3xl was renamed), and the padding uses spacing step 8 (step 9 doesn't exist).
+* The Weekend Edition style variation now includes the accent-navy colour its link style uses, so links keep their colour.
+* theme.json: removed the unsupported allowResize setting for the Featured Image block, so the file validates against the WordPress schema.
+* Theme URI and the developer guide link now point to themes.thisismyurl.com.
 
 = 1.6265.1630 =
 Synced two fixes from Colophon core (1.6265.1620), found during independent

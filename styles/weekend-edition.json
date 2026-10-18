@@ -56,6 +56,11 @@
           "name": "Accent Red"
         },
         {
+          "slug": "accent-navy",
+          "color": "#1a3762",
+          "name": "Accent Navy"
+        },
+        {
           "slug": "base-black",
           "color": "#0C0804",
           "name": "Base Black"

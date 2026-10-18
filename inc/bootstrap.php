@@ -44,7 +44,7 @@ define( 'MASTHEAD_SLUG', 'masthead' );
  * Theme version — cache-bust for enqueued assets and the WordPress.org version.
  * Keep this in step with the Version header in style.css and Stable tag in readme.txt.
  */
-define( 'MASTHEAD_VERSION', '1.6291' );
+define( 'MASTHEAD_VERSION', '1.6291.1557' );
 
 /**
  * Absolute filesystem path to the theme root (no trailing slash).

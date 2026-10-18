@@ -97,15 +97,13 @@ async def main():
 
         await browser.close()
 
-    # Copy WP.org screenshot to theme root (overwrites placeholder if present)
+    # The theme-root screenshot.png is the approved WordPress.org image and must be a
+    # render of the installed theme. This script renders the static preview mockup, so
+    # it never writes to the theme root; the WP.org-sized render stays in SCREENSHOTS.
     wporg_src = SCREENSHOTS / WPORG_FILE
-    wporg_dst = THEME_DIR / "screenshot.png"
     if wporg_src.exists():
-        shutil.copy2(wporg_src, wporg_dst)
-        size_kb = wporg_dst.stat().st_size // 1024
         print()
-        print(f"WP.org screenshot: {wporg_dst}  ({size_kb} KB)")
-        print("  → Delete screenshot-required.txt once you've verified the screenshot looks correct.")
+        print(f"WP.org-sized preview render: {wporg_src}  (theme-root screenshot.png is not modified)")
 
     print()
     print(f"Done. {len(PAGES)} screenshots in {SCREENSHOTS}")
