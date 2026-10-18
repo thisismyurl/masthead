@@ -3,7 +3,7 @@ Contributors: thisismyurl
 Requires at least: 6.7
 Tested up to: 7.1
 Requires PHP: 7.4
-Stable tag: 1.6265.1630
+Stable tag: 1.6291
 License: GPL-2.0-or-later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 Tags: news, blog, two-columns, grid-layout, full-site-editing, block-patterns, translation-ready, wide-blocks, custom-colors, custom-logo, custom-menu, editor-style, featured-images, sticky-post
@@ -229,6 +229,11 @@ No. Zero plugin dependencies. Works with popular plugins but requires none.
 Each section category gets its accent colour from a CSS custom property. Override in Appearance → Editor → Styles → (⋮) Additional CSS (see Section Colours section above).
 
 == Changelog ==
+
+= 1.6291 =
+* Fixed a stray HTML comment in the blank page template. The block editor treats text outside a block as an unrecognised block, which WordPress.org's theme review check reports as an incomplete template. The rest of the theme's block markup already matched the editor's output.
+* Replaced an invalid "id" attribute on the main wrapper group with "anchor"; the rendered id is unchanged.
+* No visual change.
 
 = 1.6265.1630 =
 Synced two fixes from Colophon core (1.6265.1620), found during independent
