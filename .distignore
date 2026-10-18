@@ -11,6 +11,8 @@ colophon.json
 
 # Developer tooling
 PILLARS.md
+ARCHITECTURE.md
+tools/
 *.sh
 bin/
 
