@@ -3,7 +3,7 @@ Contributors: thisismyurl
 Requires at least: 6.7
 Tested up to: 7.1
 Requires PHP: 7.4
-Stable tag: 1.6291.1557
+Stable tag: 1.6297.1250
 License: GPL-2.0-or-later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 Tags: news, blog, two-columns, grid-layout, full-site-editing, block-patterns, translation-ready, wide-blocks, custom-colors, custom-logo, custom-menu, editor-style, featured-images, sticky-post
@@ -229,6 +229,10 @@ No. Zero plugin dependencies. Works with popular plugins but requires none.
 Each section category gets its accent colour from a CSS custom property. Override in Appearance → Editor → Styles → (⋮) Additional CSS (see Section Colours section above).
 
 == Changelog ==
+
+= 1.6297.1250 =
+* Fixed the footer pattern's Subscribe button showing as invalid in the block editor. The button carried font family, size and weight as block attributes, and the markup WordPress saves for those changed between versions, so the editor offered to recover the block. The button's type is now set in the theme stylesheet and the button looks the same.
+* Every template, template part and pattern was opened in the Site Editor and block editor and none reports an invalid block. The front page, search, 404, page and post were scanned with axe-core 4.10 (WCAG 2.0 to 2.2 A and AA rules plus best practice) in the default style and each of the five variations with a real menu: no violations.
 
 = 1.6291.1557 =
 * Fixed a stray HTML comment in the blank page template. The block editor treats text outside a block as an unrecognised block, which WordPress.org's theme review check reports as an incomplete template. The rest of the theme's block markup already matched the editor's output.

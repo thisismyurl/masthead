@@ -1167,6 +1167,15 @@ body {
 		padding-block: clamp(3rem, 6vw, 6rem);
 	}
 
+	/* The subscribe button's type is set here, not through block attributes: the Button block's saved markup for font family,
+	   size and weight changed between WordPress versions, so a pattern that carries them can show as invalid in the editor. */
+	.np-footer__subscribe .wp-block-button__link {
+		font-family: var(--wp--preset--font-family--inter, sans-serif);
+		font-size: var(--wp--preset--font-size--xs, 0.8125rem);
+		font-weight: 700;
+		letter-spacing: 0.04em;
+		text-transform: uppercase;
+	}
 	.np-footer a {
 		color: inherit;
 		text-decoration: none;

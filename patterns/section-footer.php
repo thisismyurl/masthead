@@ -83,8 +83,8 @@
 			<!-- /wp:paragraph -->
 			<!-- wp:buttons -->
 			<div class="wp-block-buttons">
-				<!-- wp:button {"className":"np-footer__subscribe","fontSize":"xs","fontFamily":"inter","style":{"color":{"background":"var:preset|color|accent-red","text":"var:preset|color|paper-white"},"typography":{"fontWeight":"700","letterSpacing":"0.04em","textTransform":"uppercase"}}} -->
-				<div class="wp-block-button np-footer__subscribe has-custom-font-size has-inter-font-family has-xs-font-size"><a class="wp-block-button__link has-text-color has-background has-inter-font-family has-xs-font-size has-custom-font-size wp-element-button" style="background-color:var(--wp--preset--color--accent-red);color:var(--wp--preset--color--paper-white);font-weight:700;letter-spacing:0.04em;text-transform:uppercase"><?php esc_html_e( 'Subscribe Free', 'masthead' ); ?></a></div>
+				<!-- wp:button {"className":"np-footer__subscribe","style":{"color":{"background":"var:preset|color|accent-red","text":"var:preset|color|paper-white"}}} -->
+				<div class="wp-block-button np-footer__subscribe"><a class="wp-block-button__link has-text-color has-background wp-element-button" style="color:var(--wp--preset--color--paper-white);background-color:var(--wp--preset--color--accent-red)"><?php esc_html_e( 'Subscribe Free', 'masthead' ); ?></a></div>
 				<!-- /wp:button -->
 			</div>
 			<!-- /wp:buttons -->
